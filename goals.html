@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Goals - YAGNI/Linux</title>
+</head>
+<body bgcolor="#1a4270" text="#efe9e4" link="#efe9e4" vlink="#efe9e4" alink="#ffffff">
+<font face="Helvetica, Arial, sans-serif">
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
+<td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>less is less</i></b></td>
+<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages/">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
+</tr></table>
+<table cellpadding="18" cellspacing="0" border="0"><tr>
+<td valign="top" width="280">
+<a href="index.html"><img src="art/side.png" width="260" height="195" border="0" alt="yagni yawn" title="yagni yawn"></a>
+<p>pages:</p>
+<p>&rsaquo; <a href="docs.html">documentation/</a><br>
+&raquo; <i><a href="goals.html">goals/</a></i><br>
+&rsaquo; <a href="expectations.html">expectations/</a><br>
+&rsaquo; <a href="faq.html">answers/</a><br>
+&rsaquo; <a href="releases.html">releases/</a><br>
+&rsaquo; <a href="screenshots.html">screenshots/</a><br>
+&rsaquo; <a href="luwm/">luwm/</a><br>
+&rsaquo; <a href="packages.html">packages/</a><br>
+&rsaquo; <a href="contact.html">contact/</a></p>
+</td>
+<td valign="top" width="760">
+<h2>goals</h2>
+
+<p>a goal that can be quoted to excuse a bad decision was written badly. these are meant to be hard to misuse.</p>
+<ul>
+<li>users know what they are doing.</li>
+<li>users take part. package what's missing and send it back. if you contribute, i will see it.</li>
+<li>the whole system stays small enough for one person to read.</li>
+<li>base is what a machine needs to boot and install packages. nothing else.</li>
+<li>a script you can read beats a daemon you have to trust.</li>
+<li>things get broken when keeping them means keeping complexity.</li>
+</ul>
+<h3>spooks</h3>
+<p>every one of these is a fixed idea. you were told a real system needs them, so you serve them. it doesn't, so i don't.</p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tbody>
+<tr>
+<td><s>a bootloader</s></td>
+<td>uefi starts the kernel itself.</td>
+</tr>
+<tr>
+<td><s>an initramfs</s></td>
+<td>the kernel mounts root directly.</td>
+</tr>
+<tr>
+<td><s><a href="https://systemd.io">systemd</a></s></td>
+<td><a href="https://busybox.net">busybox</a> init and one boot script.</td>
+</tr>
+<tr>
+<td><s>udev</s></td>
+<td>busybox mdev.</td>
+</tr>
+<tr>
+<td><s>shared libraries</s></td>
+<td>base is static.</td>
+</tr>
+<tr>
+<td><s>NetworkManager</s></td>
+<td>one file. it connects at every boot.</td>
+</tr>
+<tr>
+<td><s>a desktop</s></td>
+<td>base boots to a shell. the window manager is a package.</td>
+</tr>
+<tr>
+<td><s>snap and flatpak</s></td>
+<td>a tarball of files. your calculator doesn't need its own copy of gtk.</td>
+</tr>
+<tr>
+<td><s>electron</s></td>
+<td>programs that aren't a whole chromium wearing a trench coat.</td>
+</tr>
+<tr>
+<td><s>dbus</s></td>
+<td>programs that can talk without a message bus in the middle.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr></table>
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr><td><small>
+"Man, your head is haunted; you have wheels in your head!" -- Max Stirner, The Ego and Its Own<br>
+yagni is under the cddl 1.1. the software it packages keeps its own license. linux is a registered trademark of linus torvalds.
+<a href="nothing.html">.</a></small></td></tr></table>
+</font>
+</body>
+</html>

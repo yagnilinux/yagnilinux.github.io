@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desktop - YAGNI/Linux</title>
+</head>
+<body bgcolor="#1a4270" text="#efe9e4" link="#efe9e4" vlink="#efe9e4" alink="#ffffff">
+<font face="Helvetica, Arial, sans-serif">
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
+<td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>your gpu can take the day off</i></b></td>
+<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages/">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
+</tr></table>
+<table cellpadding="18" cellspacing="0" border="0"><tr>
+<td valign="top" width="280">
+<a href="index.html"><img src="art/side.png" width="260" height="195" border="0" alt="yagni yawn" title="yagni yawn"></a>
+<p>pages:</p>
+<p>&raquo; <i><a href="docs.html">documentation/</a></i><br>
+&rsaquo; <a href="goals.html">goals/</a><br>
+&rsaquo; <a href="expectations.html">expectations/</a><br>
+&rsaquo; <a href="faq.html">answers/</a><br>
+&rsaquo; <a href="releases.html">releases/</a><br>
+&rsaquo; <a href="screenshots.html">screenshots/</a><br>
+&rsaquo; <a href="luwm/">luwm/</a><br>
+&rsaquo; <a href="packages.html">packages/</a><br>
+&rsaquo; <a href="contact.html">contact/</a></p>
+</td>
+<td valign="top" width="760">
+<h2>desktop</h2>
+
+<pre># jits a luwm netsurf wallpaper
+$ startw
+</pre>
+<p>the terminal is <a href="https://github.com/ii8/havoc">havoc</a> and the shell is ash. ash and havoc. i didn't plan that, but i'm keeping it.</p>
+<p><code>super + return</code> opens havoc, <code>super + d</code> opens <a href="https://tools.suckless.org/dmenu/">dmenu</a>. the other keys are on the <a href="luwm/">luwm</a> page.</p>
+<h3>wallpaper</h3>
+<pre>$ setwall /usr/share/wallpapers/tide.png
+$ setwall '#1a4270'
+</pre>
+<h3>screenshots</h3>
+<pre>$ snap shot.png
+</pre>
+<p>or <code>super + p</code>.</p>
+<h3>ricing</h3>
+<p><code>~/.config/luwm/env</code>:</p>
+<pre>LUWM_BORDER=6
+LUWM_FOCUS=3d6fa3
+LUWM_UNFOCUS=253e5b
+TERMINAL=&quot;havoc -c ~/.config/havoc.cfg&quot;
+MENU=&quot;dmenu_run -fn 'IM FELL English:size=18'&quot;
+</pre>
+<p><code>~/.config/luwm/keys</code> is a shell script. <code>super + x</code> runs it with <code>x</code>, <code>super + shift + x</code> with <code>S-x</code>:</p>
+<pre>case $1 in
+w) exec netsurf ;;
+S-x) exec havoc -e yte ;;
+esac
+</pre>
+<p>want other fonts? <code>jits a font-kirsch font-imfell</code>.</p>
+<h3>missing</h3>
+<ul>
+<li>keyboard layouts other than us</li>
+<li>a video player. <code>yt</code> plays the audio</li>
+</ul>
+</td>
+</tr></table>
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr><td><small>
+"Perfection is achieved when there is nothing left to take away." -- Antoine de Saint-Exupery<br>
+yagni is under the cddl 1.1. the software it packages keeps its own license. linux is a registered trademark of linus torvalds.
+<a href="nothing.html">.</a></small></td></tr></table>
+</font>
+</body>
+</html>
