@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hacking - YAGNI/Linux</title>
+</head>
+<body bgcolor="#1a4270" text="#efe9e4" link="#efe9e4" vlink="#efe9e4" alink="#ffffff">
+<font face="Helvetica, Arial, sans-serif">
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
+<td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>send patches, not snaps</i></b></td>
+<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages/">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
+</tr></table>
+<table cellpadding="18" cellspacing="0" border="0"><tr>
+<td valign="top" width="280">
+<a href="index.html"><img src="art/side.png" width="260" height="195" border="0" alt="yagni yawn" title="yagni yawn"></a>
+<p>pages:</p>
+<p>&raquo; <i><a href="docs.html">documentation/</a></i><br>
+&rsaquo; <a href="goals.html">goals/</a><br>
+&rsaquo; <a href="expectations.html">expectations/</a><br>
+&rsaquo; <a href="faq.html">answers/</a><br>
+&rsaquo; <a href="releases.html">releases/</a><br>
+&rsaquo; <a href="screenshots.html">screenshots/</a><br>
+&rsaquo; <a href="luwm/">luwm/</a><br>
+&rsaquo; <a href="packages.html">packages/</a><br>
+&rsaquo; <a href="contact.html">contact/</a></p>
+</td>
+<td valign="top" width="760">
+<h2>hacking</h2>
+
+<p>rebuild the whole distribution with two commands. it's all in <a href="https://github.com/yagnilinux/repo">yagnilinux/repo</a>.</p>
+<pre>$ git clone https://github.com/yagnilinux/repo
+$ cd repo
+$ ./mkrepo
+$ ./mkrootfs
+</pre>
+<h3>rules</h3>
+<ul>
+<li>shell is posix sh.</li>
+<li>programs are static against <a href="https://musl.libc.org">musl libc</a>.</li>
+<li>a package that needs a library builds it itself.</li>
+<li>base is what a machine needs to boot and install packages. everything else is a package.</li>
+</ul>
+<h3>testing</h3>
+<p>install the tarball on a fresh disk in <a href="https://www.qemu.org">qemu</a>, install every package, log in as a normal user and start the desktop. if that works, send it.</p>
+<h3>sending changes</h3>
+<p>pull request against <a href="https://github.com/yagnilinux/repo">yagnilinux/repo</a>. bump <code>version</code> in every package you touch. if your patch adds a dependency, the commit message says why.</p>
+</td>
+</tr></table>
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr><td><small>
+"Talk is cheap. Show me the code." -- Linus Torvalds<br>
+yagni is under the cddl 1.1. the software it packages keeps its own license. linux is a registered trademark of linus torvalds.
+<a href="nothing.html">.</a></small></td></tr></table>
+</font>
+</body>
+</html>

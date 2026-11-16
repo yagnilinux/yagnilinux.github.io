@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installing - YAGNI/Linux</title>
+</head>
+<body bgcolor="#1a4270" text="#efe9e4" link="#efe9e4" vlink="#efe9e4" alink="#ffffff">
+<font face="Helvetica, Arial, sans-serif">
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
+<td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>archinstall for people who can read</i></b></td>
+<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages/">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
+</tr></table>
+<table cellpadding="18" cellspacing="0" border="0"><tr>
+<td valign="top" width="280">
+<a href="index.html"><img src="art/side.png" width="260" height="195" border="0" alt="yagni yawn" title="yagni yawn"></a>
+<p>pages:</p>
+<p>&raquo; <i><a href="docs.html">documentation/</a></i><br>
+&rsaquo; <a href="goals.html">goals/</a><br>
+&rsaquo; <a href="expectations.html">expectations/</a><br>
+&rsaquo; <a href="faq.html">answers/</a><br>
+&rsaquo; <a href="releases.html">releases/</a><br>
+&rsaquo; <a href="screenshots.html">screenshots/</a><br>
+&rsaquo; <a href="luwm/">luwm/</a><br>
+&rsaquo; <a href="packages.html">packages/</a><br>
+&rsaquo; <a href="contact.html">contact/</a></p>
+</td>
+<td valign="top" width="760">
+<h2>installing</h2>
+
+<p>there is no installer. you partition a disk, untar a tarball and set a password. if you've installed arch, you've done harder. if that still sounds like too much, the <a href="faq.html">answers</a> page has an installer for you.</p>
+<h3>1. boot something</h3>
+<p>boot any linux live usb on an x86_64 machine with uefi. turn secure boot off. get online.</p>
+<h3>2. partition</h3>
+<p>name them exactly like this. the kernel finds root by its name and it won't guess.</p>
+<table border="1" cellpadding="4" cellspacing="0">
+<thead>
+<tr>
+<th>partition</th>
+<th>size</th>
+<th>type</th>
+<th>gpt name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>256MB</td>
+<td>EFI System</td>
+<td>BOOT</td>
+</tr>
+<tr>
+<td>2</td>
+<td>the rest</td>
+<td>Linux</td>
+<td>yagni</td>
+</tr>
+</tbody>
+</table>
+<pre># sfdisk /dev/sda &lt;&lt;EOF
+label: gpt
+size=256M, type=uefi, name=BOOT
+type=linux, name=yagni
+EOF
+</pre>
+<h3>3. filesystems</h3>
+<pre># mkfs.vfat -F 32 -n BOOT /dev/sda1
+# mkfs.ext4 -L yagni /dev/sda2
+</pre>
+<h3>4. mount</h3>
+<pre># mount /dev/sda2 /mnt
+# mkdir /mnt/boot
+# mount /dev/sda1 /mnt/boot
+</pre>
+<h3>5. the tarball</h3>
+<pre># cd /tmp
+# wget https://yagnilinux.github.io/packages/yagni.tar.gz
+# wget https://yagnilinux.github.io/packages/yagni.tar.gz.sha256
+# sha256sum -c yagni.tar.gz.sha256
+# tar xzf yagni.tar.gz -C /mnt
+</pre>
+<p>tar warns about permissions on <code>/boot</code>. it's fat, ignore it.</p>
+<h3>6. root password</h3>
+<pre># chroot /mnt /usr/bin/passwd
+</pre>
+<h3>7. wifi, if you need it</h3>
+<p>skip this on ethernet. realtek cards want <code>firmware-realtek</code> instead.</p>
+<pre># cp /etc/resolv.conf /mnt/etc/
+# chroot /mnt /usr/bin/jits a wpa_supplicant firmware-iwlwifi yutils
+# wpa_passphrase &quot;network&quot; &quot;password&quot; &gt; /mnt/etc/wpa_supplicant.conf
+</pre>
+<h3>8. reboot</h3>
+<pre># umount /mnt/boot /mnt
+# reboot
+</pre>
+<h3>9. a user</h3>
+<p>log in as root and add a user.</p>
+<pre># jits a yutils
+# mkuser foo
+</pre>
+<p>log out, log back in as foo.</p>
+<h3>it didn't boot</h3>
+<p>some firmware won't boot the fallback path off an internal disk. give it an entry from the live system:</p>
+<pre># efibootmgr -c -d /dev/sda -p 1 -L YAGNI -l '\EFI\BOOT\BOOTX64.EFI'
+</pre>
+<p>stuck at <code>Waiting for root device PARTLABEL=yagni</code>? you misnamed the second partition. <code>sfdisk --part-label /dev/sda 2 yagni</code>.</p>
+<h3>dual booting</h3>
+<p>mount the efi partition you already have at <code>/mnt/boot</code> instead of making one. if <code>/boot/EFI/BOOT/BOOTX64.EFI</code> is already there, move it out of the way first and give yagni its own entry with <code>efibootmgr</code>.</p>
+</td>
+</tr></table>
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr><td><small>
+"Nature does nothing in vain." -- Aristotle<br>
+yagni is under the cddl 1.1. the software it packages keeps its own license. linux is a registered trademark of linus torvalds.
+<a href="nothing.html">.</a></small></td></tr></table>
+</font>
+</body>
+</html>

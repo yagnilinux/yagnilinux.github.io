@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it boots - YAGNI/Linux</title>
+</head>
+<body bgcolor="#1a4270" text="#efe9e4" link="#efe9e4" vlink="#efe9e4" alink="#ffffff">
+<font face="Helvetica, Arial, sans-serif">
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
+<td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>my init doesn't have a qr code</i></b></td>
+<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages/">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
+</tr></table>
+<table cellpadding="18" cellspacing="0" border="0"><tr>
+<td valign="top" width="280">
+<a href="index.html"><img src="art/side.png" width="260" height="195" border="0" alt="yagni yawn" title="yagni yawn"></a>
+<p>pages:</p>
+<p>&raquo; <i><a href="docs.html">documentation/</a></i><br>
+&rsaquo; <a href="goals.html">goals/</a><br>
+&rsaquo; <a href="expectations.html">expectations/</a><br>
+&rsaquo; <a href="faq.html">answers/</a><br>
+&rsaquo; <a href="releases.html">releases/</a><br>
+&rsaquo; <a href="screenshots.html">screenshots/</a><br>
+&rsaquo; <a href="luwm/">luwm/</a><br>
+&rsaquo; <a href="packages.html">packages/</a><br>
+&rsaquo; <a href="contact.html">contact/</a></p>
+</td>
+<td valign="top" width="760">
+<h2>how it boots</h2>
+
+<ul>
+<li>every boot error on screen</li>
+<li>the whole boot is one 32 line file</li>
+</ul>
+<h3>changing things</h3>
+<table border="1" cellpadding="4" cellspacing="0">
+<thead>
+<tr>
+<th>to change</th>
+<th>edit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boot</td>
+<td><code>/etc/init.d/rcS</code></td>
+</tr>
+<tr>
+<td>consoles</td>
+<td><code>/etc/inittab</code></td>
+</tr>
+<tr>
+<td>hostname</td>
+<td><code>/etc/hostname</code></td>
+</tr>
+<tr>
+<td>mounts</td>
+<td><code>/etc/fstab</code></td>
+</tr>
+<tr>
+<td>repository</td>
+<td><code>/etc/jits/repo</code></td>
+</tr>
+<tr>
+<td>prompt</td>
+<td><code>/etc/profile</code></td>
+</tr>
+</tbody>
+</table>
+<p>to start something at boot, add a line to <code>rcS</code>. <a href="https://systemd.io">systemd</a> is 1.6 million lines, ships its own dns resolver, ntp client and bootloader, and lennart still isn't done. <code>rcS</code> fits on your screen, and it is done.</p>
+<h3>if it doesn't boot</h3>
+<p>stuck at <code>Waiting for root device PARTLABEL=yagni</code>? your root partition isn't named <code>yagni</code>. see <a href="install.html">installing</a>.</p>
+</td>
+</tr></table>
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr><td><small>
+"Entities must not be multiplied beyond necessity." -- William of Ockham<br>
+yagni is under the cddl 1.1. the software it packages keeps its own license. linux is a registered trademark of linus torvalds.
+<a href="nothing.html">.</a></small></td></tr></table>
+</font>
+</body>
+</html>

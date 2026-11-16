@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>luwm - YAGNI/Linux</title>
+</head>
+<body bgcolor="#1a4270" text="#efe9e4" link="#efe9e4" vlink="#efe9e4" alink="#ffffff">
+<font face="Helvetica, Arial, sans-serif">
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
+<td><a href="../index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>kde has more settings than this has lines</i></b></td>
+<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages/">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
+</tr></table>
+<table cellpadding="18" cellspacing="0" border="0"><tr>
+<td valign="top" width="280">
+<a href="../index.html"><img src="../art/side.png" width="260" height="195" border="0" alt="yagni yuri" title="yagni yuri"></a>
+<p>pages:</p>
+<p>&rsaquo; <a href="../docs.html">documentation/</a><br>
+&rsaquo; <a href="../goals.html">goals/</a><br>
+&rsaquo; <a href="../expectations.html">expectations/</a><br>
+&rsaquo; <a href="../faq.html">answers/</a><br>
+&rsaquo; <a href="../releases.html">releases/</a><br>
+&rsaquo; <a href="../screenshots.html">screenshots/</a><br>
+&raquo; <i><a href="../luwm/">luwm/</a></i><br>
+&rsaquo; <a href="../packages.html">packages/</a><br>
+&rsaquo; <a href="../contact.html">contact/</a></p>
+</td>
+<td valign="top" width="760">
+<h2>luwm</h2>
+
+<h3>about</h3>
+<p>luwm (low usage window manager) is yagni's <a href="https://wayland.freedesktop.org">wayland</a> compositor. under 180 lines of c on top of <a href="https://github.com/michaelforney/swc">swc</a>, one static binary. with a terminal open it stays <a href="../shots/idle.png">under 30MB of ram</a>, so the rest is free for you to donate to sam altman.</p>
+<p><img alt="luwm on YAGNI" src="screenshots/luwm.png" width="640"></p>
+<h3>features</h3>
+<ul>
+<li>floating windows, mouse to move and resize</li>
+<li>4 workspaces</li>
+<li>focus follows the mouse</li>
+<li>fullscreen</li>
+<li>that's it</li>
+</ul>
+<h3>keys</h3>
+<table border="1" cellpadding="4" cellspacing="0">
+<thead>
+<tr>
+<th>key</th>
+<th>action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>super + return</code></td>
+<td>terminal</td>
+</tr>
+<tr>
+<td><code>super + d</code></td>
+<td>launcher</td>
+</tr>
+<tr>
+<td><code>super + q</code></td>
+<td>close the window</td>
+</tr>
+<tr>
+<td><code>super + shift + q</code></td>
+<td>quit luwm</td>
+</tr>
+<tr>
+<td><code>super + tab</code></td>
+<td>raise the bottom window</td>
+</tr>
+<tr>
+<td><code>super + `</code></td>
+<td>lower the top window</td>
+</tr>
+<tr>
+<td><code>super + f</code></td>
+<td>fullscreen</td>
+</tr>
+<tr>
+<td><code>super + 1-4</code></td>
+<td>switch workspace</td>
+</tr>
+<tr>
+<td><code>super + shift + 1-4</code></td>
+<td>send the window to a workspace</td>
+</tr>
+<tr>
+<td><code>super + left drag</code></td>
+<td>move</td>
+</tr>
+<tr>
+<td><code>super + right drag</code></td>
+<td>resize</td>
+</tr>
+<tr>
+<td><code>super + middle click</code></td>
+<td>lower the window</td>
+</tr>
+<tr>
+<td><code>super + p</code></td>
+<td>screenshot</td>
+</tr>
+</tbody>
+</table>
+<h3>install</h3>
+<p>on yagni:</p>
+<pre># jits a luwm
+$ startw
+</pre>
+<p>anywhere else, you need <a href="https://github.com/michaelforney/swc">swc</a> with the patches in <code>patches/</code>:</p>
+<pre>$ make SWC=/path/to/swc
+</pre>
+<h3>configuration</h3>
+<p>border width, colours and your own keybinds are set without recompiling, see <a href="../desktop.html#ricing">desktop</a>. the built-in keys live in <code>keys[]</code> at the top of <code>luwm.c</code>.</p>
+<h3>notes</h3>
+<ul>
+<li>us keyboard layout only.</li>
+</ul>
+</td>
+</tr></table>
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr><td><small>
+"Very little is needed to make a happy life." -- Marcus Aurelius<br>
+yagni is under the cddl 1.1. the software it packages keeps its own license. linux is a registered trademark of linus torvalds.
+<a href="../nothing.html">.</a></small></td></tr></table>
+</font>
+</body>
+</html>

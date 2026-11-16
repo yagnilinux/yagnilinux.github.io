@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wifi - YAGNI/Linux</title>
+</head>
+<body bgcolor="#1a4270" text="#efe9e4" link="#efe9e4" vlink="#efe9e4" alink="#ffffff">
+<font face="Helvetica, Arial, sans-serif">
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
+<td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>networkmanager's worst nightmare</i></b></td>
+<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages/">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
+</tr></table>
+<table cellpadding="18" cellspacing="0" border="0"><tr>
+<td valign="top" width="280">
+<a href="index.html"><img src="art/side.png" width="260" height="195" border="0" alt="yagni yawn" title="yagni yawn"></a>
+<p>pages:</p>
+<p>&raquo; <i><a href="docs.html">documentation/</a></i><br>
+&rsaquo; <a href="goals.html">goals/</a><br>
+&rsaquo; <a href="expectations.html">expectations/</a><br>
+&rsaquo; <a href="faq.html">answers/</a><br>
+&rsaquo; <a href="releases.html">releases/</a><br>
+&rsaquo; <a href="screenshots.html">screenshots/</a><br>
+&rsaquo; <a href="luwm/">luwm/</a><br>
+&rsaquo; <a href="packages.html">packages/</a><br>
+&rsaquo; <a href="contact.html">contact/</a></p>
+</td>
+<td valign="top" width="760">
+<h2>wifi</h2>
+
+<table border="1" cellpadding="4" cellspacing="0">
+<thead>
+<tr>
+<th>card</th>
+<th>package</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intel (iwlwifi)</td>
+<td><code>firmware-iwlwifi</code></td>
+</tr>
+<tr>
+<td>Realtek (rtw88, rtw89)</td>
+<td><code>firmware-realtek</code></td>
+</tr>
+</tbody>
+</table>
+<p>don't know your card? <code>cat /sys/bus/pci/devices/*/vendor</code>. <code>0x8086</code> is intel, <code>0x10ec</code> is realtek. other cards need their firmware packaged.</p>
+<h3>setup</h3>
+<pre># jits a wpa_supplicant firmware-iwlwifi yutils
+# wifi &quot;network&quot; &quot;password&quot;
+</pre>
+<p>connects now, and every boot after. networkmanager needs a daemon and dbus running to do the same.</p>
+<h3>no network at all</h3>
+<p>usb tethering and usb ethernet work. plug them in before you boot.</p>
+<h3>notes</h3>
+<p>wpa2 only. wpa3 and enterprise networks don't work.</p>
+<p>the firmware is from march 2024. none of it has been tested on a real card yet.</p>
+</td>
+</tr></table>
+<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr><td><small>
+"Do not spoil what you have by desiring what you have not." -- Epicurus<br>
+yagni is under the cddl 1.1. the software it packages keeps its own license. linux is a registered trademark of linus torvalds.
+<a href="nothing.html">.</a></small></td></tr></table>
+</font>
+</body>
+</html>
