@@ -28,14 +28,39 @@
 <td valign="top" width="760">
 <h2>packaging</h2>
 
-<p>packaging is easy. to add your own software to yagni, make a directory in <code>pkgs/</code> and fill in up to four files. if you've written a kiss package, you already know how.</p>
-<pre>pkgs/&lt;name&gt;/version     the version
-pkgs/&lt;name&gt;/depends     what it needs, one per line (optional)
-pkgs/&lt;name&gt;/source      where to get it (optional)
-pkgs/&lt;name&gt;/build       how to build it
+<p>a package is a directory in <code>repo/pkgs/</code>. it needs a <code>version</code> and a <code>build</code> script, and that's usually it. if you've written a kiss package, you already know how.</p>
+<h3>example: packaging yte</h3>
+<p>get the repository:</p>
+<pre>$ git clone https://github.com/yagnilinux/repo
+</pre>
+<p>make a directory for the package:</p>
+<pre>$ mkdir repo/pkgs/yte
+</pre>
+<p>put the version in <code>repo/pkgs/yte/version</code>:</p>
+<pre>0.3
+</pre>
+<p>put the source url in <code>repo/pkgs/yte/source</code>:</p>
+<pre>git https://github.com/yagnilinux/yte.git main
+</pre>
+<p>write <code>repo/pkgs/yte/build</code>. it compiles yte and installs it into <code>$1</code>:</p>
+<pre>#!/bin/sh -e
+musl-gcc -std=c99 -Os -s -static -o yte yte.c
+install -Dm755 yte &quot;$1/usr/bin/yte&quot;
+</pre>
+<p>make it executable and build:</p>
+<pre>$ chmod +x repo/pkgs/yte/build
+$ repo/mkrepo
+</pre>
+<p>the package is now <code>repo/repo/yte@0.3.tar.gz</code>.</p>
+<h3>the files</h3>
+<pre>repo/pkgs/&lt;name&gt;/version     the version
+repo/pkgs/&lt;name&gt;/build       how to build it
+repo/pkgs/&lt;name&gt;/depends     what it needs, one per line, if anything
+repo/pkgs/&lt;name&gt;/source      where to get it, if it isn't in the directory
+repo/pkgs/&lt;name&gt;/files/      configs and patches, if you have any
 </pre>
 <h3>build</h3>
-<p>a shell script that installs the program into <code>$1</code>, as if <code>$1</code> were <code>/</code>. <code>$PKG</code> is your package's directory, for configs and patches.</p>
+<p>a shell script that installs the program into <code>$1</code>, as if <code>$1</code> were <code>/</code>. <code>$PKG</code> is your package's directory, so <code>$PKG/files/</code> is where your configs and patches are.</p>
 <p>build it static (<code>musl-gcc -static</code>) and strip it, so it keeps working whatever else gets upgraded.</p>
 <h3>source</h3>
 <pre>git &lt;url&gt; &lt;tag&gt;          a git repository
@@ -43,11 +68,11 @@ apt-src &lt;pkg&gt;            an ubuntu source package
 apt-deb &lt;pkg&gt;...         ubuntu binary packages (firmware only)
 </pre>
 <h3>your own repository</h3>
-<pre>$ ./mkrepo      # build your packages
-$ ./mkrootfs    # build an install tarball
+<pre>$ repo/mkrepo      # build every package into repo/repo/
+$ repo/mkrootfs    # build an install tarball
 </pre>
 <p>bump <code>version</code> whenever you change a package, or nobody gets the change. <code>mkrepo</code> won't let you forget.</p>
-<p>put <code>repo/</code> on any web server and point <code>/etc/jits/repo</code> at it. that's a distribution.</p>
+<p>put <code>repo/repo/</code> on any web server and point <code>/etc/jits/repo</code> at it. that's a distribution. want checksums? <code>SUMS=1 repo/mkrepo</code> puts sha256 sums in the index and jits checks every download against them.</p>
 </td>
 </tr></table>
 <table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr><td><small>
