@@ -41,10 +41,19 @@
 <h3>what to expect</h3>
 <ul>
 <li>one command installs a package and everything it needs</li>
-<li>every download is sha256-checked</li>
 <li>your configs survive upgrades (<code>etcnew</code> merges the new ones)</li>
 <li>remove anything. you're an adult</li>
 </ul>
+<h3>example</h3>
+<pre>$ jits s yt
+python 3.13.9-1
+yt-dlp 2026.10.26-1
+yte 0.3
+$ jits a yte
+-&gt; repo Synced
+-&gt; yte Installed 0.3
+</pre>
+<p><code>jits a yt-dlp</code> pulls in python, quickjs and ffmpeg on its own. <code>jits r yte</code> takes it back out.</p>
 <h3>using another repository</h3>
 <p>set <code>JITS_REPO</code>, or put the address in <code>/etc/jits/repo</code>. the default is <code>https://yagnilinux.github.io/packages</code>. anyone can run a repository, see <a href="packaging.html">packaging</a>.</p>
 <h3>which package owns a file</h3>
