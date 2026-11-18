@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>linux - gnu - YAGNI/Linux</title>
+</head>
+<body bgcolor="#c8d5e3" text="#10243d" link="#1a4270" vlink="#1a4270" alink="#10243d">
+<font face="Verdana, Geneva, sans-serif">
+<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://github.com/yagnilinux">git</a> |</small>
+<h1><a href="index.html">yagni/linux</a> <small><small><i>lix</i></small></small></h1>
+<table cellpadding="6" cellspacing="0" border="0"><tr>
+<td valign="top" width="152">
+<table border="1" cellpadding="6" cellspacing="0" bgcolor="#b3c4d8"><tr><td>
+<a href="index.html"><img src="art/side.png" width="140" border="0" alt="yagni"></a>
+<p><small><b>&#9656; <a href="docs.html">docs</a><br>
+&#9656; <a href="goals.html">goals</a><br>
+&#9656; <a href="faq.html">answers</a><br>
+&#9656; <a href="releases.html">releases</a><br>
+&#9656; <a href="packages.html">packages</a><br>
+&#9656; <a href="screenshots.html">screenshots</a></b></small></p>
+</td></tr></table>
+</td>
+<td valign="top">
+<h2>linux - gnu</h2>
+
+<pre>  linux
+- gnu
+= lix</pre>
+<p>take linux and remove the gnu. what's left is lix. <a href="stalman.html">richard</a> wants it called gnu/linux. we went the other way.</p>
+<h3>what was removed</h3>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>gnu</th><th>lix</th></tr>
+<tr><td>glibc</td><td><a href="https://musl.libc.org">musl</a></td></tr>
+<tr><td>coreutils, grep, sed, gawk, findutils, diffutils, tar, gzip</td><td><a href="https://busybox.net">busybox</a></td></tr>
+<tr><td>bash</td><td><a href="https://github.com/ibara/oksh">oksh</a>, from openbsd</td></tr>
+<tr><td>ncurses</td><td><a href="https://github.com/sabotage-linux/netbsd-curses">netbsd-curses</a></td></tr>
+<tr><td>bc</td><td><a href="https://github.com/gavinhoward/bc">gavin howard's bc</a>, as in freebsd</td></tr>
+<tr><td>grub</td><td>nothing. the kernel is the efi program</td></tr>
+<tr><td>gcc</td><td><a href="https://bellard.org/tcc/">tcc</a></td></tr>
+<tr><td>readline</td><td>nothing</td></tr>
+<tr><td>make</td><td>nothing</td></tr>
+</table>
+<h3>what is gpl</h3>
+<p>almost everything in the gnu column is gplv3. glibc is lgpl, and ncurses isn't gpl at all, but gnu keeps it anyway.</p>
+<p>linux is gpl too, version 2 only. when v3 came out, linus took one look at it and kept linux on v2. he knew better. so do we: there is no gplv3 in base.</p>
+<p>gpl is a license. gnu is a project. a package may be gpl. it may not be gnu.</p>
+</td>
+</tr></table>
+<hr noshade size="1">
+<small>made by max spuk. cddl 1.1. <a href="thanks.html">thanks</a>. <a href="nothing.html">.</a></small>
+</font>
+</body>
+</html>
