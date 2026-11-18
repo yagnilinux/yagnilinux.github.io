@@ -3,75 +3,59 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Answers - YAGNI/Linux</title>
+<title>answers - YAGNI/Linux</title>
 </head>
-<body bgcolor="#1a4270" text="#efe9e4" link="#efe9e4" vlink="#efe9e4" alink="#ffffff">
-<font face="Helvetica, Arial, sans-serif">
-<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
-<td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>1000% gnu free</i></b></td>
-<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages.html">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
-</tr></table>
-<table cellpadding="18" cellspacing="0" border="0"><tr>
-<td valign="top" width="280">
-<a href="index.html"><img src="art/side.png" width="260" height="195" border="0" alt="yagni yawn" title="yagni yawn"></a>
-<p>pages:</p>
-<p>&rsaquo; <a href="docs.html">documentation/</a><br>
-&rsaquo; <a href="goals.html">goals/</a><br>
-&rsaquo; <a href="expectations.html">expectations/</a><br>
-&raquo; <i><a href="faq.html">answers/</a></i><br>
-&rsaquo; <a href="releases.html">releases/</a><br>
-&rsaquo; <a href="screenshots.html">screenshots/</a><br>
-&rsaquo; <a href="luwm/">luwm/</a><br>
-&rsaquo; <a href="packages.html">packages/</a><br>
-&rsaquo; <a href="contact.html">contact/</a></p>
+<body bgcolor="#c8d5e3" text="#10243d" link="#1a4270" vlink="#1a4270" alink="#10243d">
+<font face="Verdana, Geneva, sans-serif">
+<small><a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://github.com/yagnilinux">git</a> |</small>
+<h1><a href="index.html">yagni/linux</a> <small><small><i>1000% gnu free</i></small></small></h1>
+<table cellpadding="6" cellspacing="0" border="0"><tr>
+<td valign="top" width="140" bgcolor="#b3c4d8">
+<a href="index.html"><img src="art/side.png" width="140" border="0" alt="yagni"></a>
+<p><small><b>&#9656; <a href="docs.html">docs</a><br>
+&#9656; <a href="goals.html">goals</a><br>
+&#9656; <a href="faq.html">answers</a><br>
+&#9656; <a href="releases.html">releases</a><br>
+&#9656; <a href="packages.html">packages</a><br>
+&#9656; <a href="screenshots.html">screenshots</a></b></small></p>
 </td>
-<td valign="top" width="760">
+<td width="1" bgcolor="#1a4270"></td>
+<td valign="top">
 <h2>answers</h2>
-<p><font size="5"><i>&ldquo;Whereof one cannot speak, thereof one must be silent.&rdquo;</i></font><br>&nbsp; &mdash; Ludwig Wittgenstein</p>
+<p><i>&ldquo;Whereof one cannot speak, thereof one must be silent.&rdquo;</i></p>
 
-<p>not answered here? read the <a href="docs.html">documentation</a>. still not answered? <a href="contact.html">ask</a>.</p>
-<h3>why is it called yagni/linux?</h3>
-<p>linux is only the kernel. jits, the boot script, the packages and the rest of the system are yagni. what you're referring to as linux is, in fact, yagni/linux. we're just being pedantic, like <a href="stalman.html">richard</a>.</p>
-<h3>what does yagni mean?</h3>
-<p>you aren't gonna need it. it's from extreme programming: don't build something until you actually need it. we took it further than they meant.</p>
 <h3>is yagni for me?</h3>
-<p>probably not. read <a href="expectations.html">expectations</a>. if that page annoyed you, that's your answer.</p>
-<h3>why is so little packaged?</h3>
-<p>because we can't maintain the world, and pretending otherwise is how distributions rot. the repository is a base to build on. you package what you need, and <a href="packaging.html">packaging</a> is easy.</p>
-<h3>can you package something for me?</h3>
-<p>open an issue. better, package it yourself and open a pull request. packaging is easy, <a href="packaging.html">see for yourself</a>.</p>
+<p>if you have to ask, no.</p>
 <h3>why is everything static?</h3>
-<p>a static binary is one file. it doesn't need <code>ld.so</code> or matching library versions, and upgrading something else can't break it. docker exists because dynamic linking doesn't work. we just stopped doing the thing that doesn't work. you can copy it to another machine and it runs.</p>
-<h3>do you hate gnu?</h3>
-<p>yes. fuck <a href="https://www.gnu.org">gnu</a>. <a href="stalman.html">here's why</a>. free as in free of gnu.</p>
-<h3>why not alpine?</h3>
-<p>alpine does more. yagni does less, on purpose.</p>
-<h3>will x be added to base?</h3>
-<p>no. base is ours.</p>
+<p>because shared libraries were a mistake.</p>
+<h3>where's the bootloader?</h3>
+<p>you don't need one.</p>
+<h3>what replaces the usual parts?</h3>
+<p>systemd: busybox init and one script.<br>udev: mdev.<br>sudo: doas.<br>NetworkManager: one wifi file.<br>dbus: nothing.<br>shared libraries: nothing.</p>
 <h3>why is there bsd and apple code in it?</h3>
-<p>because it's good and it isn't gnu. doas and ksh come from openbsd, bc from freebsd, curses from netbsd. lzfse is apple's compression: packages unpack about four times faster than with gzip. bonjour is apple too, if you want <code>name.local</code> to work.</p>
+<p>because it is good code and it isn't gnu.</p>
+<h3>why is so little packaged?</h3>
+<p>because you haven't <a href="docs.html#packaging">packaged</a> it yet.</p>
+<h3>do you hate gnu?</h3>
+<p>yes. <a href="stalman.html">here's why</a>.</p>
+<h3>is it self-hosting?</h3>
+<p>no. the kernel only builds with gcc or clang and gnu make, so packages are built elsewhere. <code>tcc</code> is there for your own code.</p>
+<h3>are packages signed?</h3>
+<p>no.</p>
+<h3>does it run firefox?</h3>
+<p>not until you port it. <code>netsurf</code> works today.</p>
+<h3>what hardware works?</h3>
+<p>x86-64 with uefi. beyond qemu, whatever you've tested.</p>
 <h3>does it have an installer?</h3>
 <p>yes. yagni's calamares installer is <a href="https://ubuntu.com/download/desktop">here</a>.</p>
-<h3>x11 or wayland?</h3>
-<p><a href="https://wayland.freedesktop.org">wayland</a>. xorg is a spook: millions of lines of code from 1987 that everyone serves because everyone always has. it was also the one package in yagni that couldn't be statically linked. it's gone. luwm is a wayland compositor, and the whole desktop is static. <a href="https://wayland.fyi">wayland.fyi</a> makes the case better than we can.</p>
-<h3>does it run firefox?</h3>
-<p>no. firefox wants glibc and gtk. yagni has neither. <a href="https://www.netsurf-browser.org">netsurf</a> is in the repository.</p>
-<h3>what hardware works?</h3>
-<p>x86-64 machines that boot with uefi. firmware for intel and realtek wifi is packaged, but nobody has tested it on a real card yet.</p>
-<h3>are packages signed?</h3>
-<p>no. the index has sha256 sums and jits checks every download against them, but nothing is signed. whoever controls the repository controls your packages, same as a git clone. running your own repository? <code>SUMS=1 ./mkrepo</code> does the same for yours.</p>
-<h3>is yagni self-hosting?</h3>
-<p>no. yagni can't build itself yet, and we won't pretend otherwise. the kernel only builds with gcc or clang, and its build system wants gnu make. we could be self-hosting tomorrow if we shipped gnu. we don't, at all. so for now the packages are built elsewhere, you get <code>tcc</code> for your own code, and self-hosting waits until it can be done without gnu.</p>
-<h3>what license is yagni under?</h3>
-<p><a href="https://opensource.org/license/cddl-1-1">cddl 1.1</a>, the license sun wrote for solaris. change one of our files and ship it, you share that file. link it with whatever you want, closed or open. the software it packages keeps its own license. bonus: the fsf says it's <a href="https://www.gnu.org/licenses/gpl-3.0.html">gpl</a>-incompatible. we consider that a feature.</p>
-<h3>what font does the website use?</h3>
-<p>whatever your browser calls helvetica.</p>
+<h3>why yagni/linux?</h3>
+<p>linux is only the kernel. what you're referring to as linux is, in fact, yagni/linux. we're just being pedantic, like <a href="stalman.html">richard</a>.</p>
+<h3>license?</h3>
+<p><a href="https://opensource.org/license/cddl-1-1">cddl 1.1</a>. the fsf says it's gpl-incompatible. good.</p>
 </td>
 </tr></table>
-<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr><td><small>
-made by max spuk.<br>
-yagni is under the cddl 1.1. the software it packages keeps its own license. linux is a registered trademark of linus torvalds.
-<a href="nothing.html">.</a></small></td></tr></table>
+<hr noshade size="1">
+<small>made by max spuk. cddl 1.1. <a href="thanks.html">thanks</a>. <a href="nothing.html">.</a></small>
 </font>
 </body>
 </html>

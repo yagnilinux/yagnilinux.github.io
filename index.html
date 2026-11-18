@@ -3,57 +3,46 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>YAGNI/Linux</title>
+<title>yagni/linux - YAGNI/Linux</title>
 </head>
-<body bgcolor="#1a4270" text="#efe9e4" link="#efe9e4" vlink="#efe9e4" alink="#ffffff">
-<font face="Helvetica, Arial, sans-serif">
-<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
-<td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>you aren't gonna need it</i></b></td>
-<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages.html">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
-</tr></table>
-<table cellpadding="18" cellspacing="0" border="0"><tr>
-<td valign="top" width="280">
-<a href="index.html"><img src="art/side.png" width="260" height="195" border="0" alt="yagni yawn" title="yagni yawn"></a>
-<p>pages:</p>
-<p>&rsaquo; <a href="docs.html">documentation/</a><br>
-&rsaquo; <a href="goals.html">goals/</a><br>
-&rsaquo; <a href="expectations.html">expectations/</a><br>
-&rsaquo; <a href="faq.html">answers/</a><br>
-&rsaquo; <a href="releases.html">releases/</a><br>
-&rsaquo; <a href="screenshots.html">screenshots/</a><br>
-&rsaquo; <a href="luwm/">luwm/</a><br>
-&rsaquo; <a href="packages.html">packages/</a><br>
-&rsaquo; <a href="contact.html">contact/</a></p>
+<body bgcolor="#c8d5e3" text="#10243d" link="#1a4270" vlink="#1a4270" alink="#10243d">
+<font face="Verdana, Geneva, sans-serif">
+<small><a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://github.com/yagnilinux">git</a> |</small>
+<h1><a href="index.html">yagni/linux</a></h1>
+<table cellpadding="6" cellspacing="0" border="0"><tr>
+<td valign="top" width="140" bgcolor="#b3c4d8">
+<a href="index.html"><img src="art/side.png" width="140" border="0" alt="yagni"></a>
+<p><small><b>&#9656; <a href="docs.html">docs</a><br>
+&#9656; <a href="goals.html">goals</a><br>
+&#9656; <a href="faq.html">answers</a><br>
+&#9656; <a href="releases.html">releases</a><br>
+&#9656; <a href="packages.html">packages</a><br>
+&#9656; <a href="screenshots.html">screenshots</a></b></small></p>
 </td>
-<td valign="top" width="760">
-<p><font size="5"><i>&ldquo;The captive is the one whose desires hold him captive.&rdquo;</i></font><br>&nbsp; &mdash; Ibn Taymiyyah</p>
+<td width="1" bgcolor="#1a4270"></td>
+<td valign="top">
+<p><i>&ldquo;The captive is the one whose desires hold him captive.&rdquo;</i></p>
 
-<p><em>yagni/linux</em> is a small, static linux distribution for x86-64 uefi machines, built on <a href="https://musl.libc.org">musl libc</a> and <a href="https://busybox.net">busybox</a>. it runs great in <a href="https://www.qemu.org">qemu</a>. on real hardware, you're the beta tester.</p>
+<p><i>yagni/linux</i> is a statically linked x86-64 <a href="https://en.wikipedia.org/wiki/Linux">linux</a> distribution using <a href="https://musl.libc.org">musl libc</a> and <a href="https://busybox.net">busybox</a>. it has only ever booted in qemu. on real hardware, you're the tester.</p>
 <h3>features</h3>
 <ul>
-<li>14MB base, 7MB download</li>
-<li>everything static</li>
-<li>upgrades never break other programs</li>
-<li><a href="jits.html">jits</a>, small package manager, easy to add your own repos</li>
-<li><a href="luwm/">luwm</a>, wayland compositor on <a href="https://github.com/michaelforney/swc">swc</a></li>
+<li>fully <a href="https://en.wikipedia.org/wiki/Static_build">static</a> userland</li>
+<li><a href="https://docs.kernel.org/admin-guide/efi-stub.html">efistub</a> boot</li>
+<li>14MB base install</li>
+<li>11MB ram at idle</li>
+<li><a href="docs.html#jits">jits</a>, a tiny binary package manager</li>
+<li><a href="https://github.com/lzfse/lzfse">lzfse</a> compressed packages</li>
 <li>1000% <a href="https://www.gnu.org">gnu</a> free</li>
-<li>openbsd's doas and ksh, freebsd's bc, netbsd's curses, apple's lzfse</li>
-<li>a 37MB <a href="releases.html">iso</a>. it installs with no internet</li>
 </ul>
-<p>idles in <a href="shots/tty.png">under 12MB of ram</a>.</p>
-<p>current release: <a href="releases.html">yagni 0.1 WORKS IN QEMU</a></p>
-<h3>minimal, not old</h3>
-<p>yagni isn't small because it runs old software that was light on old computers. it's built on software that is small now: musl libc, busybox and <a href="https://wayland.freedesktop.org">wayland</a>.</p>
-<h3>contribute</h3>
-<p>package what's missing and send it back. pull requests on <a href="https://github.com/yagnilinux/repo">github</a>. read <a href="expectations.html">what we expect from you</a> first.</p>
-<h3>why yagni</h3>
-<p>you aren't gonna need it. if it isn't needed today, it doesn't go in. the rest is spooks.</p>
+<p>LATEST RELEASE: <a href="releases.html">yagni 0.1 WORKS IN QEMU</a></p>
+<h3>talk</h3>
+<p>bugs and questions go to the <a href="https://github.com/yagnilinux/repo/issues">issue tracker</a>, and code goes there as a pull request. there is no discord.</p>
+<h3>name</h3>
+<p>you aren't gonna need it: the extreme programming rule that nothing gets built until it is needed. we applied it to an operating system, and we apply it to every feature request.</p>
 </td>
 </tr></table>
-<table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr><td><small>
-made by max spuk.<br>
-yagni is under the cddl 1.1. the software it packages keeps its own license. linux is a registered trademark of linus torvalds.
-<a href="nothing.html">.</a></small></td></tr></table>
+<hr noshade size="1">
+<small>made by max spuk. cddl 1.1. <a href="thanks.html">thanks</a>. <a href="nothing.html">.</a></small>
 </font>
 </body>
 </html>
