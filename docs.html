@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>docs - YAGNI/Linux</title>
 </head>
-<body bgcolor="#c8d5e3" text="#10243d" link="#1a4270" vlink="#1a4270" alink="#10243d">
+<body bgcolor="#16365c" text="#ffffff" link="#e3eeff" vlink="#e3eeff" alink="#ffffff">
 <font face="Verdana, Geneva, sans-serif">
-<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://github.com/yagnilinux">git</a> |</small>
+<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
 <h1><a href="index.html">yagni/linux</a> <small><small><i>shorter than one arch wiki page</i></small></small></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
 <td valign="top" width="152">
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#b3c4d8"><tr><td>
+<table border="1" cellpadding="6" cellspacing="0" bgcolor="#112b4a"><tr><td>
 <a href="index.html"><img src="art/side.png" width="140" border="0" alt="yagni"></a>
 <p><small><b>&#9656; <a href="docs.html">docs</a><br>
 &#9656; <a href="goals.html">goals</a><br>
@@ -114,9 +114,9 @@ esac</pre>
 <p><code>setwall</code> sets the wallpaper. only the us keyboard layout, because nobody has added theirs.</p>
 
 <h3 id="packaging">[07] packaging</h3>
-<p>a package is a directory in <code>pkgs/</code> of <a href="https://github.com/yagnilinux/repo">yagnilinux/repo</a>:</p>
+<p>a package is a directory in <code>pkgs/</code> of <a href="https://codeberg.org/yagni-linux/repo">yagni-linux/repo</a>:</p>
 <pre>pkgs/yte/version    0.3
-pkgs/yte/source     git https://github.com/yagnilinux/yte.git main
+pkgs/yte/source     git https://codeberg.org/yagni-linux/yte.git main
 pkgs/yte/build      #!/bin/sh -e
                     musl-gcc -std=c99 -Os -s -static -o yte yte.c
                     install -Dm755 yte "$1/usr/bin/yte"
@@ -125,7 +125,7 @@ pkgs/yte/files/     configs and patches, if any</pre>
 <p><code>build</code> installs into <code>$1</code> as if it were <code>/</code>. build static and strip the result. sources are <code>git &lt;url&gt; &lt;tag&gt;</code>, <code>apt-src &lt;pkg&gt;</code> or <code>apt-deb &lt;pkg&gt;</code>. if you change a package, you bump its version. <code>mkrepo</code> refuses to build a changed package under an old version.</p>
 
 <h3 id="building">[08] building yagni</h3>
-<pre>$ git clone https://github.com/yagnilinux/repo
+<pre>$ git clone https://codeberg.org/yagni-linux/repo
 $ cd repo
 $ ./mkrepo      # every package into repo/
 $ ./mkrootfs    # yagni.tar.gz
