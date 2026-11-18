@@ -9,7 +9,7 @@
 <font face="Helvetica, Arial, sans-serif">
 <table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
 <td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>send patches, not snaps</i></b></td>
-<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages/">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
+<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages.html">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
 </tr></table>
 <table cellpadding="18" cellspacing="0" border="0"><tr>
 <td valign="top" width="280">
@@ -29,12 +29,14 @@
 <h2>hacking</h2>
 <p><font size="5"><i>&ldquo;Talk is cheap. Show me the code.&rdquo;</i></font><br>&nbsp; &mdash; Linus Torvalds</p>
 
-<p>rebuild the whole distribution with two commands. it's all in <a href="https://github.com/yagnilinux/repo">yagnilinux/repo</a>.</p>
+<p>rebuild the whole distribution with three commands. it's all in <a href="https://github.com/yagnilinux/repo">yagnilinux/repo</a>.</p>
 <pre>$ git clone https://github.com/yagnilinux/repo
 $ cd repo
 $ ./mkrepo
 $ ./mkrootfs
+# ./mkiso
 </pre>
+<p>the build machine needs <code>musl-gcc</code> and <code>lzfse</code>. <code>mkiso</code> also wants root, <code>xorriso</code> and <code>mtools</code>.</p>
 <h3>rules</h3>
 <ul>
 <li>shell is posix sh.</li>

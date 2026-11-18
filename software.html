@@ -9,7 +9,7 @@
 <font face="Helvetica, Arial, sans-serif">
 <table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
 <td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>one of each, unlike kde</i></b></td>
-<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages/">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
+<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages.html">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
 </tr></table>
 <table cellpadding="18" cellspacing="0" border="0"><tr>
 <td valign="top" width="280">
@@ -107,11 +107,31 @@
 </tr>
 </tbody>
 </table>
+<p>borrowed parts. the first three are in base:</p>
+<table border="1" cellpadding="4" cellspacing="0">
+<thead>
+<tr>
+<th>job</th>
+<th>package</th>
+<th>from</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>root</td><td><code>doas</code></td><td>openbsd</td></tr>
+<tr><td>shell</td><td><code>oksh</code></td><td>openbsd</td></tr>
+<tr><td>package compression</td><td><code>lzfse</code></td><td>apple</td></tr>
+<tr><td>calculator</td><td><code>bc</code></td><td>freebsd</td></tr>
+<tr><td>terminal ui</td><td><code>netbsd-curses</code></td><td>netbsd</td></tr>
+<tr><td>odd tools</td><td><code>outils</code>: signify, jot, rs, lam, vis, calendar</td><td>openbsd</td></tr>
+<tr><td>name.local</td><td><code>bonjour</code>: mdnsd, dns-sd</td><td>apple</td></tr>
+</tbody>
+</table>
+<p><code>sfdisk</code> and <code>e2fsprogs</code> are on the iso so you can install. they don't go in base.</p>
 <p>whatever <code>tcc</code> builds is static. there is no gcc, make or bash, and there won't be, fuck <a href="https://www.gnu.org">gnu</a>.</p>
 <p>sound starts muted. <code>vol 80</code> fixes that.</p>
 <p><code>yutils</code> holds yagni's own scripts. none of them are required.</p>
 <ul>
-<li><code>mkuser</code> adds a user who can start the desktop</li>
+<li><code>mkuser</code> adds a user who can start the desktop and use <code>doas</code></li>
 <li><code>wifi</code> saves a network and connects</li>
 <li><code>etcnew</code> merges the <code>file.new</code> copies jits leaves in <code>/etc</code></li>
 <li><code>vol</code> sets the volume</li>

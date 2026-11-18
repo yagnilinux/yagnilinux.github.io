@@ -9,7 +9,7 @@
 <font face="Helvetica, Arial, sans-serif">
 <table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
 <td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>archinstall for people who can read</i></b></td>
-<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages/">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
+<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages.html">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
 </tr></table>
 <table cellpadding="18" cellspacing="0" border="0"><tr>
 <td valign="top" width="280">
@@ -30,8 +30,12 @@
 <p><font size="5"><i>&ldquo;Nature does nothing in vain.&rdquo;</i></font><br>&nbsp; &mdash; Aristotle</p>
 
 <p>there is no installer. you partition a disk, untar a tarball and set a password. if you've installed arch, you've done harder. if that still sounds like too much, the <a href="faq.html">answers</a> page has an installer for you.</p>
-<h3>1. boot something</h3>
-<p>boot any linux live usb on an x86_64 machine with uefi. turn secure boot off. get online.</p>
+<h3>1. boot the iso</h3>
+<p>get <a href="releases.html">yagni.iso</a> and write it to a usb stick. this wipes the stick.</p>
+<pre># dd if=yagni.iso of=/dev/sdX bs=4M
+</pre>
+<p>boot it on an x86_64 machine with uefi, secure boot off. you land in a shell as root. nothing is installed yet. everything below comes off the stick, so you don't need internet.</p>
+<p>no stick? any linux live usb works too. get <code>yagni.tar.gz</code> from <a href="releases.html">releases</a> instead and use its <code>sfdisk</code>.</p>
 <h3>2. partition</h3>
 <p>name them exactly like this. the kernel finds root by its name and it won't guess.</p>
 <table border="1" cellpadding="4" cellspacing="0">
@@ -74,9 +78,7 @@ EOF
 # mount /dev/sda1 /mnt/boot
 </pre>
 <h3>5. the tarball</h3>
-<pre># cd /tmp
-# wget https://yagnilinux.github.io/packages/yagni.tar.gz
-# wget https://yagnilinux.github.io/packages/yagni.tar.gz.sha256
+<pre># cd /media/install
 # sha256sum -c yagni.tar.gz.sha256
 # tar xzf yagni.tar.gz -C /mnt
 </pre>
@@ -86,9 +88,8 @@ EOF
 </pre>
 <h3>7. wifi, if you need it</h3>
 <p>skip this on ethernet. realtek cards want <code>firmware-realtek</code> instead.</p>
-<pre># cp /etc/resolv.conf /mnt/etc/
-# chroot /mnt /usr/bin/jits a wpa_supplicant firmware-iwlwifi yutils
-# wpa_passphrase &quot;network&quot; &quot;password&quot; &gt; /mnt/etc/wpa_supplicant.conf
+<pre># JITS_REPO=file:///media/install/repo jits -r /mnt a wpa_supplicant firmware-iwlwifi yutils
+# chroot /mnt wpa_passphrase &quot;network&quot; &quot;password&quot; &gt; /mnt/etc/wpa_supplicant.conf
 </pre>
 <h3>8. reboot</h3>
 <pre># umount /mnt/boot /mnt
@@ -101,7 +102,7 @@ EOF
 </pre>
 <p>log out, log back in as foo.</p>
 <h3>it didn't boot</h3>
-<p>some firmware won't boot the fallback path off an internal disk. give it an entry from the live system:</p>
+<p>some firmware won't boot the fallback path off an internal disk. give it an entry from any live system that has <code>efibootmgr</code>. the iso doesn't:</p>
 <pre># efibootmgr -c -d /dev/sda -p 1 -L YAGNI -l '\EFI\BOOT\BOOTX64.EFI'
 </pre>
 <p>stuck at <code>Waiting for root device PARTLABEL=yagni</code>? you misnamed the second partition. <code>sfdisk --part-label /dev/sda 2 yagni</code>.</p>

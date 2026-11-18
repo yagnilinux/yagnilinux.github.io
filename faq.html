@@ -8,8 +8,8 @@
 <body bgcolor="#1a4270" text="#efe9e4" link="#efe9e4" vlink="#efe9e4" alink="#ffffff">
 <font face="Helvetica, Arial, sans-serif">
 <table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
-<td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>100% gnu free</i></b></td>
-<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages/">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
+<td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>1000% gnu free</i></b></td>
+<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages.html">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
 </tr></table>
 <table cellpadding="18" cellspacing="0" border="0"><tr>
 <td valign="top" width="280">
@@ -31,37 +31,39 @@
 
 <p>not answered here? read the <a href="docs.html">documentation</a>. still not answered? <a href="contact.html">ask</a>.</p>
 <h3>why is it called yagni/linux?</h3>
-<p>linux is only the kernel. jits, the boot script, the packages and the rest of the system are yagni. what you're referring to as linux is, in fact, yagni/linux. i'm just being pedantic, like <a href="stalman.html">richard</a>.</p>
+<p>linux is only the kernel. jits, the boot script, the packages and the rest of the system are yagni. what you're referring to as linux is, in fact, yagni/linux. we're just being pedantic, like <a href="stalman.html">richard</a>.</p>
 <h3>what does yagni mean?</h3>
-<p>you aren't gonna need it. it's from extreme programming: don't build something until you actually need it. i took it further than they meant.</p>
+<p>you aren't gonna need it. it's from extreme programming: don't build something until you actually need it. we took it further than they meant.</p>
 <h3>is yagni for me?</h3>
 <p>probably not. read <a href="expectations.html">expectations</a>. if that page annoyed you, that's your answer.</p>
 <h3>why is so little packaged?</h3>
-<p>because a small team can't maintain the world, and pretending otherwise is how distributions rot. the repository is a base to build on. you package what you need, and <a href="packaging.html">packaging</a> is easy.</p>
+<p>because we can't maintain the world, and pretending otherwise is how distributions rot. the repository is a base to build on. you package what you need, and <a href="packaging.html">packaging</a> is easy.</p>
 <h3>can you package something for me?</h3>
 <p>open an issue. better, package it yourself and open a pull request. packaging is easy, <a href="packaging.html">see for yourself</a>.</p>
 <h3>why is everything static?</h3>
-<p>a static binary is one file. it doesn't need <code>ld.so</code> or matching library versions, and upgrading something else can't break it. docker exists because dynamic linking doesn't work. i just stopped doing the thing that doesn't work. you can copy it to another machine and it runs.</p>
+<p>a static binary is one file. it doesn't need <code>ld.so</code> or matching library versions, and upgrading something else can't break it. docker exists because dynamic linking doesn't work. we just stopped doing the thing that doesn't work. you can copy it to another machine and it runs.</p>
 <h3>do you hate gnu?</h3>
 <p>yes. fuck <a href="https://www.gnu.org">gnu</a>. <a href="stalman.html">here's why</a>. free as in free of gnu.</p>
 <h3>why not alpine?</h3>
 <p>alpine does more. yagni does less, on purpose.</p>
 <h3>will x be added to base?</h3>
-<p>no. base is mine.</p>
+<p>no. base is ours.</p>
+<h3>why is there bsd and apple code in it?</h3>
+<p>because it's good and it isn't gnu. doas and ksh come from openbsd, bc from freebsd, curses from netbsd. lzfse is apple's compression: packages unpack about four times faster than with gzip. bonjour is apple too, if you want <code>name.local</code> to work.</p>
 <h3>does it have an installer?</h3>
 <p>yes. yagni's calamares installer is <a href="https://ubuntu.com/download/desktop">here</a>.</p>
 <h3>x11 or wayland?</h3>
-<p><a href="https://wayland.freedesktop.org">wayland</a>. xorg is a spook: millions of lines of code from 1987 that everyone serves because everyone always has. it was also the one package in yagni that couldn't be statically linked. it's gone. luwm is a wayland compositor, and the whole desktop is static. <a href="https://wayland.fyi">wayland.fyi</a> makes the case better than i can.</p>
+<p><a href="https://wayland.freedesktop.org">wayland</a>. xorg is a spook: millions of lines of code from 1987 that everyone serves because everyone always has. it was also the one package in yagni that couldn't be statically linked. it's gone. luwm is a wayland compositor, and the whole desktop is static. <a href="https://wayland.fyi">wayland.fyi</a> makes the case better than we can.</p>
 <h3>does it run firefox?</h3>
 <p>no. firefox wants glibc and gtk. yagni has neither. <a href="https://www.netsurf-browser.org">netsurf</a> is in the repository.</p>
 <h3>what hardware works?</h3>
 <p>x86-64 machines that boot with uefi. firmware for intel and realtek wifi is packaged, but nobody has tested it on a real card yet.</p>
 <h3>are packages signed?</h3>
-<p>no. everything comes over https from github, so whoever controls the repository controls your packages, same as a git clone. running your own repository? <code>SUMS=1 ./mkrepo</code> puts sha256 sums in the index and jits checks them.</p>
+<p>no. the index has sha256 sums and jits checks every download against them, but nothing is signed. whoever controls the repository controls your packages, same as a git clone. running your own repository? <code>SUMS=1 ./mkrepo</code> does the same for yours.</p>
 <h3>is yagni self-hosting?</h3>
-<p>no. yagni can't build itself yet, and i won't pretend otherwise. the kernel only builds with gcc or clang, and its build system wants gnu make. i could be self-hosting tomorrow if i shipped gnu. i don't, at all. so for now the packages are built elsewhere, you get <code>tcc</code> for your own code, and self-hosting waits until it can be done without gnu.</p>
+<p>no. yagni can't build itself yet, and we won't pretend otherwise. the kernel only builds with gcc or clang, and its build system wants gnu make. we could be self-hosting tomorrow if we shipped gnu. we don't, at all. so for now the packages are built elsewhere, you get <code>tcc</code> for your own code, and self-hosting waits until it can be done without gnu.</p>
 <h3>what license is yagni under?</h3>
-<p><a href="https://opensource.org/license/cddl-1-1">cddl 1.1</a>, the license sun wrote for solaris. change one of my files and ship it, you share that file. link it with whatever you want, closed or open. the software it packages keeps its own license. bonus: the fsf says it's <a href="https://www.gnu.org/licenses/gpl-3.0.html">gpl</a>-incompatible. i consider that a feature.</p>
+<p><a href="https://opensource.org/license/cddl-1-1">cddl 1.1</a>, the license sun wrote for solaris. change one of our files and ship it, you share that file. link it with whatever you want, closed or open. the software it packages keeps its own license. bonus: the fsf says it's <a href="https://www.gnu.org/licenses/gpl-3.0.html">gpl</a>-incompatible. we consider that a feature.</p>
 <h3>what font does the website use?</h3>
 <p>whatever your browser calls helvetica.</p>
 </td>

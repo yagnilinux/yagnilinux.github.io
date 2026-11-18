@@ -9,7 +9,7 @@
 <font face="Helvetica, Arial, sans-serif">
 <table width="100%" cellpadding="14" cellspacing="0" border="0" bgcolor="#2e5f94"><tr>
 <td><a href="index.html"><b><font size="6">yagni/linux</font></b></a> &nbsp; <b><i>what flatpak wishes it was</i></b></td>
-<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages/">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
+<td align="right" valign="top"><small><a href="https://github.com/yagnilinux">github</a> | <a href="https://yagnilinux.github.io/packages.html">packages</a> | <a href="https://github.com/yagnilinux/repo/issues">issues</a> |</small></td>
 </tr></table>
 <table cellpadding="18" cellspacing="0" border="0"><tr>
 <td valign="top" width="280">
@@ -52,7 +52,7 @@ install -Dm755 yte &quot;$1/usr/bin/yte&quot;
 <pre>$ chmod +x repo/pkgs/yte/build
 $ repo/mkrepo
 </pre>
-<p>the package is now <code>repo/repo/yte@0.3.tar.gz</code>.</p>
+<p>the package is now <code>repo/repo/yte@0.3.tar.lzfse</code>.</p>
 <h3>the files</h3>
 <pre>repo/pkgs/&lt;name&gt;/version     the version
 repo/pkgs/&lt;name&gt;/build       how to build it
@@ -71,6 +71,7 @@ apt-deb &lt;pkg&gt;...         ubuntu binary packages (firmware only)
 <h3>your own repository</h3>
 <pre>$ repo/mkrepo      # build every package into repo/repo/
 $ repo/mkrootfs    # build an install tarball
+# repo/mkiso       # build an install iso
 </pre>
 <p>bump <code>version</code> whenever you change a package, or nobody gets the change. <code>mkrepo</code> won't let you forget.</p>
 <p>put <code>repo/repo/</code> on any web server and point <code>/etc/jits/repo</code> at it. that's a distribution. want checksums? <code>SUMS=1 repo/mkrepo</code> puts sha256 sums in the index and jits checks every download against them.</p>
