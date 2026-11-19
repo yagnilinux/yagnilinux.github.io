@@ -5,117 +5,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>docs - YAGNI/Linux</title>
 <style>
-body { background: #ebe9e1; color: #333; margin: 6px; font-size: 13px; line-height: 1.25; }
-a { color: #222; font-weight: bold; }
-a:hover { background: #222; color: #ebe9e1; text-decoration: none; }
+body { background: #e7e4d8; color: #2c2c2a; margin: 6px; font-size: 13px; line-height: 1.25; }
+a { color: #1d1d1b; font-weight: bold; }
+a:hover { background: #1d1d1b; color: #e7e4d8; text-decoration: none; }
 a.top { text-decoration: none; }
+.side { line-height: 1.5; white-space: nowrap; }
+.side a { font-weight: normal; text-decoration: none; }
 a.egg, a.egg:hover { color: inherit; background: none; font-weight: normal; text-decoration: none; cursor: text; }
 h1 { margin: 4px 0 10px; letter-spacing: -1px; }
 h2 { margin: 0 0 6px; text-decoration: underline; }
 h3 { margin: 14px 0 4px; font-size: 13px; text-transform: uppercase; border-bottom: 1px dashed #333; }
-pre { background: #dedbd0; border: 1px solid #333; padding: 4px; margin: 4px 0; }
-code { background: #dedbd0; }
+pre { background: #d9d5c7; border: 1px solid #333; padding: 4px; margin: 4px 0; }
+code { background: #d9d5c7; }
 table { border-collapse: collapse; }
-td, th { border-color: #333; }
+td, th { border-color: #2c2c2a; }
 ul { margin: 4px 0; padding-left: 22px; }
 p { margin: 6px 0; }
 img { border: 1px solid #333; }
 hr { border: 0; border-top: 3px double #333; }
 </style>
 </head>
-<body bgcolor="#ebe9e1" text="#333333" link="#222222" vlink="#222222" alink="#000000">
+<body bgcolor="#e7e4d8" text="#2c2c2a" link="#1d1d1b" vlink="#1d1d1b" alink="#000000">
 <font face="Verdana, Geneva, sans-serif">
-<small><a href="flexes.html">flxs</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
+<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
 <h1><a class="top" href="index.html">yagni/linux <small><small><i>shorter than one arch wiki page</i></small></small></a></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
 <td valign="top" width="152">
 <table border="0" cellpadding="0" cellspacing="0"><tr><td>
 <a href="index.html"><img src="art/side.png" width="140" border="0" alt="yagni"></a>
-<p><small><b>&#9656; <a href="docs.html">docs</a><br>
-&#9656; <a href="layout.html">layout</a><br>
-&#9656; <a href="jits.html">jits</a><br>
-&#9656; <a href="goals.html">goals</a><br>
-&#9656; <a href="faq.html">answers</a><br>
-&#9656; <a href="screenshots.html">screenshots</a></b></small></p>
+<p>pages:</p>
+<p class="side">&raquo; <i><a href="docs.html">docs/</a></i><br>
+&nbsp;&nbsp;&rsaquo; <a href="install.html">install</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="boot.html">boot</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="users.html">users</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="wifi.html">wifi</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="desktop.html">desktop/</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="layout.html">layout</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="jits.html">jits/</a><br>
+&rsaquo; <a href="goals.html">about/</a><br>
+&rsaquo; <a href="screenshots.html">screenshots</a><br>
+&rsaquo; <a href="releases.html">releases</a></p>
 </td></tr></table>
 </td>
 <td valign="top">
 <h2>docs</h2>
 <p><i>&ldquo;Entities must not be multiplied beyond necessity.&rdquo;</i></p>
 
-<p>[01] <a href="#install">install</a><br>
-[02] <a href="#boot">boot</a><br>
-[03] <a href="#root">root and users</a><br>
-[04] <a href="#wifi">wifi</a><br>
-[05] <a href="#desktop">desktop</a></p>
-<p>where things live is in <a href="layout.html">layout</a>. packages, packaging and building yagni are in <a href="jits.html">jits</a>.</p>
-
-<h3 id="install">[01] install</h3>
-<p>uefi, secure boot off. write <a href="releases.html">yagni.iso</a> to a usb stick and boot it. you land in a root shell. the iso carries everything, no network needed.</p>
-<pre># dd if=yagni.iso of=/dev/sdX bs=4M</pre>
-<p>the kernel finds root by the gpt partition name <code>yagni</code> and by nothing else. name it anything else and it does not boot.</p>
-<pre># sfdisk /dev/sda &lt;&lt;EOF
-label: gpt
-size=256M, type=uefi, name=BOOT
-type=linux, name=yagni
-EOF
-# mkfs.vfat -F 32 -n BOOT /dev/sda1
-# mkfs.ext4 -L yagni /dev/sda2
-# mount /dev/sda2 /mnt
-# mkdir /mnt/boot
-# mount /dev/sda1 /mnt/boot</pre>
-<p>unpack base, set a root password:</p>
-<pre># cd /media/install
-# sha256sum -c yagni.tar.gz.sha256
-# tar xzf yagni.tar.gz -C /mnt
-# chroot /mnt passwd</pre>
-<p>tar complains about permissions on <code>/boot</code>. it is fat. ignore it. wifi only? install it now, see <a href="#wifi">[04]</a>:</p>
-<pre># JITS_REPO=file:///media/install/repo jits -r /mnt a wpa_supplicant firmware-iwlwifi yutils</pre>
-<pre># umount /mnt/boot /mnt
-# reboot</pre>
-<p>stuck at <code>Waiting for root device PARTLABEL=yagni</code>: wrong partition name. <code>sfdisk --part-label /dev/sda 2 yagni</code>. firmware that refuses the fallback path on an internal disk gets an entry from <code>efibootmgr</code>, run from another live system. dual boot: mount your existing efi partition at <code>/mnt/boot</code> and move any <code>EFI/BOOT/BOOTX64.EFI</code> already there out of the way first. yagni writes over it.</p>
-
-<h3 id="boot">[02] boot</h3>
-<p>the firmware runs <code>/boot/EFI/BOOT/BOOTX64.EFI</code>, and that file is the kernel. its command line is compiled in:</p>
-<pre>root=PARTLABEL=yagni rootwait rw init=/bin/init firmware_class.path=/share/firmware</pre>
-<p>busybox init runs <code>/etc/init.d/rcS</code>. that is the entire boot, 32 lines. to start something at boot, add a line. these six files configure the system:</p>
-<table border="1" cellpadding="4" cellspacing="0">
-<tr><td>boot</td><td><code>/etc/init.d/rcS</code></td></tr>
-<tr><td>consoles</td><td><code>/etc/inittab</code></td></tr>
-<tr><td>mounts</td><td><code>/etc/fstab</code></td></tr>
-<tr><td>hostname</td><td><code>/etc/hostname</code></td></tr>
-<tr><td>who gets root</td><td><code>/etc/doas.conf</code></td></tr>
-<tr><td>repository</td><td><code>/etc/jits/repo</code></td></tr>
-</table>
-
-<h3 id="root">[03] root and users</h3>
-<pre># jits a yutils
-# mkuser foo</pre>
-<p>foo gets <code>oksh</code>, openbsd's korn shell, and the <code>wheel</code> group. wheel gets <code>doas</code>.</p>
-<pre>$ doas jits u</pre>
-<p>scripts and the boot run on busybox ash. write for ash.</p>
-
-<h3 id="wifi">[04] wifi</h3>
-<pre># jits a wpa_supplicant firmware-iwlwifi yutils
-# wifi "network" "password"</pre>
-<p>connects now and on every boot. realtek cards take <code>firmware-realtek</code>. <code>cat /sys/bus/pci/devices/*/vendor</code>: <code>0x8086</code> is intel, <code>0x10ec</code> is realtek. wpa2 only. wpa3 is waiting on you. usb tethering works if the phone is plugged in before boot.</p>
-
-<h3 id="desktop">[05] desktop</h3>
-<pre># jits a luwm netsurf wallpaper
-$ startw</pre>
-<p><a href="luwm/">luwm</a> is the compositor: floating windows, four workspaces, under 180 lines of c on <a href="https://github.com/michaelforney/swc">swc</a>. the terminal is havoc. <code>super+return</code> opens it, <code>super+d</code> opens dmenu, <code>super+q</code> closes a window, <code>super+1-4</code> switches workspace, <code>super+p</code> takes a screenshot.</p>
-<p>colours and keys live in two files. nothing gets recompiled:</p>
-<pre>~/.config/luwm/env
-LUWM_BORDER=6
-LUWM_FOCUS=3d6fa3
-LUWM_UNFOCUS=253e5b
-
-~/.config/luwm/keys
-case $1 in
-w) exec netsurf ;;
-S-x) exec havoc yte ;;
-esac</pre>
-<p><code>setwall</code> sets the wallpaper. us keyboard layout only. nobody has added theirs.</p>
+<p>[01] <a href="install.html">install</a>: from the iso to a booting disk<br>
+[02] <a href="boot.html">boot</a>: what runs, in what order<br>
+[03] <a href="users.html">users</a>: accounts and doas<br>
+[04] <a href="wifi.html">wifi</a>: wpa_supplicant and firmware<br>
+[05] <a href="desktop.html">desktop</a>: luwm, keys, colours<br>
+[06] <a href="layout.html">layout</a>: where everything lives<br>
+[07] <a href="jits.html">jits</a>: packages, packaging, building yagni</p>
 </td>
 </tr></table>
 <hr noshade size="1">
