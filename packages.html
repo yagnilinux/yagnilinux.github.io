@@ -4,16 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>packages - YAGNI/Linux</title>
+<style>
+body { background: #ebe9e1; color: #333; margin: 8px; }
+a { color: #222; font-weight: bold; }
+a:hover { background: #222; color: #ebe9e1; text-decoration: none; }
+a.egg, a.egg:hover { color: inherit; background: none; font-weight: normal; text-decoration: none; cursor: text; }
+pre { border-left: 2px solid #999; padding-left: 6px; }
+hr { border: 0; border-top: 1px solid #999; }
+</style>
 </head>
 <body bgcolor="#ebe9e1" text="#333333" link="#222222" vlink="#222222" alink="#000000">
 <font face="Verdana, Geneva, sans-serif">
-<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
+<small><a href="flexes.html">flxs</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
 <h1><a href="index.html">yagni/linux</a> <small><small><i>smaller than your node_modules</i></small></small></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
 <td valign="top" width="152">
-<table border="1" cellpadding="6" cellspacing="0"><tr><td>
+<table border="0" cellpadding="0" cellspacing="0"><tr><td>
 <a href="index.html"><img src="art/side.png" width="140" border="0" alt="yagni"></a>
 <p><small><b>&#9656; <a href="docs.html">docs</a><br>
+&#9656; <a href="layout.html">layout</a><br>
+&#9656; <a href="jits.html">jits</a><br>
 &#9656; <a href="goals.html">goals</a><br>
 &#9656; <a href="faq.html">answers</a><br>
 &#9656; <a href="releases.html">releases</a><br>
@@ -24,7 +34,7 @@
 <td valign="top">
 <h2>packages</h2>
 <p><i>&ldquo;The things you own end up owning you.&rdquo;</i></p>
-<p>43 packages. sizes are what you download. if it isn&#39;t here, you haven&#39;t <a href="docs.html#packaging">packaged</a> it.</p>
+<p>43 packages. sizes are what you download. if it isn&#39;t here, you haven&#39;t <a href="jits.html#packaging">packaged</a> it.</p>
 <table border="1" cellpadding="4" cellspacing="0">
 <tr><th>package</th><th>version</th><th>size</th><th>needs</th></tr>
 <tr><td><code>alsa-utils</code></td><td>1.2.9-1</td><td>595K</td><td></td></tr>

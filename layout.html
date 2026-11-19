@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>layout - YAGNI/Linux</title>
+<style>
+body { background: #ebe9e1; color: #333; margin: 8px; }
+a { color: #222; font-weight: bold; }
+a:hover { background: #222; color: #ebe9e1; text-decoration: none; }
+a.egg, a.egg:hover { color: inherit; background: none; font-weight: normal; text-decoration: none; cursor: text; }
+pre { border-left: 2px solid #999; padding-left: 6px; }
+hr { border: 0; border-top: 1px solid #999; }
+</style>
+</head>
+<body bgcolor="#ebe9e1" text="#333333" link="#222222" vlink="#222222" alink="#000000">
+<font face="Verdana, Geneva, sans-serif">
+<small><a href="flexes.html">flxs</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
+<h1><a href="index.html">yagni/linux</a> <small><small><i>one bin</i></small></small></h1>
+<table cellpadding="6" cellspacing="0" border="0"><tr>
+<td valign="top" width="152">
+<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+<a href="index.html"><img src="art/side.png" width="140" border="0" alt="yagni"></a>
+<p><small><b>&#9656; <a href="docs.html">docs</a><br>
+&#9656; <a href="layout.html">layout</a><br>
+&#9656; <a href="jits.html">jits</a><br>
+&#9656; <a href="goals.html">goals</a><br>
+&#9656; <a href="faq.html">answers</a><br>
+&#9656; <a href="releases.html">releases</a><br>
+&#9656; <a href="packages.html">packages</a><br>
+&#9656; <a href="screenshots.html">screenshots</a></b></small></p>
+</td></tr></table>
+</td>
+<td valign="top">
+<h2>layout</h2>
+
+<p>every program is static. there is no dynamic loader and no shared library anywhere on the system. <code>LD_PRELOAD</code> and <code>LD_LIBRARY_PATH</code> do nothing. no upgrade can swap a library out from under a program.</p>
+<p>a binary built against glibc does not run. it asks for a loader that is not there and dies with <code>not found</code>. build it static or package it.</p>
+<p>nothing gets loaded, so there is no <code>/lib</code>. root runs the same programs you do, so there is no <code>/sbin</code>. <code>/usr</code> is a symlink to <code>/</code>, kept for every script that starts with <code>#!/usr/bin/env</code>.</p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><td><code>/bin</code></td><td>every program</td></tr>
+<tr><td><code>/share</code></td><td>everything a program reads: data, fonts, firmware, kernel modules, python&#39;s library</td></tr>
+<tr><td><code>/etc</code></td><td>configuration</td></tr>
+<tr><td><code>/boot</code></td><td>the efi partition, holding the kernel</td></tr>
+<tr><td><code>/var</code></td><td>logs, and what jits knows in <code>/var/db/jits</code></td></tr>
+<tr><td><code>/home</code>, <code>/root</code></td><td>users</td></tr>
+<tr><td><code>/mnt</code></td><td>whatever you mount</td></tr>
+<tr><td><code>/dev</code>, <code>/proc</code>, <code>/sys</code>, <code>/run</code>, <code>/tmp</code></td><td>made at boot</td></tr>
+<tr><td><code>/usr</code></td><td>a symlink to <code>/</code></td></tr>
+</table>
+<p>tcc's headers and static libraries go in <code>/share/include</code> and <code>/share/lib</code> with <code>musl-dev</code>. tcc links static by default. there is nothing else to link against.</p>
+<p><code>mkrepo</code> enforces all of it. <code>usr/bin</code>, <code>usr/sbin</code> and <code>sbin</code> get moved to <code>/bin</code>, <code>usr/share</code> to <code>/share</code>. anything else in <code>/usr</code> or <code>/lib</code> fails the build.</p>
+</td>
+</tr></table>
+<hr noshade size="1">
+<small>made by max spuk. cddl 1.1. <a href="thanks.html">thanks</a>. <a href="nothing.html">.</a></small>
+</font>
+</body>
+</html>

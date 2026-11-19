@@ -4,16 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>flexes - YAGNI/Linux</title>
+<style>
+body { background: #ebe9e1; color: #333; margin: 8px; }
+a { color: #222; font-weight: bold; }
+a:hover { background: #222; color: #ebe9e1; text-decoration: none; }
+a.egg, a.egg:hover { color: inherit; background: none; font-weight: normal; text-decoration: none; cursor: text; }
+pre { border-left: 2px solid #999; padding-left: 6px; }
+hr { border: 0; border-top: 1px solid #999; }
+</style>
 </head>
 <body bgcolor="#ebe9e1" text="#333333" link="#222222" vlink="#222222" alink="#000000">
 <font face="Verdana, Geneva, sans-serif">
-<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
+<small><a href="flexes.html">flxs</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
 <h1><a href="index.html">yagni/linux</a> <small><small><i>yes, really</i></small></small></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
 <td valign="top" width="152">
-<table border="1" cellpadding="6" cellspacing="0"><tr><td>
+<table border="0" cellpadding="0" cellspacing="0"><tr><td>
 <a href="index.html"><img src="art/side.png" width="140" border="0" alt="yagni"></a>
 <p><small><b>&#9656; <a href="docs.html">docs</a><br>
+&#9656; <a href="layout.html">layout</a><br>
+&#9656; <a href="jits.html">jits</a><br>
 &#9656; <a href="goals.html">goals</a><br>
 &#9656; <a href="faq.html">answers</a><br>
 &#9656; <a href="releases.html">releases</a><br>
@@ -31,17 +41,15 @@
 <tr><td>ram at idle</td><td>11MB</td></tr>
 <tr><td>packages in base</td><td>8</td></tr>
 <tr><td>packages in the repository</td><td>43</td></tr>
-<tr><td>all 43, downloaded</td><td>68MB</td></tr>
+<tr><td>all 43 packages</td><td>68MB</td></tr>
 <tr><td>package manager</td><td>165 lines of sh</td></tr>
 <tr><td>boot script</td><td>32 lines</td></tr>
 <tr><td>compositor</td><td>179 lines of c</td></tr>
 <tr><td>files that configure the system</td><td>6</td></tr>
 <tr><td>versions of each package</td><td>1</td></tr>
 <tr><td>unpacking ffmpeg</td><td>39ms with lzfse, 177ms with gzip</td></tr>
-<tr><td>dynamic loaders</td><td>0</td></tr>
-<tr><td>shared libraries</td><td>0</td></tr>
 <tr><td>directories in /</td><td>13, and a symlink</td></tr>
-<tr><td>gnu packages</td><td>0</td></tr>
+<tr><td>gnu packages</td><td><a class="egg" href="lix.html">0</a></td></tr>
 </table>
 <p>measured on 0.1, in qemu. yagni.iso is 28 times smaller than void&#39;s smallest iso and 9 times smaller than alpine&#39;s standard one. every package yagni has, ffmpeg, python and wifi firmware included, is 68MB. an ubuntu iso is over 5GB.</p>
 </td>

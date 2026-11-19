@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jits - YAGNI/Linux</title>
+<style>
+body { background: #ebe9e1; color: #333; margin: 8px; }
+a { color: #222; font-weight: bold; }
+a:hover { background: #222; color: #ebe9e1; text-decoration: none; }
+a.egg, a.egg:hover { color: inherit; background: none; font-weight: normal; text-decoration: none; cursor: text; }
+pre { border-left: 2px solid #999; padding-left: 6px; }
+hr { border: 0; border-top: 1px solid #999; }
+</style>
+</head>
+<body bgcolor="#ebe9e1" text="#333333" link="#222222" vlink="#222222" alink="#000000">
+<font face="Verdana, Geneva, sans-serif">
+<small><a href="flexes.html">flxs</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
+<h1><a href="index.html">yagni/linux</a> <small><small><i>just install that shit</i></small></small></h1>
+<table cellpadding="6" cellspacing="0" border="0"><tr>
+<td valign="top" width="152">
+<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+<a href="index.html"><img src="art/side.png" width="140" border="0" alt="yagni"></a>
+<p><small><b>&#9656; <a href="docs.html">docs</a><br>
+&#9656; <a href="layout.html">layout</a><br>
+&#9656; <a href="jits.html">jits</a><br>
+&#9656; <a href="goals.html">goals</a><br>
+&#9656; <a href="faq.html">answers</a><br>
+&#9656; <a href="releases.html">releases</a><br>
+&#9656; <a href="packages.html">packages</a><br>
+&#9656; <a href="screenshots.html">screenshots</a></b></small></p>
+</td></tr></table>
+</td>
+<td valign="top">
+<h2>jits</h2>
+
+<p>[01] <a href="#use">use</a><br>
+[02] <a href="#packaging">packaging</a><br>
+[03] <a href="#building">building yagni</a></p>
+
+<h3 id="use">[01] use</h3>
+<p>one shell script, 165 lines.</p>
+<pre>jits [-r root] [a|r|u|s|l] [pkg]...
+  a  add       install packages and what they need
+  r  remove    remove packages
+  u  update    sync the repository, upgrade everything
+  s  search    search the repository
+  l  list      list installed packages</pre>
+<p>the repository holds one version of every package. there is no dependency resolution because there is nothing to resolve. packages are tarballs compressed with apple's lzfse, four times faster to unpack than gzip. every package has a sha256 in the index and jits checks it before installing. nothing is signed.</p>
+<p>jits removes what you tell it to, including what other packages need. it assumes you meant it. configs survive upgrades: the new version lands as <code>file.new</code>, and <code>etcnew</code> merges it.</p>
+<p>another repository goes in <code>/etc/jits/repo</code>, or in <code>JITS_REPO</code> for one command. <code>file://</code> works. which package owns a file:</p>
+<pre>$ grep -lx bin/oksh /var/db/jits/installed/*/manifest</pre>
+
+<h3 id="packaging">[02] packaging</h3>
+<p>a package is a directory in <code>pkgs/</code> of <a href="https://codeberg.org/yagni-linux/repo">yagni-linux/repo</a>:</p>
+<pre>pkgs/yte/version    0.3
+pkgs/yte/source     git https://codeberg.org/yagni-linux/yte.git main
+pkgs/yte/build      #!/bin/sh -e
+                    musl-gcc -std=c99 -Os -s -static -o yte yte.c
+                    install -Dm755 yte "$1/bin/yte"
+pkgs/yte/depends    what it needs, one per line
+pkgs/yte/files/     configs and patches</pre>
+<p><code>build</code> installs into <code>$1</code> as if it were <code>/</code>, by the <a href="layout.html">layout</a>. static, stripped. sources are <code>git &lt;url&gt; &lt;tag&gt;</code>, <code>apt-src &lt;pkg&gt;</code> or <code>apt-deb &lt;pkg&gt;</code>. change a package, bump its version. <code>mkrepo</code> refuses to build a changed package under an old one.</p>
+
+<h3 id="building">[03] building yagni</h3>
+<pre>$ git clone https://codeberg.org/yagni-linux/repo
+$ cd repo
+$ ./mkrepo      # every package into repo/
+$ ./mkrootfs    # yagni.tar.gz
+# ./mkiso       # yagni.iso</pre>
+<p>the build machine needs <code>musl-gcc</code> and <code>lzfse</code>. <code>mkiso</code> needs root, <code>xorriso</code> and <code>mtools</code>. a mirror is <code>repo/</code> on a web server.</p>
+</td>
+</tr></table>
+<hr noshade size="1">
+<small>made by max spuk. cddl 1.1. <a href="thanks.html">thanks</a>. <a href="nothing.html">.</a></small>
+</font>
+</body>
+</html>

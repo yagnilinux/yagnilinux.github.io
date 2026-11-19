@@ -4,16 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>yagni/linux - YAGNI/Linux</title>
+<style>
+body { background: #ebe9e1; color: #333; margin: 8px; }
+a { color: #222; font-weight: bold; }
+a:hover { background: #222; color: #ebe9e1; text-decoration: none; }
+a.egg, a.egg:hover { color: inherit; background: none; font-weight: normal; text-decoration: none; cursor: text; }
+pre { border-left: 2px solid #999; padding-left: 6px; }
+hr { border: 0; border-top: 1px solid #999; }
+</style>
 </head>
 <body bgcolor="#ebe9e1" text="#333333" link="#222222" vlink="#222222" alink="#000000">
 <font face="Verdana, Geneva, sans-serif">
-<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
+<small><a href="flexes.html">flxs</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
 <h1><a href="index.html">yagni/linux</a> <small><small><i>a small sovereignty</i></small></small></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
 <td valign="top" width="152">
-<table border="1" cellpadding="6" cellspacing="0"><tr><td>
+<table border="0" cellpadding="0" cellspacing="0"><tr><td>
 <a href="index.html"><img src="art/side.png" width="140" border="0" alt="yagni"></a>
 <p><small><b>&#9656; <a href="docs.html">docs</a><br>
+&#9656; <a href="layout.html">layout</a><br>
+&#9656; <a href="jits.html">jits</a><br>
 &#9656; <a href="goals.html">goals</a><br>
 &#9656; <a href="faq.html">answers</a><br>
 &#9656; <a href="releases.html">releases</a><br>
@@ -24,26 +34,21 @@
 <td valign="top">
 <p><i>&ldquo;The captive is the one whose desires hold him captive.&rdquo;</i></p>
 
-<p>this is <i>yagni/linux</i>, a static x86-64 <a href="https://en.wikipedia.org/wiki/Linux">linux</a> distribution using <a href="https://musl.libc.org">musl libc</a> and <a href="https://busybox.net">busybox</a>.</p>
-<p>requirements:</p>
+<p><i>yagni/linux</i> is a static x86-64 <a href="https://en.wikipedia.org/wiki/Linux">linux</a> distribution using <a href="https://musl.libc.org">musl libc</a> and <a href="https://busybox.net">busybox</a>. it runs on x86-64 with uefi and nothing else.</p>
+<h3>features</h3>
 <ul>
-<li>an x86-64 machine with uefi.</li>
-<li>a usb stick and a free partition.</li>
-<li>knowing your way around a shell.</li>
-</ul>
-<p>features:</p>
-<ul>
-<li>everything statically linked. no <a href="docs.html#layout">dynamic loader</a>.</li>
-<li>no /lib or /sbin. /usr is a symlink to /. (<a href="docs.html#layout">layout</a>)</li>
-<li><a href="https://docs.kernel.org/admin-guide/efi-stub.html">efistub</a> boot.</li>
-<li><a href="docs.html#jits">jits</a>, a 165 line package manager.</li>
-<li><a href="https://github.com/lzfse/lzfse">lzfse</a> compressed packages.</li>
-<li>1000% <a href="https://www.gnu.org">gnu</a> free. (<a href="lix.html">lix</a>)</li>
+<li>no <a href="layout.html">dynamic loader</a></li>
+<li>no <a href="layout.html">/lib, no /sbin</a></li>
+<li><a href="https://docs.kernel.org/admin-guide/efi-stub.html">efistub</a> boot</li>
+<li><a href="jits.html">jits</a>, a 165 line package manager</li>
+<li><a href="https://github.com/lzfse/lzfse">lzfse</a> compressed packages</li>
+<li>1000% <a href="https://www.gnu.org">gnu</a> free</li>
 </ul>
 <p>FLEXES: <a href="flexes.html">TOO MANY TO LIST</a><br><br>LATEST RELEASE: <a href="releases.html">yagni 0.1 WORKS IN QEMU</a></p>
-<p>READ THE <a href="docs.html">DOCS</a> AND THE <a href="goals.html">GOALS</a> FIRST.</p>
+<h3>talk</h3>
 <p>bugs and patches go to the <a href="https://codeberg.org/yagni-linux/repo/issues">issue tracker</a>. there is no discord.</p>
-<p><i>you aren't gonna need it</i>: nothing gets built until it is needed. we applied it to an operating system, and we apply it to every feature request.</p>
+<h3>name</h3>
+<p>you aren't gonna need it: nothing gets built until it is needed. we applied it to an operating system, and we apply it to every feature request.</p>
 </td>
 </tr></table>
 <hr noshade size="1">
