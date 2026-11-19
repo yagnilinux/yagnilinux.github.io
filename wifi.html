@@ -52,9 +52,9 @@ hr { border: 0; border-top: 3px double #333; }
 
 <pre># jits a wpa_supplicant firmware-iwlwifi yutils
 # wifi "network" "password"</pre>
-<p>this connects now and on every boot. intel cards need <code>firmware-iwlwifi</code> and realtek cards need <code>firmware-realtek</code>:</p>
+<p>connects now and on boot. realtek takes <code>firmware-realtek</code>:</p>
 <pre>$ cat /sys/bus/pci/devices/*/vendor</pre>
-<p><code>0x8086</code> is intel and <code>0x10ec</code> is realtek. only wpa2 is supported. usb tethering works if the phone is plugged in before boot.</p>
+<p><code>0x8086</code> intel, <code>0x10ec</code> realtek. wpa2 only.</p>
 </td>
 </tr></table>
 <hr noshade size="1">

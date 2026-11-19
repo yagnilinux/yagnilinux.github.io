@@ -56,20 +56,20 @@ hr { border: 0; border-top: 3px double #333; }
 [03] <a href="#building">building yagni</a></p>
 
 <h3 id="use">[01] use</h3>
-<p>jits is one shell script, 165 lines long.</p>
+<p>one shell script, 165 lines.</p>
 <pre>jits [-r root] [a|r|u|s|l] [pkg]...
   a  add       install packages and what they need
   r  remove    remove packages
   u  update    sync the repository, upgrade everything
   s  search    search the repository
   l  list      list installed packages</pre>
-<p>the <a href="packages.html">repository</a> holds one version of every package, so jits never picks between versions. packages are tarballs compressed with apple's lzfse, which unpacks ffmpeg in 39ms where gzip takes 177ms. jits checks every package against the sha256 in the index before installing it. nothing is signed.</p>
-<p>jits removes what you tell it to, including what other packages need. configs survive upgrades: the new version lands as <code>file.new</code>, and <code>etcnew</code> merges it.</p>
-<p>another repository goes in <code>/etc/jits/repo</code>, or in <code>JITS_REPO</code> for one command, and <code>file://</code> works. to find the package that owns a file:</p>
+<p>packages are lzfse tarballs, checked against the sha256 in the <a href="packages.html">index</a>. nothing is signed.</p>
+<p>edited configs survive upgrades as <code>file.new</code>; <code>etcnew</code> merges them.</p>
+<p>repository: <code>/etc/jits/repo</code> or <code>JITS_REPO</code>. who owns a file:</p>
 <pre>$ grep -lx bin/oksh /var/db/jits/installed/*/manifest</pre>
 
 <h3 id="packaging">[02] packaging</h3>
-<p>a package is a directory in <code>pkgs/</code> of <a href="https://codeberg.org/yagni-linux/repo">yagni-linux/repo</a>:</p>
+<p>a package is a directory in <a href="https://codeberg.org/yagni-linux/repo"><code>pkgs/</code></a>:</p>
 <pre>pkgs/yte/version    0.3
 pkgs/yte/source     git https://codeberg.org/yagni-linux/yte.git main
 pkgs/yte/build      #!/bin/sh -e
@@ -77,7 +77,7 @@ pkgs/yte/build      #!/bin/sh -e
                     install -Dm755 yte "$1/bin/yte"
 pkgs/yte/depends    what it needs, one per line
 pkgs/yte/files/     configs and patches</pre>
-<p><code>build</code> installs into <code>$1</code> as if it were <code>/</code>, following the <a href="layout.html">layout</a>, and everything it installs is static and stripped. sources are <code>git &lt;url&gt; &lt;tag&gt;</code>, <code>apt-src &lt;pkg&gt;</code> or <code>apt-deb &lt;pkg&gt;</code>. when you change a package, bump its version; <code>mkrepo</code> refuses to rebuild a changed package under the old one.</p>
+<p><code>build</code> installs into <code>$1</code>, static and stripped. sources: <code>git</code>, <code>apt-src</code> or <code>apt-deb</code>. changed a package? bump its version.</p>
 
 <h3 id="building">[03] building yagni</h3>
 <pre>$ git clone https://codeberg.org/yagni-linux/repo
@@ -85,7 +85,7 @@ $ cd repo
 $ ./mkrepo      # every package into repo/
 $ ./mkrootfs    # yagni.tar.gz
 # ./mkiso       # yagni.iso</pre>
-<p>build on another linux machine. the kernel needs gnu make, and gnu doesn't go on yagni. the build machine needs <code>musl-gcc</code> and <code>lzfse</code>. <code>mkiso</code> needs root, <code>xorriso</code> and <code>mtools</code>. any web server serving <code>repo/</code> is a mirror.</p>
+<p>build on another machine, the kernel needs gnu make. the host needs <code>musl-gcc</code> and <code>lzfse</code>; <code>mkiso</code> also needs root, <code>xorriso</code> and <code>mtools</code>.</p>
 </td>
 </tr></table>
 <hr noshade size="1">

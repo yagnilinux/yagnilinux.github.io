@@ -53,7 +53,7 @@ hr { border: 0; border-top: 3px double #333; }
 <p><i>&ldquo;Very little is needed to make a happy life.&rdquo;</i></p>
 
 <h3>about</h3>
-<p>luwm (low usage window manager) is yagni's <a href="https://wayland.freedesktop.org">wayland</a> compositor. under 180 lines of c on top of <a href="https://github.com/michaelforney/swc">swc</a>, one static binary. with a terminal open it stays <a href="../shots/idle.png">under 30MB of ram</a>, so the rest is free for you to donate to sam altman.</p>
+<p>low usage window manager. a <a href="https://wayland.freedesktop.org">wayland</a> compositor in 179 lines of c on <a href="https://github.com/michaelforney/swc">swc</a>. <a href="../shots/idle.png">under 30MB of ram</a> with a terminal open.</p>
 <p><img alt="luwm on YAGNI" src="screenshots/luwm.png" width="640"></p>
 <h3>features</h3>
 <ul>
@@ -61,7 +61,6 @@ hr { border: 0; border-top: 3px double #333; }
 <li>4 workspaces</li>
 <li>focus follows the mouse</li>
 <li>fullscreen</li>
-<li>that's it</li>
 </ul>
 <h3>keys</h3>
 <table border="1" cellpadding="4" cellspacing="0">
@@ -131,15 +130,11 @@ hr { border: 0; border-top: 3px double #333; }
 <pre># jits a luwm
 $ startw
 </pre>
-<p>anywhere else, you need <a href="https://github.com/michaelforney/swc">swc</a> with the patches in <code>patches/</code>:</p>
+<p>elsewhere, swc with <code>patches/</code>:</p>
 <pre>$ make SWC=/path/to/swc
 </pre>
 <h3>configuration</h3>
-<p>border width, colours and your own keybinds are set without recompiling, see <a href="../desktop.html#ricing">desktop</a>. the built-in keys live in <code>keys[]</code> at the top of <code>luwm.c</code>.</p>
-<h3>notes</h3>
-<ul>
-<li>us keyboard layout only.</li>
-</ul>
+<p>colours and keybinds: <a href="../desktop.html">desktop</a>. built-in keys: <code>keys[]</code> in <code>luwm.c</code>.</p>
 </td>
 </tr></table>
 <hr noshade size="1">
