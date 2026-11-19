@@ -50,9 +50,8 @@ hr { border: 0; border-top: 3px double #333; }
 <td valign="top">
 <h2>layout</h2>
 
-<p>every program is static. there is no dynamic loader and no shared library anywhere on the system. <code>LD_PRELOAD</code> and <code>LD_LIBRARY_PATH</code> do nothing. no upgrade can swap a library out from under a program.</p>
-<p>a binary built against glibc does not run. it asks for a loader that is not there and dies with <code>not found</code>. build it static or package it.</p>
-<p>nothing gets loaded, so there is no <code>/lib</code>. root runs the same programs you do, so there is no <code>/sbin</code>. <code>/usr</code> is a symlink to <code>/</code>, kept for every script that starts with <code>#!/usr/bin/env</code>.</p>
+<p>every program on yagni is static, and there is no dynamic loader or shared library anywhere on the system. <code>LD_PRELOAD</code> and <code>LD_LIBRARY_PATH</code> do nothing. glibc binaries don't run, so build yours static or package it.</p>
+<p>there is no <code>/lib</code> because there is nothing to load, and no <code>/sbin</code> because root and users run the same programs. <code>/usr</code> is a symlink to <code>/</code> for scripts that start with <code>#!/usr/bin/env</code>.</p>
 <table border="1" cellpadding="4" cellspacing="0">
 <tr><td><code>/bin</code></td><td>every program</td></tr>
 <tr><td><code>/share</code></td><td>everything a program reads: data, fonts, firmware, kernel modules, python&#39;s library</td></tr>
@@ -64,8 +63,8 @@ hr { border: 0; border-top: 3px double #333; }
 <tr><td><code>/dev</code>, <code>/proc</code>, <code>/sys</code>, <code>/run</code>, <code>/tmp</code></td><td>made at boot</td></tr>
 <tr><td><code>/usr</code></td><td>a symlink to <code>/</code></td></tr>
 </table>
-<p>tcc's headers and static libraries go in <code>/share/include</code> and <code>/share/lib</code> with <code>musl-dev</code>. tcc links static by default. there is nothing else to link against.</p>
-<p><code>mkrepo</code> enforces all of it. <code>usr/bin</code>, <code>usr/sbin</code> and <code>sbin</code> get moved to <code>/bin</code>, <code>usr/share</code> to <code>/share</code>. anything else in <code>/usr</code> or <code>/lib</code> fails the build.</p>
+<p><code>musl-dev</code> puts headers and static libraries in <code>/share/include</code> and <code>/share/lib</code>, and tcc links static by default.</p>
+<p><code>mkrepo</code> moves whatever a build puts in <code>usr/bin</code>, <code>usr/sbin</code> or <code>sbin</code> to <code>/bin</code> and <code>usr/share</code> to <code>/share</code>. anything left in <code>/usr</code> or <code>/lib</code> fails the build.</p>
 </td>
 </tr></table>
 <hr noshade size="1">

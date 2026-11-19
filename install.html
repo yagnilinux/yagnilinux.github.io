@@ -50,9 +50,9 @@ hr { border: 0; border-top: 3px double #333; }
 <td valign="top">
 <h2>install</h2>
 
-<p>boot <a href="releases.html">yagni.iso</a> from a usb stick with uefi. secure boot off. you get a root shell. nothing here needs the network.</p>
+<p>write <a href="releases.html">yagni.iso</a> to a usb stick and boot it with secure boot off. it drops you in a root shell, and the install doesn't need a network.</p>
 <pre># dd if=yagni.iso of=/dev/sdX bs=4M</pre>
-<p>root is found by the gpt partition name <code>yagni</code>. nothing else works.</p>
+<p>the kernel finds root by its gpt partition name, so the second partition has to be called <code>yagni</code>.</p>
 <pre># sfdisk /dev/sda &lt;&lt;EOF
 label: gpt
 size=256M, type=uefi, name=BOOT
@@ -63,19 +63,19 @@ EOF
 # mount /dev/sda2 /mnt
 # mkdir /mnt/boot
 # mount /dev/sda1 /mnt/boot</pre>
-<p>unpack base and set a root password. tar complains about permissions on <code>/boot</code> because it is fat. ignore it.</p>
+<p>unpack base and set a root password. tar complains about permissions on <code>/boot</code> because it is fat; ignore it.</p>
 <pre># cd /media/install
 # sha256sum -c yagni.tar.gz.sha256
 # tar xzf yagni.tar.gz -C /mnt
 # chroot /mnt passwd</pre>
-<p>wifi only: install it from the iso before rebooting. see <a href="wifi.html">wifi</a>.</p>
+<p>on a machine with only wifi, install <a href="wifi.html">wifi</a> from the iso before rebooting:</p>
 <pre># JITS_REPO=file:///media/install/repo jits -r /mnt a wpa_supplicant firmware-iwlwifi yutils</pre>
 <pre># umount /mnt/boot /mnt
 # reboot</pre>
 <h3>when it does not boot</h3>
 <p><code>Waiting for root device PARTLABEL=yagni</code>: the partition name is wrong. <code>sfdisk --part-label /dev/sda 2 yagni</code>.</p>
 <p>firmware that will not boot the fallback path from an internal disk: add an entry with <code>efibootmgr</code> from another live system.</p>
-<p>dual boot: mount the existing efi partition at <code>/mnt/boot</code>. move any <code>EFI/BOOT/BOOTX64.EFI</code> out of the way first. yagni overwrites it.</p>
+<p>dual boot: mount the existing efi partition at <code>/mnt/boot</code> and move any <code>EFI/BOOT/BOOTX64.EFI</code> out of the way first, because yagni writes its kernel there.</p>
 </td>
 </tr></table>
 <hr noshade size="1">
