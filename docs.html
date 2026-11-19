@@ -28,12 +28,13 @@
 <p>read this page top to bottom before running anything.</p>
 <p>[01] <a href="#install">install</a><br>
 [02] <a href="#boot">boot</a><br>
-[03] <a href="#jits">jits</a><br>
-[04] <a href="#root">root and users</a><br>
-[05] <a href="#wifi">wifi</a><br>
-[06] <a href="#desktop">desktop</a><br>
-[07] <a href="#packaging">packaging</a><br>
-[08] <a href="#building">building yagni</a></p>
+[03] <a href="#layout">layout</a><br>
+[04] <a href="#jits">jits</a><br>
+[05] <a href="#root">root and users</a><br>
+[06] <a href="#wifi">wifi</a><br>
+[07] <a href="#desktop">desktop</a><br>
+[08] <a href="#packaging">packaging</a><br>
+[09] <a href="#building">building yagni</a></p>
 
 <h3 id="install">[01] install</h3>
 <p>write <a href="releases.html">yagni.iso</a> to a usb stick and boot it with uefi. secure boot has to be off. you land in a root shell.</p>
@@ -54,14 +55,14 @@ EOF
 # sha256sum -c yagni.tar.gz.sha256
 # tar xzf yagni.tar.gz -C /mnt
 # chroot /mnt passwd</pre>
-<p>tar will complain about permissions on <code>/boot</code>. it's fat, ignore it. if your machine only has wifi, install it from the iso now, see <a href="#wifi">[05]</a>:</p>
+<p>tar will complain about permissions on <code>/boot</code>. it's fat, ignore it. if your machine only has wifi, install it from the iso now, see <a href="#wifi">[06]</a>:</p>
 <pre># JITS_REPO=file:///media/install/repo jits -r /mnt a wpa_supplicant firmware-iwlwifi yutils</pre>
 <pre># umount /mnt/boot /mnt
 # reboot</pre>
 <p>if the boot stops at <code>Waiting for root device PARTLABEL=yagni</code>, you named the partition wrong. fix it with <code>sfdisk --part-label /dev/sda 2 yagni</code>. some firmware refuses to boot the fallback path from an internal disk. in that case, add a boot entry with <code>efibootmgr</code> from another live system. if you dual boot, mount your existing efi partition at <code>/mnt/boot</code> instead of making a new one, and move any <code>EFI/BOOT/BOOTX64.EFI</code> already there out of the way first, or you will overwrite it.</p>
 
 <h3 id="boot">[02] boot</h3>
-<p>the firmware starts the kernel directly from <code>/boot/EFI/BOOT/BOOTX64.EFI</code>. the kernel carries its own command line, <code>root=PARTLABEL=yagni rootwait rw</code>. the kernel mounts root and starts busybox init, which runs <code>/etc/init.d/rcS</code>. that file is the entire boot, 32 lines long. to start something at boot, add a line to it. these files are everything that configures the system:</p>
+<p>the firmware starts the kernel directly from <code>/boot/EFI/BOOT/BOOTX64.EFI</code>. the kernel carries its own command line, <code>root=PARTLABEL=yagni rootwait rw init=/bin/init firmware_class.path=/share/firmware</code>. it mounts root and starts busybox init, which runs <code>/etc/init.d/rcS</code>. that file is the entire boot, 32 lines long. to start something at boot, add a line to it. these files are everything that configures the system:</p>
 <table border="1" cellpadding="4" cellspacing="0">
 <tr><td>boot</td><td><code>/etc/init.d/rcS</code></td></tr>
 <tr><td>consoles</td><td><code>/etc/inittab</code></td></tr>
@@ -71,7 +72,23 @@ EOF
 <tr><td>repository</td><td><code>/etc/jits/repo</code></td></tr>
 </table>
 
-<h3 id="jits">[03] jits</h3>
+<h3 id="layout">[03] layout</h3>
+<p>every program is a static binary, so there is no dynamic loader and no shared library anywhere on the system. <code>LD_PRELOAD</code> and <code>LD_LIBRARY_PATH</code> do nothing, and no upgrade can swap a library out from under a program. a binary built against glibc will not run. it asks for a loader that isn't there and fails with <code>not found</code>. build it static, or package it.</p>
+<p>with nothing to load there is nothing to put in <code>/lib</code>, so there is no <code>/lib</code>. there is no <code>/sbin</code> either, because root runs the same programs you do. <code>/usr</code> is a symlink to <code>/</code>, so scripts starting with <code>#!/usr/bin/env</code> still run. this is the whole tree:</p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><td><code>/bin</code></td><td>every program</td></tr>
+<tr><td><code>/share</code></td><td>everything a program reads: data, fonts, firmware, kernel modules, python&#39;s library</td></tr>
+<tr><td><code>/etc</code></td><td>configuration</td></tr>
+<tr><td><code>/boot</code></td><td>the efi partition, holding the kernel</td></tr>
+<tr><td><code>/var</code></td><td>logs, and what jits knows in <code>/var/db/jits</code></td></tr>
+<tr><td><code>/home</code>, <code>/root</code></td><td>users</td></tr>
+<tr><td><code>/mnt</code></td><td>whatever you mount</td></tr>
+<tr><td><code>/dev</code>, <code>/proc</code>, <code>/sys</code>, <code>/run</code>, <code>/tmp</code></td><td>made at boot</td></tr>
+<tr><td><code>/usr</code></td><td>a symlink to <code>/</code></td></tr>
+</table>
+<p>tcc&#39;s headers and static libraries are in <code>/share/include</code> and <code>/share/lib</code> once you install <code>musl-dev</code>. <code>mkrepo</code> holds every package to this: whatever a build puts in <code>usr/bin</code>, <code>usr/sbin</code> or <code>sbin</code> is moved to <code>/bin</code>, <code>usr/share</code> goes to <code>/share</code>, and anything else in <code>/usr</code> or <code>/lib</code> fails the build.</p>
+
+<h3 id="jits">[04] jits</h3>
 <p>just install that shit. one shell script, 165 lines.</p>
 <pre>jits [-r root] [a|r|u|s|l] [pkg]...
   a  add       install packages and what they need
@@ -82,21 +99,21 @@ EOF
 <p>the repository holds exactly one version of every package, so there is no dependency resolution. packages are tarballs compressed with apple's lzfse, which unpacks about four times faster than gzip. the index carries a sha256 for every package and jits checks it before installing. nothing is signed.</p>
 <p>jits will remove whatever you tell it to, including things other packages depend on. it assumes you meant it. configs survive upgrades: a new version lands as <code>file.new</code>, and <code>etcnew</code> merges it.</p>
 <p>to use another repository, put its address in <code>/etc/jits/repo</code>, or set <code>JITS_REPO</code> for a single command. <code>file://</code> works too. to find out which package owns a file:</p>
-<pre>$ grep -lx usr/bin/oksh /var/db/jits/installed/*/manifest</pre>
+<pre>$ grep -lx bin/oksh /var/db/jits/installed/*/manifest</pre>
 
-<h3 id="root">[04] root and users</h3>
+<h3 id="root">[05] root and users</h3>
 <pre># jits a yutils
 # mkuser foo</pre>
 <p>foo gets <code>oksh</code>, openbsd's korn shell, and membership of <code>wheel</code>, the group <code>doas</code> lets in. there is no sudo.</p>
 <pre>$ doas jits u</pre>
 <p>scripts and the boot run on busybox ash, so anything you write for them has to work there.</p>
 
-<h3 id="wifi">[05] wifi</h3>
+<h3 id="wifi">[06] wifi</h3>
 <pre># jits a wpa_supplicant firmware-iwlwifi yutils
 # wifi "network" "password"</pre>
 <p>this connects now and on every boot. realtek cards need <code>firmware-realtek</code> instead. if you do not know which card you have, <code>cat /sys/bus/pci/devices/*/vendor</code>: <code>0x8086</code> is intel, <code>0x10ec</code> is realtek. only wpa2. wpa3 is waiting on you. usb tethering works if the phone is plugged in before boot. none of the firmware has been tested on real hardware. yours would be the first.</p>
 
-<h3 id="desktop">[06] desktop</h3>
+<h3 id="desktop">[07] desktop</h3>
 <pre># jits a luwm netsurf wallpaper
 $ startw</pre>
 <p><a href="luwm/">luwm</a> is the compositor: floating windows, four workspaces, under 180 lines of c on <a href="https://github.com/michaelforney/swc">swc</a>. the terminal is havoc. <code>super+return</code> opens it, <code>super+d</code> opens dmenu, <code>super+q</code> closes a window, <code>super+1-4</code> switches workspace, <code>super+p</code> takes a screenshot.</p>
@@ -109,22 +126,22 @@ LUWM_UNFOCUS=253e5b
 ~/.config/luwm/keys
 case $1 in
 w) exec netsurf ;;
-S-x) exec havoc -e yte ;;
+S-x) exec havoc yte ;;
 esac</pre>
 <p><code>setwall</code> sets the wallpaper. only the us keyboard layout, because nobody has added theirs.</p>
 
-<h3 id="packaging">[07] packaging</h3>
+<h3 id="packaging">[08] packaging</h3>
 <p>a package is a directory in <code>pkgs/</code> of <a href="https://codeberg.org/yagni-linux/repo">yagni-linux/repo</a>:</p>
 <pre>pkgs/yte/version    0.3
 pkgs/yte/source     git https://codeberg.org/yagni-linux/yte.git main
 pkgs/yte/build      #!/bin/sh -e
                     musl-gcc -std=c99 -Os -s -static -o yte yte.c
-                    install -Dm755 yte "$1/usr/bin/yte"
+                    install -Dm755 yte "$1/bin/yte"
 pkgs/yte/depends    what it needs, one per line, if anything
 pkgs/yte/files/     configs and patches, if any</pre>
-<p><code>build</code> installs into <code>$1</code> as if it were <code>/</code>. build static and strip the result. sources are <code>git &lt;url&gt; &lt;tag&gt;</code>, <code>apt-src &lt;pkg&gt;</code> or <code>apt-deb &lt;pkg&gt;</code>. if you change a package, you bump its version. <code>mkrepo</code> refuses to build a changed package under an old version.</p>
+<p><code>build</code> installs into <code>$1</code> as if it were <code>/</code>, following the <a href="#layout">layout</a>. build static and strip the result. sources are <code>git &lt;url&gt; &lt;tag&gt;</code>, <code>apt-src &lt;pkg&gt;</code> or <code>apt-deb &lt;pkg&gt;</code>. if you change a package, you bump its version. <code>mkrepo</code> refuses to build a changed package under an old version.</p>
 
-<h3 id="building">[08] building yagni</h3>
+<h3 id="building">[09] building yagni</h3>
 <pre>$ git clone https://codeberg.org/yagni-linux/repo
 $ cd repo
 $ ./mkrepo      # every package into repo/

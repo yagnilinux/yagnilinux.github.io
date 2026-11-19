@@ -29,10 +29,18 @@
 <p>if you have to ask, no.</p>
 <h3>why is everything static?</h3>
 <p>because shared libraries were a mistake.</p>
+<h3>where is /lib?</h3>
+<p>there is nothing to put in it.</p>
+<h3>why is /usr a symlink?</h3>
+<p>/usr exists because a pdp-11 disk filled up in 1971. ours didn't. the symlink is for scripts that still believe in it.</p>
+<h3>what does LD_PRELOAD do?</h3>
+<p>nothing. there is no loader to read it.</p>
+<h3>will my downloaded binary run?</h3>
+<p>if it's static.</p>
 <h3>where's the bootloader?</h3>
 <p>you don't need one.</p>
 <h3>what replaces the usual parts?</h3>
-<p>systemd: busybox init and one script.<br>udev: mdev.<br>sudo: doas.<br>NetworkManager: one wifi file.<br>dbus: nothing.<br>shared libraries: nothing.</p>
+<p>systemd: busybox init and one script.<br>udev: mdev.<br>sudo: doas.<br>NetworkManager: one wifi file.<br>dbus: nothing.<br>shared libraries: nothing.<br>ld.so: nothing.</p>
 <h3>why is there bsd and apple code in it?</h3>
 <p>because it is good code and it isn't gnu.</p>
 <h3>why is so little packaged?</h3>
