@@ -5,18 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>jits - YAGNI/Linux</title>
 <style>
-body { background: #ebe9e1; color: #333; margin: 8px; }
+body { background: #ebe9e1; color: #333; margin: 6px; font-size: 13px; line-height: 1.25; }
 a { color: #222; font-weight: bold; }
 a:hover { background: #222; color: #ebe9e1; text-decoration: none; }
+a.top { text-decoration: none; }
 a.egg, a.egg:hover { color: inherit; background: none; font-weight: normal; text-decoration: none; cursor: text; }
-pre { border-left: 2px solid #999; padding-left: 6px; }
-hr { border: 0; border-top: 1px solid #999; }
+h1 { margin: 4px 0 10px; letter-spacing: -1px; }
+h2 { margin: 0 0 6px; text-decoration: underline; }
+h3 { margin: 14px 0 4px; font-size: 13px; text-transform: uppercase; border-bottom: 1px dashed #333; }
+pre { background: #dedbd0; border: 1px solid #333; padding: 4px; margin: 4px 0; }
+code { background: #dedbd0; }
+table { border-collapse: collapse; }
+td, th { border-color: #333; }
+ul { margin: 4px 0; padding-left: 22px; }
+p { margin: 6px 0; }
+img { border: 1px solid #333; }
+hr { border: 0; border-top: 3px double #333; }
 </style>
 </head>
 <body bgcolor="#ebe9e1" text="#333333" link="#222222" vlink="#222222" alink="#000000">
 <font face="Verdana, Geneva, sans-serif">
 <small><a href="flexes.html">flxs</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
-<h1><a href="index.html">yagni/linux</a> <small><small><i>just install that shit</i></small></small></h1>
+<h1><a class="top" href="index.html">yagni/linux <small><small><i>just install that shit</i></small></small></a></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
 <td valign="top" width="152">
 <table border="0" cellpadding="0" cellspacing="0"><tr><td>
@@ -26,8 +36,6 @@ hr { border: 0; border-top: 1px solid #999; }
 &#9656; <a href="jits.html">jits</a><br>
 &#9656; <a href="goals.html">goals</a><br>
 &#9656; <a href="faq.html">answers</a><br>
-&#9656; <a href="releases.html">releases</a><br>
-&#9656; <a href="packages.html">packages</a><br>
 &#9656; <a href="screenshots.html">screenshots</a></b></small></p>
 </td></tr></table>
 </td>
@@ -46,7 +54,7 @@ hr { border: 0; border-top: 1px solid #999; }
   u  update    sync the repository, upgrade everything
   s  search    search the repository
   l  list      list installed packages</pre>
-<p>the repository holds one version of every package. there is no dependency resolution because there is nothing to resolve. packages are tarballs compressed with apple's lzfse, four times faster to unpack than gzip. every package has a sha256 in the index and jits checks it before installing. nothing is signed.</p>
+<p>the <a href="packages.html">repository</a> holds one version of every package. there is no dependency resolution because there is nothing to resolve. packages are tarballs compressed with apple's lzfse, four times faster to unpack than gzip. every package has a sha256 in the index and jits checks it before installing. nothing is signed.</p>
 <p>jits removes what you tell it to, including what other packages need. it assumes you meant it. configs survive upgrades: the new version lands as <code>file.new</code>, and <code>etcnew</code> merges it.</p>
 <p>another repository goes in <code>/etc/jits/repo</code>, or in <code>JITS_REPO</code> for one command. <code>file://</code> works. which package owns a file:</p>
 <pre>$ grep -lx bin/oksh /var/db/jits/installed/*/manifest</pre>
