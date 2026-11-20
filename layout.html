@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>layout - redemption/linux</title>
+<title>layout - sidewinder/linux</title>
 <style>
 body { background: #ffffff; color: #494949; margin: 6px; font-size: 13px; line-height: 1.15; }
 a { color: #353535; font-weight: bold; }
@@ -29,12 +29,12 @@ hr { border: 0; border-top: 1px solid #494949; }
 </head>
 <body bgcolor="#ffffff" text="#494949" link="#353535" vlink="#353535" alink="#494949">
 <font face="Verdana, Geneva, sans-serif">
-<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/redemption-linux">git</a> |</small>
-<h1><a class="top" href="index.html">redemption/linux <small><small><i>no ornament</i></small></small></a></h1>
+<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/sidewinder-linux">git</a> |</small>
+<h1><a class="top" href="index.html">sidewinder/linux <small><small><i>nothing to link against</i></small></small></a></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
-<td valign="top" width="152">
+<td valign="top" width="332">
 <table border="0" cellpadding="0" cellspacing="0"><tr><td>
-<a href="index.html"><img class="side-img" src="art/side.png" width="140" border="0" alt=""></a>
+<a href="index.html"><img class="side-img" src="art/side.png" width="320" border="0" alt=""></a>
 <p>pages:</p>
 <p class="side">&raquo; <i><a href="docs.html">docs/</a></i><br>
 &nbsp;&nbsp;&rsaquo; <a href="install.html">install</a><br>
@@ -44,15 +44,16 @@ hr { border: 0; border-top: 1px solid #494949; }
 &nbsp;&nbsp;&rsaquo; <a href="desktop.html">desktop/</a><br>
 &nbsp;&nbsp;&raquo; <i><a href="layout.html">layout</a></i><br>
 &nbsp;&nbsp;&rsaquo; <a href="cook.html">cook/</a><br>
-&rsaquo; <a href="goals.html">about/</a><br>
+&rsaquo; <a href="faq.html">answers</a><br>
 &rsaquo; <a href="screenshots.html">screenshots</a><br>
+&rsaquo; <a href="goals.html">about/</a><br>
 &rsaquo; <a href="releases.html">releases</a></p>
 </td></tr></table>
 </td>
 <td valign="top">
 <h2>-&gt; layout</h2>
 
-<p>every program on redemption is static, and there is no dynamic loader or shared library anywhere on the system. <code>LD_PRELOAD</code> and <code>LD_LIBRARY_PATH</code> do nothing. glibc binaries don't run, so build yours static or package it.</p>
+<p>every program on sidewinder is static, and there is no dynamic loader or shared library anywhere on the system. <code>LD_PRELOAD</code> and <code>LD_LIBRARY_PATH</code> do nothing. glibc binaries don't run, so build yours static or package it.</p>
 <p>there is no <code>/lib</code> because there is nothing to load, and no <code>/sbin</code> because root and users run the same programs. <code>/usr</code> is a symlink to <code>/</code> for scripts that start with <code>#!/usr/bin/env</code>.</p>
 <p><code>/bin</code> -&gt; programs</p>
 <p><code>/share</code> -&gt; everything a program reads: data, fonts, firmware, kernel modules, python&#39;s library</p>

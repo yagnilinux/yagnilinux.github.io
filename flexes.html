@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>flexes - redemption/linux</title>
+<title>flexes - sidewinder/linux</title>
 <style>
 body { background: #ffffff; color: #494949; margin: 6px; font-size: 13px; line-height: 1.15; }
 a { color: #353535; font-weight: bold; }
@@ -29,42 +29,39 @@ hr { border: 0; border-top: 1px solid #494949; }
 </head>
 <body bgcolor="#ffffff" text="#494949" link="#353535" vlink="#353535" alink="#494949">
 <font face="Verdana, Geneva, sans-serif">
-<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/redemption-linux">git</a> |</small>
-<h1><a class="top" href="index.html">redemption/linux <small><small><i>dead load</i></small></small></a></h1>
+<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/sidewinder-linux">git</a> |</small>
+<h1><a class="top" href="index.html">sidewinder/linux <small><small><i>yes, really</i></small></small></a></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
-<td valign="top" width="152">
+<td valign="top" width="332">
 <table border="0" cellpadding="0" cellspacing="0"><tr><td>
-<a href="index.html"><img class="side-img" src="art/side.png" width="140" border="0" alt=""></a>
+<a href="index.html"><img class="side-img" src="art/side.png" width="320" border="0" alt=""></a>
 <p>pages:</p>
 <p class="side">&rsaquo; <a href="docs.html">docs/</a><br>
+&rsaquo; <a href="faq.html">answers</a><br>
+&rsaquo; <a href="screenshots.html">screenshots</a><br>
 &raquo; <i><a href="goals.html">about/</a></i><br>
 &nbsp;&nbsp;&rsaquo; <a href="goals.html">goals</a><br>
-&nbsp;&nbsp;&rsaquo; <a href="faq.html">answers</a><br>
 &nbsp;&nbsp;&raquo; <i><a href="flexes.html">flexes</a></i><br>
 &nbsp;&nbsp;&rsaquo; <a href="thanks.html">thanks</a><br>
-&rsaquo; <a href="screenshots.html">screenshots</a><br>
 &rsaquo; <a href="releases.html">releases</a></p>
 </td></tr></table>
 </td>
 <td valign="top">
 <h2>-&gt; flexes</h2>
 
-<p>base install -&gt; 14MB</p>
-<p>download -&gt; 7MB</p>
-<p>iso -&gt; 37MB</p>
+<p>starting a program -&gt; 0.13ms. the same program on glibc: 0.9ms</p>
+<p>installing base -&gt; 2.7s</p>
+<p>dynamic loaders -&gt; 0</p>
+<p>shared libraries resolved at startup -&gt; 0</p>
+<p>daemons at idle -&gt; mdev, udhcpc, and wpa_supplicant if you have wifi</p>
 <p>ram at idle -&gt; 11MB</p>
-<p>packages in base -&gt; 8</p>
-<p>packages in the repository -&gt; 43</p>
-<p>all 43 packages -&gt; 68MB</p>
+<p>iso -&gt; 37MB</p>
 <p>package manager -&gt; 165 lines of sh</p>
 <p>boot script -&gt; 32 lines</p>
 <p>compositor -&gt; 179 lines of c</p>
-<p>files that configure the system -&gt; 6</p>
-<p>versions of each package -&gt; 1</p>
-<p>unpacking ffmpeg -&gt; 39ms with lzfse, 177ms with gzip</p>
 <p>directories in / -&gt; 13, and a symlink</p>
 <p>gnu packages -&gt; <a class="egg" href="lix.html">0</a></p>
-<p>measured on 0.1, in qemu. redemption.iso is 28 times smaller than void&#39;s smallest iso and 9 times smaller than alpine&#39;s standard one. every package redemption has, ffmpeg, python and wifi firmware included, is 68MB. an ubuntu iso is over 5GB.</p>
+<p>startup is the mean of 5000 spawns of an empty <code>main</code>, built static against musl and dynamic against glibc, on the same machine. install time is <code>cook a base</code> from a local repo. there is no loader to find, map and relocate libraries before <code>main</code>, so everything opens like it was already running.</p>
 </td>
 </tr></table>
 <hr noshade size="1">
