@@ -51,9 +51,10 @@ hr { border: 0; border-top: 3px double #333; }
 <td valign="top">
 <h2>boot</h2>
 
-<p><code>/boot/EFI/BOOT/BOOTX64.EFI</code> is the kernel. its command line is built in:</p>
+<p>the firmware runs <code>/boot/EFI/BOOT/BOOTX64.EFI</code>, which is the kernel, with this command line compiled in:</p>
 <pre>root=PARTLABEL=yagni rootwait rw init=/bin/init firmware_class.path=/share/firmware</pre>
-<p>busybox init runs <code>/etc/init.d/rcS</code>, 32 lines: mounts, modules, mdev, network. add a line to start something at boot.</p>
+<p>the kernel starts busybox init, which runs <code>/etc/init.d/rcS</code>. its 32 lines mount the filesystems, load a module for each device the kernel reports, start mdev and bring up the network. to start something at boot, add a line to it.</p>
+<p>six files configure the system:</p>
 <p class="map">boot -&gt; <code>/etc/init.d/rcS</code><br>
 consoles -&gt; <code>/etc/inittab</code><br>
 mounts -&gt; <code>/etc/fstab</code><br>

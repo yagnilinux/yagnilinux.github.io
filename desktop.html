@@ -54,13 +54,13 @@ hr { border: 0; border-top: 3px double #333; }
 
 <pre># jits a luwm netsurf wallpaper
 $ startw</pre>
-<p>compositor <a href="luwm/">luwm</a>, terminal havoc.</p>
+<p><a href="luwm/">luwm</a> is the compositor: floating windows, four workspaces, under 180 lines of c on <a href="https://github.com/michaelforney/swc">swc</a>. the terminal is havoc.</p>
 <p class="map"><code>super+return</code> -&gt; terminal<br>
 <code>super+d</code> -&gt; dmenu<br>
 <code>super+q</code> -&gt; close a window<br>
 <code>super+1-4</code> -&gt; workspace<br>
 <code>super+p</code> -&gt; screenshot</p>
-<p>colours and keys:</p>
+<p>colours and keys are read from two files at startup:</p>
 <pre>~/.config/luwm/env
 LUWM_BORDER=6
 LUWM_FOCUS=3d6fa3
@@ -71,7 +71,7 @@ case $1 in
 w) exec netsurf ;;
 S-x) exec havoc yte ;;
 esac</pre>
-<p><code>setwall</code> sets the wallpaper. us layout only.</p>
+<p><code>setwall</code> sets the wallpaper. the us layout is the only keyboard layout included.</p>
 </td>
 </tr></table>
 <hr noshade size="1">
