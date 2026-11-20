@@ -5,30 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>layout - YAGNI/Linux</title>
 <style>
-body { background: #e7e4d8; color: #2c2c2a; margin: 6px; font-size: 13px; line-height: 1.25; }
+body { background: #e7e4d8; color: #2c2c2a; margin: 0; font-size: 13px; line-height: 1.3; }
 a { color: #1d1d1b; font-weight: bold; }
 a:hover { background: #1d1d1b; color: #e7e4d8; text-decoration: none; }
+.bar { background: #1d1d1b; color: #e7e4d8; padding: 3px 8px; font-size: 11px; }
+.bar a { color: #e7e4d8; }
+.bar a:hover { background: #e7e4d8; color: #1d1d1b; }
+.page { margin: 0 8px; }
+h1 { margin: 10px 0 14px; font-size: 46px; font-weight: 900; letter-spacing: -3px; line-height: 1; }
+h1 i { font-size: 14px; font-weight: bold; letter-spacing: 0; }
 a.top { text-decoration: none; }
 .side { line-height: 1.5; white-space: nowrap; }
 .side a { font-weight: normal; text-decoration: none; }
 a.egg, a.egg:hover { color: inherit; background: none; font-weight: normal; text-decoration: none; cursor: text; }
-h1 { margin: 4px 0 10px; letter-spacing: -1px; }
-h2 { margin: 0 0 6px; text-decoration: underline; }
-h3 { margin: 14px 0 4px; font-size: 13px; text-transform: uppercase; border-bottom: 1px dashed #333; }
-pre { background: #d9d5c7; border: 1px solid #333; padding: 4px; margin: 4px 0; }
-code { background: #d9d5c7; }
-table { border-collapse: collapse; }
-td, th { border-color: #2c2c2a; }
-ul { margin: 4px 0; padding-left: 22px; }
+h2 { margin: 0 0 8px; font-size: 26px; font-weight: 900; letter-spacing: -1px; text-decoration: underline; }
+h3 { display: inline-block; margin: 16px 0 4px; padding: 0 5px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; background: #1d1d1b; color: #e7e4d8; }
+ul { margin: 4px 0; padding-left: 0; list-style: none; }
+li:before, .map:before { content: "-> "; font-weight: bold; }
+.map:before { content: none; }
+pre { margin: 6px 0 6px 12px; font-weight: bold; }
+code { font-weight: bold; }
 p { margin: 6px 0; }
-img { border: 1px solid #333; }
-hr { border: 0; border-top: 3px double #333; }
+.map { font-family: monospace; font-size: 13px; margin: 6px 0 6px 12px; }
+img { border: 1px solid #1d1d1b; }
+hr { border: 0; border-top: 3px double #1d1d1b; margin: 14px 0 4px; }
 </style>
 </head>
 <body bgcolor="#e7e4d8" text="#2c2c2a" link="#1d1d1b" vlink="#1d1d1b" alink="#000000">
 <font face="Verdana, Geneva, sans-serif">
-<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
-<h1><a class="top" href="index.html">yagni/linux <small><small><i>one bin</i></small></small></a></h1>
+<div class="bar"><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a></div>
+<div class="page">
+<h1><a class="top" href="index.html">yagni/linux <i>one bin</i></a></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
 <td valign="top" width="152">
 <table border="0" cellpadding="0" cellspacing="0"><tr><td>
@@ -51,23 +58,22 @@ hr { border: 0; border-top: 3px double #333; }
 <h2>layout</h2>
 
 <p>everything is static: no loader, no shared libraries, no <code>/lib</code>. no <code>/sbin</code> either, root runs what you run. <code>/usr</code> links to <code>/</code> for <code>#!/usr/bin/env</code>. glibc binaries don't run.</p>
-<table border="1" cellpadding="4" cellspacing="0">
-<tr><td><code>/bin</code></td><td>every program</td></tr>
-<tr><td><code>/share</code></td><td>data, firmware, modules</td></tr>
-<tr><td><code>/etc</code></td><td>config</td></tr>
-<tr><td><code>/boot</code></td><td>the kernel</td></tr>
-<tr><td><code>/var</code></td><td>logs, jits</td></tr>
-<tr><td><code>/home</code>, <code>/root</code></td><td>users</td></tr>
-<tr><td><code>/mnt</code></td><td>mounts</td></tr>
-<tr><td><code>/dev</code>, <code>/proc</code>, <code>/sys</code>, <code>/run</code>, <code>/tmp</code></td><td>made at boot</td></tr>
-<tr><td><code>/usr</code></td><td>a symlink to <code>/</code></td></tr>
-</table>
+<p class="map"><code>/bin</code> -&gt; every program<br>
+<code>/share</code> -&gt; data, firmware, modules<br>
+<code>/etc</code> -&gt; config<br>
+<code>/boot</code> -&gt; the kernel<br>
+<code>/var</code> -&gt; logs, jits<br>
+<code>/home</code>, <code>/root</code> -&gt; users<br>
+<code>/mnt</code> -&gt; mounts<br>
+<code>/dev</code>, <code>/proc</code>, <code>/sys</code>, <code>/run</code>, <code>/tmp</code> -&gt; made at boot<br>
+<code>/usr</code> -&gt; a symlink to <code>/</code></p>
 <p>headers and <code>.a</code> files: <code>/share/include</code>, <code>/share/lib</code>.</p>
 <p><code>mkrepo</code> fails any package that installs into <code>/usr</code> or <code>/lib</code>.</p>
 </td>
 </tr></table>
 <hr noshade size="1">
 <small>made by max spuk. cddl 1.1. <a href="thanks.html">thanks</a>. <a href="nothing.html">.</a></small>
+</div>
 </font>
 </body>
 </html>
