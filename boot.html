@@ -24,13 +24,12 @@ ul { margin: 4px 0; padding-left: 22px; }
 p { margin: 6px 0; }
 img { border: 1px solid #000; }
 hr { border: 0; border-top: 1px solid #000; }
-.map { font-family: monospace; margin: 6px 0 6px 12px; }
 </style>
 </head>
 <body bgcolor="#e7e4d8" text="#2c2c2a" link="#1d1d1b" vlink="#1d1d1b" alink="#000000">
 <font face="Verdana, Geneva, sans-serif">
 <small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
-<h1><a class="top" href="index.html">yagni/linux <small><small><i>a small sovereignty</i></small></small></a></h1>
+<h1><a class="top" href="index.html">yagni/linux</a></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
 <td valign="top" width="152">
 <table border="0" cellpadding="0" cellspacing="0"><tr><td>
@@ -50,18 +49,18 @@ hr { border: 0; border-top: 1px solid #000; }
 </td></tr></table>
 </td>
 <td valign="top">
-<h2>boot</h2>
+<h2>-&gt; boot</h2>
 
 <p>the firmware runs <code>/boot/EFI/BOOT/BOOTX64.EFI</code>, which is the kernel, with this command line compiled in:</p>
 <pre>root=PARTLABEL=yagni rootwait rw init=/bin/init firmware_class.path=/share/firmware</pre>
 <p>the kernel starts busybox init, which runs <code>/etc/init.d/rcS</code>. its 32 lines mount the filesystems, load a module for each device the kernel reports, start mdev and bring up the network. to start something at boot, add a line to it.</p>
 <p>six files configure the system:</p>
-<p class="map">boot -&gt; <code>/etc/init.d/rcS</code><br>
-consoles -&gt; <code>/etc/inittab</code><br>
-mounts -&gt; <code>/etc/fstab</code><br>
-hostname -&gt; <code>/etc/hostname</code><br>
-who gets root -&gt; <code>/etc/doas.conf</code><br>
-repository -&gt; <code>/etc/jits/repo</code></p>
+<p>boot -&gt; <code>/etc/init.d/rcS</code></p>
+<p>consoles -&gt; <code>/etc/inittab</code></p>
+<p>mounts -&gt; <code>/etc/fstab</code></p>
+<p>hostname -&gt; <code>/etc/hostname</code></p>
+<p>who gets root -&gt; <code>/etc/doas.conf</code></p>
+<p>repository -&gt; <code>/etc/jits/repo</code></p>
 </td>
 </tr></table>
 <hr noshade size="1">

@@ -24,7 +24,6 @@ ul { margin: 4px 0; padding-left: 22px; }
 p { margin: 6px 0; }
 img { border: 1px solid #000; }
 hr { border: 0; border-top: 1px solid #000; }
-.map { font-family: monospace; margin: 6px 0 6px 12px; }
 </style>
 </head>
 <body bgcolor="#e7e4d8" text="#2c2c2a" link="#1d1d1b" vlink="#1d1d1b" alink="#000000">
@@ -43,22 +42,22 @@ hr { border: 0; border-top: 1px solid #000; }
 </td></tr></table>
 </td>
 <td valign="top">
-<h2>linux - gnu</h2>
+<h2>-&gt; linux - gnu</h2>
 
 <pre>  linux
 - gnu
 = lix</pre>
 <p>take linux and remove the gnu. what's left is lix. <a href="stalman.html">richard</a> wants it called gnu/linux. we went the other way.</p>
 <h3>what was removed</h3>
-<p class="map">glibc -&gt; <a href="https://musl.libc.org">musl</a><br>
-coreutils, grep, sed, gawk, findutils, diffutils, tar, gzip -&gt; <a href="https://busybox.net">busybox</a><br>
-bash -&gt; <a href="https://github.com/ibara/oksh">oksh</a>, from openbsd<br>
-ncurses -&gt; <a href="https://github.com/sabotage-linux/netbsd-curses">netbsd-curses</a><br>
-bc -&gt; <a href="https://github.com/gavinhoward/bc">gavin howard's bc</a>, as in freebsd<br>
-grub -&gt; nothing. the kernel is the efi program<br>
-gcc -&gt; <a href="https://bellard.org/tcc/">tcc</a><br>
-readline -&gt; nothing<br>
-make -&gt; nothing</p>
+<p>glibc -&gt; <a href="https://musl.libc.org">musl</a></p>
+<p>coreutils, grep, sed, gawk, findutils, diffutils, tar, gzip -&gt; <a href="https://busybox.net">busybox</a></p>
+<p>bash -&gt; <a href="https://github.com/ibara/oksh">oksh</a>, from openbsd</p>
+<p>ncurses -&gt; <a href="https://github.com/sabotage-linux/netbsd-curses">netbsd-curses</a></p>
+<p>bc -&gt; <a href="https://github.com/gavinhoward/bc">gavin howard's bc</a>, as in freebsd</p>
+<p>grub -&gt; nothing. the kernel is the efi program</p>
+<p>gcc -&gt; <a href="https://bellard.org/tcc/">tcc</a></p>
+<p>readline -&gt; nothing</p>
+<p>make -&gt; nothing</p>
 <h3>what is gpl</h3>
 <p>almost everything in the gnu column is gplv3. glibc is lgpl, and ncurses isn't gpl at all, but gnu keeps it anyway.</p>
 <p>linux is gplv2 only. linus turned down v3 in 2007 and never moved. there is no gplv3 in base either.</p>
