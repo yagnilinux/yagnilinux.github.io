@@ -59,14 +59,13 @@ hr { border: 0; border-top: 1px solid #2a2a28; }
 [03] <a href="#building">building yagni</a></p>
 
 <h3 id="use">[01] use</h3>
-<p>jits is one shell script, 165 lines long.</p>
 <pre>jits [-r root] [a|r|u|s|l] [pkg]...
   a  add       install packages and what they need
   r  remove    remove packages
   u  update    sync the repository, upgrade everything
   s  search    search the repository
   l  list      list installed packages</pre>
-<p>the <a href="packages.html">repository</a> holds one version of every package, so jits never picks between versions. packages are tarballs compressed with apple's lzfse, which unpacks about four times faster than gzip. jits checks every package against the sha256 in the index before installing it. nothing is signed.</p>
+<p>packages are <a href="https://github.com/lzfse/lzfse">lzfse</a> tarballs, checked against the sha256 in the <a href="packages.html">index</a>. nothing is signed.</p>
 <p>jits removes what you tell it to, including what other packages need. configs survive upgrades: the new version lands as <code>file.new</code>, and <code>etcnew</code> merges it.</p>
 <p>another repository goes in <code>/etc/jits/repo</code>, or in <code>JITS_REPO</code> for one command, and <code>file://</code> works. to find the package that owns a file:</p>
 <pre>$ grep -lx bin/oksh /var/db/jits/installed/*/manifest</pre>
@@ -80,7 +79,7 @@ pkgs/bluesky/build      #!/bin/sh -e
                     install -Dm755 bluesky "$1/bin/bluesky"
 pkgs/bluesky/depends    what it needs, one per line
 pkgs/bluesky/files/     configs and patches</pre>
-<p><code>build</code> installs into <code>$1</code> as if it were <code>/</code>, following the <a href="layout.html">layout</a>, and everything it installs is static and stripped. sources are <code>git &lt;url&gt; &lt;tag&gt;</code>, <code>apt-src &lt;pkg&gt;</code> or <code>apt-deb &lt;pkg&gt;</code>. when you change a package, bump its version; <code>superlab</code> refuses to rebuild a changed package under the old one.</p>
+<p><code>build</code> installs into <code>$1</code> as if it were <code>/</code>. everything is static and stripped. sources are <code>git &lt;url&gt; &lt;tag&gt;</code>, <code>apt-src &lt;pkg&gt;</code> or <code>apt-deb &lt;pkg&gt;</code>. when you change a package, bump its version; <code>superlab</code> refuses to rebuild a changed package under the old one.</p>
 
 <h3 id="building">[03] building yagni</h3>
 <pre>$ git clone https://codeberg.org/yagni-linux/repo

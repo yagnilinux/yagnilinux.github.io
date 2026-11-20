@@ -53,8 +53,8 @@ hr { border: 0; border-top: 1px solid #2a2a28; }
 <td valign="top">
 <h2>-&gt; layout</h2>
 
-<p>every program on yagni is static, and there is no dynamic loader or shared library anywhere on the system. <code>LD_PRELOAD</code> and <code>LD_LIBRARY_PATH</code> do nothing. glibc binaries don't run, so build yours static or package it.</p>
-<p>there is no <code>/lib</code> because there is nothing to load, and no <code>/sbin</code> because root and users run the same programs. <code>/usr</code> is a symlink to <code>/</code> for scripts that start with <code>#!/usr/bin/env</code>.</p>
+<p>everything is static. with no loader, <code>LD_PRELOAD</code> and <code>LD_LIBRARY_PATH</code> do nothing and glibc binaries don't run: build yours static or package it.</p>
+<p>there is no <code>/lib</code> because there is nothing to load, and no <code>/sbin</code> because root and users run the same programs.</p>
 <p><code>/bin</code> -&gt; programs</p>
 <p><code>/share</code> -&gt; everything a program reads: data, fonts, firmware, kernel modules, python&#39;s library</p>
 <p><code>/etc</code> -&gt; configuration</p>
@@ -63,7 +63,7 @@ hr { border: 0; border-top: 1px solid #2a2a28; }
 <p><code>/home</code>, <code>/root</code> -&gt; users</p>
 <p><code>/mnt</code> -&gt; whatever you mount</p>
 <p><code>/dev</code>, <code>/proc</code>, <code>/sys</code>, <code>/run</code>, <code>/tmp</code> -&gt; made at boot</p>
-<p><code>/usr</code> -&gt; a symlink to <code>/</code></p>
+<p><code>/usr</code> -&gt; a symlink to <code>/</code>, for <code>#!/usr/bin/env</code></p>
 <p><code>musl-dev</code> puts headers and static libraries in <code>/share/include</code> and <code>/share/lib</code>, and tcc links static by default.</p>
 <p><code>superlab</code> moves whatever a build puts in <code>usr/bin</code>, <code>usr/sbin</code> or <code>sbin</code> to <code>/bin</code> and <code>usr/share</code> to <code>/share</code>. anything left in <code>/usr</code> or <code>/lib</code> fails the build.</p>
 </td>

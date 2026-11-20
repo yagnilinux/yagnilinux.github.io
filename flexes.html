@@ -52,7 +52,6 @@ hr { border: 0; border-top: 1px solid #2a2a28; }
 <p>starting a program -&gt; 0.13ms. the same program on glibc: 0.9ms</p>
 <p>base install -&gt; under 3s</p>
 <p>dynamic loaders -&gt; 0</p>
-<p>shared libraries resolved at startup -&gt; 0</p>
 <p>daemons at idle -&gt; mdev, udhcpc, and wpa_supplicant if you have wifi</p>
 <p>ram at idle -&gt; 11MB</p>
 <p>iso -&gt; 37MB</p>
@@ -61,7 +60,7 @@ hr { border: 0; border-top: 1px solid #2a2a28; }
 <p>compositor -&gt; 179 lines of c</p>
 <p>directories in / -&gt; 13, and a symlink</p>
 <p>gnu packages -&gt; <a class="egg" href="lix.html">0</a></p>
-<p>startup is the mean of 5000 spawns of an empty <code>main</code>, built static against musl and dynamic against glibc, on the same machine. install time is <code>jits a base</code> from a local repo. there is no loader to find, map and relocate libraries before <code>main</code>, so everything opens like it was already running.</p>
+<p>startup is the mean of 5000 spawns of an empty <code>main</code>, built static against musl and dynamic against glibc, on the same machine. install time is <code>jits a base</code> from a local repo.</p>
 </td>
 </tr></table>
 <hr noshade size="1">
