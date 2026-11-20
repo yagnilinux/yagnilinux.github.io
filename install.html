@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>install - sidewinder/linux</title>
+<title>install - yagni/linux</title>
 <style>
-body { background: #ffffff; color: #494949; margin: 6px; font-size: 13px; line-height: 1.15; }
-a { color: #353535; font-weight: bold; }
-a:visited { color: #353535; }
-a:hover { background: #494949; color: #ffffff; text-decoration: none; }
+body { background: #dcd6c8; color: #2a2a28; margin: 6px; font-size: 13px; line-height: 1.15; }
+a { color: #111110; font-weight: bold; }
+a:visited { color: #111110; }
+a:hover { background: #2a2a28; color: #dcd6c8; text-decoration: none; }
 a.top { text-decoration: none; }
 .side { line-height: 1.5; white-space: nowrap; }
 .side a { font-weight: normal; text-decoration: none; }
@@ -16,21 +16,21 @@ a.egg, a.egg:hover { color: inherit; background: none; font-weight: normal; text
 h1 { margin: 4px 0 10px; letter-spacing: -1px; }
 h2 { margin: 0 0 6px; text-decoration: underline; }
 h3 { margin: 14px 0 4px; font-size: 13px; text-transform: uppercase; text-decoration: underline; }
-pre { border: 1px solid #494949; padding: 3px; margin: 4px 0; }
+pre { border: 1px solid #2a2a28; padding: 3px; margin: 4px 0; }
 code { }
 table { border-collapse: collapse; }
-td, th { border-color: #494949; }
+td, th { border-color: #2a2a28; }
 ul { margin: 4px 0; padding-left: 22px; }
 p { margin: 6px 0; }
-img { border: 1px solid #494949; }
+img { border: 1px solid #2a2a28; }
 .side-img { border: 0; }
-hr { border: 0; border-top: 1px solid #494949; }
+hr { border: 0; border-top: 1px solid #2a2a28; }
 </style>
 </head>
-<body bgcolor="#ffffff" text="#494949" link="#353535" vlink="#353535" alink="#494949">
+<body bgcolor="#dcd6c8" text="#2a2a28" link="#111110" vlink="#111110" alink="#2a2a28">
 <font face="Verdana, Geneva, sans-serif">
-<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/sidewinder-linux">git</a> |</small>
-<h1><a class="top" href="index.html">sidewinder/linux <small><small><i>shorter than the gentoo handbook</i></small></small></a></h1>
+<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
+<h1><a class="top" href="index.html">yagni/linux <small><small><i>shorter than the gentoo handbook</i></small></small></a></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
 <td valign="top" width="332">
 <table border="0" cellpadding="0" cellspacing="0"><tr><td>
@@ -43,7 +43,7 @@ hr { border: 0; border-top: 1px solid #494949; }
 &nbsp;&nbsp;&rsaquo; <a href="wifi.html">wifi</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="desktop.html">desktop/</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="layout.html">layout</a><br>
-&nbsp;&nbsp;&rsaquo; <a href="cook.html">cook/</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="jits.html">jits/</a><br>
 &rsaquo; <a href="faq.html">answers</a><br>
 &rsaquo; <a href="screenshots.html">screenshots</a><br>
 &rsaquo; <a href="goals.html">about/</a><br>
@@ -53,32 +53,32 @@ hr { border: 0; border-top: 1px solid #494949; }
 <td valign="top">
 <h2>-&gt; install</h2>
 
-<p>write <a href="releases.html">sidewinder.iso</a> to a usb stick and boot it with secure boot off. it drops you in a root shell, and the install doesn't need a network.</p>
-<pre># dd if=sidewinder.iso of=/dev/sdX bs=4M</pre>
-<p>the kernel finds root by its gpt partition name, so the second partition has to be called <code>sidewinder</code>.</p>
+<p>write <a href="releases.html">yagni.iso</a> to a usb stick and boot it with secure boot off. it drops you in a root shell, and the install doesn't need a network.</p>
+<pre># dd if=yagni.iso of=/dev/sdX bs=4M</pre>
+<p>the kernel finds root by its gpt partition name, so the second partition has to be called <code>yagni</code>.</p>
 <pre># sfdisk /dev/sda &lt;&lt;EOF
 label: gpt
 size=256M, type=uefi, name=BOOT
-type=linux, name=sidewinder
+type=linux, name=yagni
 EOF
 # mkfs.vfat -F 32 -n BOOT /dev/sda1
-# mkfs.ext4 -L sidewinder /dev/sda2
+# mkfs.ext4 -L yagni /dev/sda2
 # mount /dev/sda2 /mnt
 # mkdir /mnt/boot
 # mount /dev/sda1 /mnt/boot</pre>
 <p>unpack base and set a root password. tar complains about permissions on <code>/boot</code> because it is fat; ignore it.</p>
 <pre># cd /media/install
-# sha256sum -c sidewinder.tar.gz.sha256
-# tar xzf sidewinder.tar.gz -C /mnt
+# sha256sum -c yagni.tar.gz.sha256
+# tar xzf yagni.tar.gz -C /mnt
 # chroot /mnt passwd</pre>
 <p>on a machine with only wifi, install <a href="wifi.html">wifi</a> from the iso before rebooting:</p>
-<pre># COOK_REPO=file:///media/install/repo cook -r /mnt a wpa_supplicant firmware-iwlwifi yutils</pre>
+<pre># JITS_REPO=file:///media/install/repo jits -r /mnt a wpa_supplicant firmware-iwlwifi yutils</pre>
 <pre># umount /mnt/boot /mnt
 # reboot</pre>
 <h3>when it does not boot</h3>
-<p><code>Waiting for root device PARTLABEL=sidewinder</code>: the partition name is wrong. <code>sfdisk --part-label /dev/sda 2 sidewinder</code>.</p>
+<p><code>Waiting for root device PARTLABEL=yagni</code>: the partition name is wrong. <code>sfdisk --part-label /dev/sda 2 yagni</code>.</p>
 <p>firmware that will not boot the fallback path from an internal disk: add an entry with <code>efibootmgr</code> from another live system.</p>
-<p>dual boot: mount the existing efi partition at <code>/mnt/boot</code> and move any <code>EFI/BOOT/BOOTX64.EFI</code> out of the way first, because sidewinder writes its kernel there.</p>
+<p>dual boot: mount the existing efi partition at <code>/mnt/boot</code> and move any <code>EFI/BOOT/BOOTX64.EFI</code> out of the way first, because yagni writes its kernel there.</p>
 </td>
 </tr></table>
 <hr noshade size="1">
