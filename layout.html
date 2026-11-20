@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>layout - YAGNI/Linux</title>
+<title>layout - Redemption/Linux</title>
 <style>
 body { background: #dcd6c8; color: #000; margin: 6px; font-size: 13px; line-height: 1.15; }
 a { color: #1d1d1b; font-weight: bold; }
@@ -28,21 +28,21 @@ hr { border: 0; border-top: 1px solid #000; }
 </head>
 <body bgcolor="#dcd6c8" text="#2c2c2a" link="#1d1d1b" vlink="#1d1d1b" alink="#000000">
 <font face="Verdana, Geneva, sans-serif">
-<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
-<h1><a class="top" href="index.html">yagni/linux <small><small><i>nothing to link against</i></small></small></a></h1>
+<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/redemption-linux">git</a> |</small>
+<h1><a class="top" href="index.html">redemption/linux <small><small><i>this town ain't big enough</i></small></small></a></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
 <td valign="top" width="152">
 <table border="0" cellpadding="0" cellspacing="0"><tr><td>
-<a href="index.html"><img src="art/side.png" width="140" border="0" alt="yagni"></a>
+<a href="index.html"><img src="art/side.png" width="140" border="0" alt="redemption"></a>
 <p>pages:</p>
 <p class="side">&raquo; <i><a href="docs.html">docs/</a></i><br>
-&nbsp;&nbsp;&rsaquo; <a href="install.html">install</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="install.html">the plan</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="boot.html">boot</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="users.html">users</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="wifi.html">wifi</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="desktop.html">desktop/</a><br>
 &nbsp;&nbsp;&raquo; <i><a href="layout.html">layout</a></i><br>
-&nbsp;&nbsp;&rsaquo; <a href="jits.html">jits/</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="cook.html">cook/</a><br>
 &rsaquo; <a href="goals.html">about/</a><br>
 &rsaquo; <a href="screenshots.html">screenshots</a><br>
 &rsaquo; <a href="releases.html">releases</a></p>
@@ -51,19 +51,19 @@ hr { border: 0; border-top: 1px solid #000; }
 <td valign="top">
 <h2>-&gt; layout</h2>
 
-<p>every program on yagni is static, and there is no dynamic loader or shared library anywhere on the system. <code>LD_PRELOAD</code> and <code>LD_LIBRARY_PATH</code> do nothing. glibc binaries don't run, so build yours static or package it.</p>
-<p>there is no <code>/lib</code> because there is nothing to load, and no <code>/sbin</code> because root and users run the same programs. <code>/usr</code> is a symlink to <code>/</code> for scripts that start with <code>#!/usr/bin/env</code>.</p>
+<p>there is one of everything here. every program is static, so there is no dynamic loader and no shared library anywhere on the system. <code>LD_PRELOAD</code> and <code>LD_LIBRARY_PATH</code> do nothing. glibc binaries do not run, so build yours static or cook a package for it.</p>
+<p>no <code>/lib</code>, because there is nothing to load. no <code>/sbin</code>, because root runs what you run. <code>/usr</code> is a symlink to <code>/</code> for every old script that still says <code>#!/usr/bin/env</code>.</p>
 <p><code>/bin</code> -&gt; programs</p>
 <p><code>/share</code> -&gt; everything a program reads: data, fonts, firmware, kernel modules, python&#39;s library</p>
 <p><code>/etc</code> -&gt; configuration</p>
 <p><code>/boot</code> -&gt; the efi partition, holding the kernel</p>
-<p><code>/var</code> -&gt; logs, and what jits knows in <code>/var/db/jits</code></p>
+<p><code>/var</code> -&gt; logs, and what cook knows in <code>/var/db/cook</code></p>
 <p><code>/home</code>, <code>/root</code> -&gt; users</p>
 <p><code>/mnt</code> -&gt; whatever you mount</p>
 <p><code>/dev</code>, <code>/proc</code>, <code>/sys</code>, <code>/run</code>, <code>/tmp</code> -&gt; made at boot</p>
 <p><code>/usr</code> -&gt; a symlink to <code>/</code></p>
-<p><code>musl-dev</code> puts headers and static libraries in <code>/share/include</code> and <code>/share/lib</code>, and tcc links static by default.</p>
-<p><code>mkrepo</code> moves whatever a build puts in <code>usr/bin</code>, <code>usr/sbin</code> or <code>sbin</code> to <code>/bin</code> and <code>usr/share</code> to <code>/share</code>. anything left in <code>/usr</code> or <code>/lib</code> fails the build.</p>
+<p>tcc&#39;s headers and static libraries land in <code>/share/include</code> and <code>/share/lib</code> with <code>musl-dev</code>, and tcc links static by default.</p>
+<p>superlab holds every package to this. whatever a build drops in <code>usr/bin</code>, <code>usr/sbin</code> or <code>sbin</code> goes to <code>/bin</code>, <code>usr/share</code> goes to <code>/share</code>, and anything left in <code>/usr</code> or <code>/lib</code> does not leave the lab.</p>
 </td>
 </tr></table>
 <hr noshade size="1">

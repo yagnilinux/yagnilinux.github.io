@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cook - Redemption/Linux</title>
+<style>
+body { background: #dcd6c8; color: #000; margin: 6px; font-size: 13px; line-height: 1.15; }
+a { color: #1d1d1b; font-weight: bold; }
+a:visited { color: #000; }
+a:hover { background: #1d1d1b; color: #dcd6c8; text-decoration: none; }
+a.top { text-decoration: none; }
+.side { line-height: 1.5; white-space: nowrap; }
+.side a { font-weight: normal; text-decoration: none; }
+a.egg, a.egg:hover { color: inherit; background: none; font-weight: normal; text-decoration: none; cursor: text; }
+h1 { margin: 4px 0 10px; letter-spacing: -1px; }
+h2 { margin: 0 0 6px; text-decoration: underline; }
+h3 { margin: 14px 0 4px; font-size: 13px; text-transform: uppercase; text-decoration: underline; }
+pre { border: 1px solid #000; padding: 3px; margin: 4px 0; }
+code { }
+table { border-collapse: collapse; }
+td, th { border-color: #2c2c2a; }
+ul { margin: 4px 0; padding-left: 22px; }
+p { margin: 6px 0; }
+img { border: 1px solid #000; }
+hr { border: 0; border-top: 1px solid #000; }
+</style>
+</head>
+<body bgcolor="#dcd6c8" text="#2c2c2a" link="#1d1d1b" vlink="#1d1d1b" alink="#000000">
+<font face="Verdana, Geneva, sans-serif">
+<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/redemption-linux">git</a> |</small>
+<h1><a class="top" href="index.html">redemption/linux <small><small><i>99.1% pure</i></small></small></a></h1>
+<table cellpadding="6" cellspacing="0" border="0"><tr>
+<td valign="top" width="152">
+<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+<a href="index.html"><img src="art/side.png" width="140" border="0" alt="redemption"></a>
+<p>pages:</p>
+<p class="side">&raquo; <i><a href="docs.html">docs/</a></i><br>
+&nbsp;&nbsp;&rsaquo; <a href="install.html">the plan</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="boot.html">boot</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="users.html">users</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="wifi.html">wifi</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="desktop.html">desktop/</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="layout.html">layout</a><br>
+&nbsp;&nbsp;&raquo; <i><a href="cook.html">cook/</a></i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&rsaquo; <a href="packages.html">packages</a><br>
+&rsaquo; <a href="goals.html">about/</a><br>
+&rsaquo; <a href="screenshots.html">screenshots</a><br>
+&rsaquo; <a href="releases.html">releases</a></p>
+</td></tr></table>
+</td>
+<td valign="top">
+<h2>-&gt; cook</h2>
+
+<p>[01] <a href="#use">cooking</a><br>
+[02] <a href="#packaging">recipes</a><br>
+[03] <a href="#building">the superlab</a></p>
+
+<h3 id="use">[01] cooking</h3>
+<p>cook is the package manager. one shell script, 165 lines.</p>
+<pre>cook [-r root] [a|r|u|s|l] [pkg]...
+  a  add       install packages and what they need
+  r  remove    remove packages
+  u  update    sync the repository, upgrade everything
+  s  search    search the repository
+  l  list      list installed packages</pre>
+<p><a href="packages.html">tahiti</a>, the repository, holds exactly one version of every package, so cook never has to choose. packages are tarballs compressed with apple&#39;s lzfse, and every one is checked against its sha256 in the index before it goes in. nothing is signed.</p>
+<p>cook removes whatever you tell it to, even things other packages need. it figures you meant it. configs you edited survive upgrades: the new one shows up as <code>file.new</code> and <code>etcnew</code> merges it.</p>
+<p>point it at another repository with <code>/etc/cook/repo</code>, or <code>COOK_REPO</code> for one command. <code>file://</code> works. which package owns a file:</p>
+<pre>$ grep -lx bin/oksh /var/db/cook/installed/*/manifest</pre>
+
+<h3 id="packaging">[02] recipes</h3>
+<p>a package is a directory in <code>pkgs/</code> of <a href="https://codeberg.org/redemption-linux/repo">redemption-linux/repo</a>:</p>
+<pre>pkgs/bluesky/version    0.3
+pkgs/bluesky/source     git https://codeberg.org/redemption-linux/bluesky.git main
+pkgs/bluesky/build      #!/bin/sh -e
+                        musl-gcc -std=c99 -Os -s -static -o bluesky bluesky.c
+                        install -Dm755 bluesky "$1/bin/bluesky"
+pkgs/bluesky/depends    what it needs, one per line
+pkgs/bluesky/files/     configs and patches</pre>
+<p><code>build</code> installs into <code>$1</code> as if it were <code>/</code>, following the <a href="layout.html">layout</a>. static and stripped. sources are <code>git &lt;url&gt; &lt;tag&gt;</code>, <code>apt-src &lt;pkg&gt;</code> or <code>apt-deb &lt;pkg&gt;</code>. change a recipe and bump its version, or the superlab will not touch it.</p>
+
+<h3 id="building">[03] the superlab</h3>
+<pre>$ git clone https://codeberg.org/redemption-linux/repo
+$ cd repo
+$ ./superlab    # cooks every package into repo/
+$ ./mkrootfs    # redemption.tar.gz
+# ./mkiso       # redemption.iso</pre>
+<p>the lab runs on another machine. the kernel wants gnu make, and gnu is not welcome on redemption. the build box needs <code>musl-gcc</code> and <code>lzfse</code>, and <code>mkiso</code> also needs root, <code>xorriso</code> and <code>mtools</code>. a mirror is just <code>repo/</code> on a web server.</p>
+</td>
+</tr></table>
+<hr noshade size="1">
+<small>made by max spuk. cddl 1.1. <a href="thanks.html">thanks</a>. <a href="nothing.html">.</a></small>
+</font>
+</body>
+</html>

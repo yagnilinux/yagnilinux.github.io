@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>install - YAGNI/Linux</title>
+<title>the plan - Redemption/Linux</title>
 <style>
 body { background: #dcd6c8; color: #000; margin: 6px; font-size: 13px; line-height: 1.15; }
 a { color: #1d1d1b; font-weight: bold; }
@@ -28,55 +28,61 @@ hr { border: 0; border-top: 1px solid #000; }
 </head>
 <body bgcolor="#dcd6c8" text="#2c2c2a" link="#1d1d1b" vlink="#1d1d1b" alink="#000000">
 <font face="Verdana, Geneva, sans-serif">
-<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">git</a> |</small>
-<h1><a class="top" href="index.html">yagni/linux <small><small><i>shorter than the gentoo handbook</i></small></small></a></h1>
+<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/redemption-linux">git</a> |</small>
+<h1><a class="top" href="index.html">redemption/linux <small><small><i>tread lightly</i></small></small></a></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
 <td valign="top" width="152">
 <table border="0" cellpadding="0" cellspacing="0"><tr><td>
-<a href="index.html"><img src="art/side.png" width="140" border="0" alt="yagni"></a>
+<a href="index.html"><img src="art/side.png" width="140" border="0" alt="redemption"></a>
 <p>pages:</p>
 <p class="side">&raquo; <i><a href="docs.html">docs/</a></i><br>
-&nbsp;&nbsp;&raquo; <i><a href="install.html">install</a></i><br>
+&nbsp;&nbsp;&raquo; <i><a href="install.html">the plan</a></i><br>
 &nbsp;&nbsp;&rsaquo; <a href="boot.html">boot</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="users.html">users</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="wifi.html">wifi</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="desktop.html">desktop/</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="layout.html">layout</a><br>
-&nbsp;&nbsp;&rsaquo; <a href="jits.html">jits/</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="cook.html">cook/</a><br>
 &rsaquo; <a href="goals.html">about/</a><br>
 &rsaquo; <a href="screenshots.html">screenshots</a><br>
 &rsaquo; <a href="releases.html">releases</a></p>
 </td></tr></table>
 </td>
 <td valign="top">
-<h2>-&gt; install</h2>
+<h2>-&gt; the plan</h2>
 
-<p>write <a href="releases.html">yagni.iso</a> to a usb stick and boot it with secure boot off. it drops you in a root shell, and the install doesn't need a network.</p>
-<pre># dd if=yagni.iso of=/dev/sdX bs=4M</pre>
-<p>the kernel finds root by its gpt partition name, so the second partition has to be called <code>yagni</code>.</p>
+<p>the job, start to finish. no installer and no wizard, just you, a shell and a stick.</p>
+<h3>1. get in</h3>
+<p>write <a href="releases.html">redemption.iso</a> to a usb stick, turn secure boot off and boot it. you wake up as root. everything the job needs is on the stick, so leave the network out of it.</p>
+<pre># dd if=redemption.iso of=/dev/sdX bs=4M</pre>
+<h3>2. stake the claim</h3>
+<p>the kernel only knows root by its gpt partition name. call it <code>redemption</code> or it rides right past.</p>
 <pre># sfdisk /dev/sda &lt;&lt;EOF
 label: gpt
 size=256M, type=uefi, name=BOOT
-type=linux, name=yagni
+type=linux, name=redemption
 EOF
 # mkfs.vfat -F 32 -n BOOT /dev/sda1
-# mkfs.ext4 -L yagni /dev/sda2
+# mkfs.ext4 -L redemption /dev/sda2
 # mount /dev/sda2 /mnt
 # mkdir /mnt/boot
 # mount /dev/sda1 /mnt/boot</pre>
-<p>unpack base and set a root password. tar complains about permissions on <code>/boot</code> because it is fat; ignore it.</p>
+<h3>3. move in</h3>
+<p>check the haul, unpack it, set a root password. tar grumbles about permissions on <code>/boot</code> because it is fat. let it grumble.</p>
 <pre># cd /media/install
-# sha256sum -c yagni.tar.gz.sha256
-# tar xzf yagni.tar.gz -C /mnt
+# sha256sum -c redemption.tar.gz.sha256
+# tar xzf redemption.tar.gz -C /mnt
 # chroot /mnt passwd</pre>
-<p>on a machine with only wifi, install <a href="wifi.html">wifi</a> from the iso before rebooting:</p>
-<pre># JITS_REPO=file:///media/install/repo jits -r /mnt a wpa_supplicant firmware-iwlwifi yutils</pre>
+<h3>4. bring the wifi</h3>
+<p>only got wifi on this machine? take it with you now, from the stick. more in <a href="wifi.html">wifi</a>.</p>
+<pre># COOK_REPO=file:///media/install/repo cook -r /mnt a wpa_supplicant firmware-iwlwifi yutils</pre>
+<h3>5. ride out</h3>
 <pre># umount /mnt/boot /mnt
 # reboot</pre>
-<h3>when it does not boot</h3>
-<p><code>Waiting for root device PARTLABEL=yagni</code>: the partition name is wrong. <code>sfdisk --part-label /dev/sda 2 yagni</code>.</p>
-<p>firmware that will not boot the fallback path from an internal disk: add an entry with <code>efibootmgr</code> from another live system.</p>
-<p>dual boot: mount the existing efi partition at <code>/mnt/boot</code> and move any <code>EFI/BOOT/BOOTX64.EFI</code> out of the way first, because yagni writes its kernel there.</p>
+<h3>when the job goes wrong</h3>
+<p>stuck at <code>Waiting for root device PARTLABEL=redemption</code>: you named the partition wrong. <code>sfdisk --part-label /dev/sda 2 redemption</code> fixes it.</p>
+<p>some firmware will not boot the fallback path off an internal disk. give it a boot entry with <code>efibootmgr</code> from another live system.</p>
+<p>dual booting: mount the efi partition you already have at <code>/mnt/boot</code>, and move any <code>EFI/BOOT/BOOTX64.EFI</code> out of the way first. redemption puts its kernel right there.</p>
 </td>
 </tr></table>
 <hr noshade size="1">
