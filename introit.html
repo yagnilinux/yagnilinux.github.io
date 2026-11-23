@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>introit - requiem</title>
+<style>
+body { background: #2b3445; color: #c3ccdb; margin: 8px; font: 16px/1.4 "Times New Roman", Times, serif; }
+a { color: #9fc6ff; }
+a:visited { color: #c7a6ff; }
+a:hover { color: #fff; background: #1d2534; }
+a.top { color: #eef1f6; text-decoration: none; }
+h1 { font: bold 34px Verdana, Geneva, sans-serif; margin: 6px 0 12px; letter-spacing: -1px; }
+h1 small { font-family: "Times New Roman", serif; font-weight: normal; color: #9fb0c8; }
+h2 { font: bold 18px Verdana, Geneva, sans-serif; background: #1d2534; border-left: 8px solid #6e7d95; padding: 4px 8px; margin: 0 0 10px; }
+h3 { font: bold 14px Verdana, Geneva, sans-serif; text-transform: uppercase; text-decoration: underline; margin: 18px 0 6px; }
+.side { border: 2px outset #6e7d95; background: #36415a; padding: 0 0 6px; line-height: 1.6; white-space: nowrap; font: 14px Verdana, Geneva, sans-serif; }
+.side b { display: block; background: #1d2534; padding: 2px 6px; margin-bottom: 4px; }
+.side span { display: block; padding: 0 8px; }
+.side a { color: #eef1f6; text-decoration: none; }
+.bar { font: 12px Verdana, Geneva, sans-serif; }
+pre { background: #1d2534; border: 1px dashed #6e7d95; padding: 6px; margin: 6px 0; font-size: 14px; }
+code { font-size: 14px; }
+table { border-collapse: separate; }
+td, th { border: 1px solid #6e7d95; background: #323d52; }
+th { background: #1d2534; font-family: Verdana, Geneva, sans-serif; font-size: 14px; }
+ul { margin: 4px 0; padding-left: 26px; }
+p { margin: 8px 0; }
+img { border: 2px solid #6e7d95; }
+hr { border: 1px groove #6e7d95; }
+a.egg, a.egg:visited, a.egg:hover { color: inherit; background: none; text-decoration: none; cursor: text; }
+.foot { font: 12px Verdana, Geneva, sans-serif; color: #9fb0c8; }
+</style>
+</head>
+<body bgcolor="#2b3445" text="#c3ccdb" link="#eef1f6" vlink="#eef1f6" alink="#c3ccdb">
+<font face="Verdana, Geneva, sans-serif">
+<small class="bar"><a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="packages.html">packages</a> | <a href="https://codeberg.org/requiem-linux">code</a> |</small>
+<h1><a class="top" href="index.html">requiem</a> <small><small><i>just install that shit</i></small></small></h1>
+<table cellpadding="6" cellspacing="0" border="0"><tr>
+<td valign="top" width="200">
+<div class="side"><b>pages:</b><span>&raquo; <i><a href="docs.html">docs/</a></i><br>
+&nbsp;&nbsp;&rsaquo; <a href="install.html">install</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="boot.html">boot</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="users.html">users</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="wifi.html">wifi</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="desktop.html">desktop/</a><br>
+&nbsp;&nbsp;&rsaquo; <a href="layout.html">layout</a><br>
+&nbsp;&nbsp;&raquo; <i><a href="introit.html">introit/</a></i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&rsaquo; <a href="packages.html">packages</a><br>
+&rsaquo; <a href="faq.html">answers</a><br>
+&rsaquo; <a href="screenshots.html">screenshots</a><br>
+&rsaquo; <a href="goals.html">about/</a><br>
+&rsaquo; <a href="releases.html">releases</a></span></div>
+</td>
+<td valign="top">
+<h2>-&gt; introit</h2>
+<p><i>&ldquo;A child has beaten me in plainness of living.&rdquo;</i> &mdash; Diogenes, throwing away his cup</p>
+
+<p>[01] <a href="#use">use</a><br>
+[02] <a href="#packaging">packaging</a><br>
+[03] <a href="#building">building requiem</a></p>
+<h3 id="use">[01] use</h3>
+<pre>introit [-r root] [a|r|u|s|l] [pkg]...
+  a  add       install packages and what they need
+  r  remove    remove packages
+  u  update    sync the repository, upgrade everything
+  s  search    search the repository
+  l  list      list installed packages</pre>
+<p>packages are <a href="https://github.com/lzfse/lzfse">lzfse</a> tarballs, checked against the sha256 in the <a href="packages.html">index</a>. packages are not signed.</p>
+<p>introit removes what you tell it to, including what other packages need. configuration survives upgrades: the new version is written as <code>file.new</code>, and <code>etcnew</code> merges it.</p>
+<p>another repository goes in <code>/etc/introit/repo</code>, or in <code>INTROIT_REPO</code> for one command. <code>file://</code> works. to find the package that owns a file:</p>
+<pre>$ grep -lx bin/oksh /var/db/introit/installed/*/manifest</pre>
+<h3 id="packaging">[02] packaging</h3>
+<p>a package is a directory in <code>pkgs/</code> of <a href="https://codeberg.org/requiem-linux/repo">requiem/repo</a>:</p>
+<pre>pkgs/tract/version    0.4
+pkgs/tract/source     git https://codeberg.org/requiem-linux/tract.git main
+pkgs/tract/build      #!/bin/sh -e
+                  musl-cc -std=c99 -Os -s -static -o tract tract.c
+                  install -Dm755 tract "$1/bin/tract"
+pkgs/tract/depends    what it needs, one per line
+pkgs/tract/files/     configuration and patches</pre>
+<p><code>build</code> installs into <code>$1</code> as if it were <code>/</code>. everything is static and stripped. sources are <code>git &lt;url&gt; &lt;tag&gt;</code>, <code>apt-src &lt;pkg&gt;</code> or <code>apt-deb &lt;pkg&gt;</code>. a changed package needs a new version; <code>mkrepo</code> refuses to rebuild it under the old one.</p>
+<h3 id="building">[03] building requiem</h3>
+<pre>$ git clone https://codeberg.org/requiem-linux/repo
+$ cd repo
+$ ./mkrepo        # every package into repo/
+$ ./mkpkg htop    # only htop
+$ ./mkrootfs      # requiem.tar.gz
+# ./mkiso         # requiem.iso</pre>
+<p>build on another linux machine; the kernel needs gnu make, which requiem does not ship. the build machine needs clang, lld, compiler-rt and <code>lzfse</code>; <code>cc/musl-cc</code> points clang at a musl built by clang. <code>mkiso</code> needs root, <code>xorriso</code> and <code>mtools</code>. any web server serving <code>repo/</code> is a mirror.</p>
+
+</td>
+</tr></table>
+<hr noshade size="1">
+<small class="foot">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</small>
+</font>
+</body>
+</html>

@@ -3,112 +3,106 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>packages - yagni/linux</title>
+<title>packages - requiem</title>
 <style>
-body { background: #dcd6c8; color: #2a2a28; margin: 6px; font-size: 13px; line-height: 1.15; }
-a { color: #111110; font-weight: bold; }
-a:visited { color: #111110; }
-a:hover { background: #2a2a28; color: #dcd6c8; text-decoration: none; }
-a.top { text-decoration: none; }
-.side { line-height: 1.5; white-space: nowrap; }
-.side a { font-weight: normal; text-decoration: none; }
-a.egg, a.egg:hover { color: inherit; background: none; font-weight: normal; text-decoration: none; cursor: text; }
-h1 { margin: 4px 0 10px; letter-spacing: -1px; }
-h2 { margin: 0 0 6px; text-decoration: underline; }
-h3 { margin: 14px 0 4px; font-size: 13px; text-transform: uppercase; text-decoration: underline; }
-pre { border: 1px solid #2a2a28; padding: 3px; margin: 4px 0; }
-code { }
-table { border-collapse: collapse; }
-td, th { border-color: #2a2a28; }
-ul { margin: 4px 0; padding-left: 22px; }
-p { margin: 6px 0; }
-img { border: 1px solid #2a2a28; }
-.mascot { border: 0; padding: 0; margin: 0 0 8px; font-size: 15px; line-height: 1.1; }
-hr { border: 0; border-top: 1px solid #2a2a28; }
+body { background: #2b3445; color: #c3ccdb; margin: 8px; font: 16px/1.4 "Times New Roman", Times, serif; }
+a { color: #9fc6ff; }
+a:visited { color: #c7a6ff; }
+a:hover { color: #fff; background: #1d2534; }
+a.top { color: #eef1f6; text-decoration: none; }
+h1 { font: bold 34px Verdana, Geneva, sans-serif; margin: 6px 0 12px; letter-spacing: -1px; }
+h1 small { font-family: "Times New Roman", serif; font-weight: normal; color: #9fb0c8; }
+h2 { font: bold 18px Verdana, Geneva, sans-serif; background: #1d2534; border-left: 8px solid #6e7d95; padding: 4px 8px; margin: 0 0 10px; }
+h3 { font: bold 14px Verdana, Geneva, sans-serif; text-transform: uppercase; text-decoration: underline; margin: 18px 0 6px; }
+.side { border: 2px outset #6e7d95; background: #36415a; padding: 0 0 6px; line-height: 1.6; white-space: nowrap; font: 14px Verdana, Geneva, sans-serif; }
+.side b { display: block; background: #1d2534; padding: 2px 6px; margin-bottom: 4px; }
+.side span { display: block; padding: 0 8px; }
+.side a { color: #eef1f6; text-decoration: none; }
+.bar { font: 12px Verdana, Geneva, sans-serif; }
+pre { background: #1d2534; border: 1px dashed #6e7d95; padding: 6px; margin: 6px 0; font-size: 14px; }
+code { font-size: 14px; }
+table { border-collapse: separate; }
+td, th { border: 1px solid #6e7d95; background: #323d52; }
+th { background: #1d2534; font-family: Verdana, Geneva, sans-serif; font-size: 14px; }
+ul { margin: 4px 0; padding-left: 26px; }
+p { margin: 8px 0; }
+img { border: 2px solid #6e7d95; }
+hr { border: 1px groove #6e7d95; }
+a.egg, a.egg:visited, a.egg:hover { color: inherit; background: none; text-decoration: none; cursor: text; }
+.foot { font: 12px Verdana, Geneva, sans-serif; color: #9fb0c8; }
 </style>
 </head>
-<body bgcolor="#dcd6c8" text="#2a2a28" link="#111110" vlink="#111110" alink="#2a2a28">
+<body bgcolor="#2b3445" text="#c3ccdb" link="#eef1f6" vlink="#eef1f6" alink="#c3ccdb">
 <font face="Verdana, Geneva, sans-serif">
-<small><a href="flexes.html">flxs</a> | <a href="lix.html">lix</a> | <a href="https://github.com/lzfse/lzfse">lzfse</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/yagni-linux">code</a> |</small>
-<h1><a class="top" href="index.html">yagni/linux <small><small><i>next stop: tahiti</i></small></small></a></h1>
+<small class="bar"><a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="packages.html">packages</a> | <a href="https://codeberg.org/requiem-linux">code</a> |</small>
+<h1><a class="top" href="index.html">requiem</a> <small><small><i>everything we bothered to package</i></small></small></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
-<td valign="top" width="160">
-<table border="0" cellpadding="0" cellspacing="0"><tr><td>
-<a class="top" href="index.html"><pre class="mascot">        z
-    ___z
-   (- -|
-   (&lt;&gt; |
-  / __  &#92;
- ( /  &#92; /|
-_/&#92; __)/_)
-&#92;/-____&#92;/</pre></a>
-<p>pages:</p>
-<p class="side">&raquo; <i><a href="docs.html">docs/</a></i><br>
+<td valign="top" width="200">
+<div class="side"><b>pages:</b><span>&raquo; <i><a href="docs.html">docs/</a></i><br>
 &nbsp;&nbsp;&rsaquo; <a href="install.html">install</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="boot.html">boot</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="users.html">users</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="wifi.html">wifi</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="desktop.html">desktop/</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="layout.html">layout</a><br>
-&nbsp;&nbsp;&raquo; <i><a href="jits.html">jits/</a></i><br>
+&nbsp;&nbsp;&raquo; <i><a href="introit.html">introit/</a></i><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&raquo; <i><a href="packages.html">packages</a></i><br>
 &rsaquo; <a href="faq.html">answers</a><br>
 &rsaquo; <a href="screenshots.html">screenshots</a><br>
 &rsaquo; <a href="goals.html">about/</a><br>
-&rsaquo; <a href="releases.html">releases</a></p>
-</td></tr></table>
+&rsaquo; <a href="releases.html">releases</a></span></div>
 </td>
 <td valign="top">
 <h2>-&gt; packages</h2>
-<p><i>&ldquo;The things you own end up owning you.&rdquo;</i></p>
-<p>43 packages. sizes are what you download. if it isn&#39;t here, you haven&#39;t <a href="jits.html#packaging">packaged</a> it.</p>
-<p><code>alsa-utils</code> 1.2.9-1 595K</p>
-<p><code>base</code> 0.3-4 0K -&gt; baselayout, busybox, curl, doas, jits, linux, lzfse, oksh</p>
-<p><code>baselayout</code> 0.20 2K</p>
-<p><code>bc</code> 7.2.0-1 109K</p>
-<p><code>bluesky</code> 0.3-3 60K</p>
-<p><code>bonjour</code> 878.70.2-1 311K</p>
-<p><code>busybox</code> 1.36.1-8 721K</p>
-<p><code>ca-certificates</code> 20260816-1 102K</p>
-<p><code>curl</code> 8.5.0-1 333K -&gt; ca-certificates</p>
-<p><code>dmenu</code> 4.6-3 896K -&gt; font-dejavu</p>
-<p><code>doas</code> 6.8.2-1 77K</p>
-<p><code>e2fsprogs</code> 1.47.0-1 249K</p>
-<p><code>fastfetch</code> 2.71.0-9 611K</p>
-<p><code>ffmpeg</code> 8.1.3-4 7.9M -&gt; alsa-utils, ca-certificates</p>
-<p><code>firmware-iwlwifi</code> 20240318-1 18.1M</p>
-<p><code>firmware-realtek</code> 20240318-1 4.4M</p>
-<p><code>font-dejavu</code> 2.37-1 1.3M</p>
-<p><code>font-imfell</code> 3.00-1 195K</p>
-<p><code>font-kirsch</code> 0.7.3-1 246K</p>
-<p><code>git</code> 2.56.1-2 4.0M -&gt; curl, ca-certificates</p>
-<p><code>greet</code> 1.0-1 0K -&gt; hello</p>
-<p><code>havoc</code> 0.7-8 237K</p>
-<p><code>hello</code> 1.0-4 315K</p>
-<p><code>jits</code> 0.13 2K</p>
-<p><code>linux</code> 7.3.3-11 5.4M</p>
-<p><code>luwm</code> 0.15 1.2M -&gt; havoc, dmenu</p>
-<p><code>lzfse</code> 1.0-1 33K</p>
-<p><code>motd</code> 1.0-1 0K</p>
-<p><code>musl-dev</code> 1.2.6-2 2.6M</p>
-<p><code>netbsd-curses</code> 0.3.2-1 237K</p>
-<p><code>netsurf</code> 3.11-3 2.3M -&gt; ca-certificates, font-dejavu</p>
-<p><code>oksh</code> 7.9-1 190K</p>
-<p><code>outils</code> 0.14-1 256K</p>
-<p><code>pfetch</code> 0.6.1-1 17K</p>
-<p><code>python</code> 3.13.9-2 6.4M -&gt; ca-certificates</p>
-<p><code>quickjs</code> 0.18.0-1 643K</p>
-<p><code>sfdisk</code> 2.39.3-1 323K</p>
-<p><code>shfm</code> 0.4.2-1 2K</p>
-<p><code>tcc</code> 0.9.28rc-2 267K -&gt; musl-dev</p>
-<p><code>wallpaper</code> 1.9 2.4M</p>
-<p><code>wpa_supplicant</code> 2.10-ubuntu0.4-1 373K</p>
-<p><code>yt-dlp</code> 2026.10.26-2 2.2M -&gt; python, quickjs, ffmpeg</p>
-<p><code>yutils</code> 0.8 1K</p>
+<p><i>&ldquo;Our life is frittered away by detail. Simplify, simplify.&rdquo;</i> &mdash; Henry David Thoreau</p>
+<p>43 packages. sizes are download sizes. anything not listed can be <a href="introit.html#packaging">packaged</a>.</p>
+<p><code>alsa-utils</code> 1.2.9-4 693K</p>
+<p><code>base</code> 0.3-5 0K -&gt; baselayout, busybox, curl, doas, introit, linux, lzfse, oksh</p>
+<p><code>baselayout</code> 0.21-1 2K</p>
+<p><code>bc</code> 7.2.0-2 111K</p>
+<p><code>bonjour</code> 878.70.2-2 302K</p>
+<p><code>busybox</code> 1.36.1-10 732K</p>
+<p><code>ca-certificates</code> 20260816-2 102K</p>
+<p><code>curl</code> 8.5.0-2 353K -&gt; ca-certificates</p>
+<p><code>dmenu</code> 4.6-5 951K -&gt; font-dejavu</p>
+<p><code>doas</code> 6.8.2-2 75K</p>
+<p><code>e2fsprogs</code> 1.47.0-2 256K</p>
+<p><code>fastfetch</code> 2.71.0-11 730K</p>
+<p><code>ffmpeg</code> 8.1.3-5 8.4M -&gt; alsa-utils, ca-certificates</p>
+<p><code>firmware-iwlwifi</code> 20240318-2 18.1M</p>
+<p><code>firmware-realtek</code> 20240318-2 4.4M</p>
+<p><code>font-dejavu</code> 2.37-2 1.3M</p>
+<p><code>font-imfell</code> 3.00-2 195K</p>
+<p><code>font-kirsch</code> 0.7.3-2 246K</p>
+<p><code>git</code> 2.56.1-3 4.4M -&gt; curl, ca-certificates</p>
+<p><code>greet</code> 1.0-2 0K -&gt; hello</p>
+<p><code>havoc</code> <a href="layout.html#apps">app</a> 0.7-10 246K</p>
+<p><code>hello</code> 1.0-5 2K</p>
+<p><code>introit</code> 0.14-2 2K</p>
+<p><code>kyrie</code> 0.16-3 1.3M -&gt; dmenu, havoc</p>
+<p><code>linux</code> 7.3.3-12 5.8M</p>
+<p><code>lzfse</code> 1.0-2 34K</p>
+<p><code>motd</code> 1.0-2 0K</p>
+<p><code>musl-dev</code> 1.2.6-3 2.6M</p>
+<p><code>netbsd-curses</code> 0.3.2-2 244K</p>
+<p><code>netsurf</code> <a href="layout.html#apps">app</a> 3.11-6 5.1M -&gt; ca-certificates, font-dejavu</p>
+<p><code>oksh</code> 7.9-2 196K</p>
+<p><code>outils</code> 0.14-2 250K</p>
+<p><code>pfetch</code> 0.6.1-2 17K</p>
+<p><code>python</code> 3.13.9-3 6.7M -&gt; ca-certificates</p>
+<p><code>quickjs</code> 0.18.0-2 635K</p>
+<p><code>sfdisk</code> 2.39.3-2 346K</p>
+<p><code>shfm</code> 0.4.2-2 2K</p>
+<p><code>tcc</code> 0.9.28rc-3 286K -&gt; musl-dev</p>
+<p><code>tract</code> 0.4-1 62K</p>
+<p><code>wallpaper</code> 1.9-2 2.4M</p>
+<p><code>wpa_supplicant</code> 2.10-ubuntu0.4-2 373K</p>
+<p><code>yt-dlp</code> 2026.10.26-3 2.2M -&gt; python, quickjs, ffmpeg</p>
+<p><code>yutils</code> 0.8-1 1K</p>
 </td>
 </tr></table>
 <hr noshade size="1">
-<small>made by max spuk. cddl 1.1. <a href="thanks.html">thanks</a>. <a href="nothing.html">.</a></small>
+<small class="foot">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</small>
 </font>
 </body>
 </html>
