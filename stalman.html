@@ -4,55 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>stallman - requiem</title>
-<style>
-body { background: #2b3445; color: #c3ccdb; margin: 8px; font: 16px/1.4 "Times New Roman", Times, serif; }
-a { color: #9fc6ff; }
-a:visited { color: #c7a6ff; }
-a:hover { color: #fff; background: #1d2534; }
-a.top { color: #eef1f6; text-decoration: none; }
-h1 { font: bold 34px Verdana, Geneva, sans-serif; margin: 6px 0 12px; letter-spacing: -1px; }
-h1 small { font-family: "Times New Roman", serif; font-weight: normal; color: #9fb0c8; }
-h2 { font: bold 18px Verdana, Geneva, sans-serif; background: #1d2534; border-left: 8px solid #6e7d95; padding: 4px 8px; margin: 0 0 10px; }
-h3 { font: bold 14px Verdana, Geneva, sans-serif; text-transform: uppercase; text-decoration: underline; margin: 18px 0 6px; }
-.side { border: 2px outset #6e7d95; background: #36415a; padding: 0 0 6px; line-height: 1.6; white-space: nowrap; font: 14px Verdana, Geneva, sans-serif; }
-.side b { display: block; background: #1d2534; padding: 2px 6px; margin-bottom: 4px; }
-.side span { display: block; padding: 0 8px; }
-.side a { color: #eef1f6; text-decoration: none; }
-.bar { font: 12px Verdana, Geneva, sans-serif; }
-pre { background: #1d2534; border: 1px dashed #6e7d95; padding: 6px; margin: 6px 0; font-size: 14px; }
-code { font-size: 14px; }
-table { border-collapse: separate; }
-td, th { border: 1px solid #6e7d95; background: #323d52; }
-th { background: #1d2534; font-family: Verdana, Geneva, sans-serif; font-size: 14px; }
-ul { margin: 4px 0; padding-left: 26px; }
-p { margin: 8px 0; }
-img { border: 2px solid #6e7d95; }
-hr { border: 1px groove #6e7d95; }
-a.egg, a.egg:visited, a.egg:hover { color: inherit; background: none; text-decoration: none; cursor: text; }
-.foot { font: 12px Verdana, Geneva, sans-serif; color: #9fb0c8; }
-</style>
 </head>
-<body bgcolor="#2b3445" text="#c3ccdb" link="#eef1f6" vlink="#eef1f6" alink="#c3ccdb">
+<body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
 <font face="Verdana, Geneva, sans-serif">
-<small class="bar"><a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="packages.html">packages</a> | <a href="https://codeberg.org/requiem-linux">code</a> |</small>
-<h1><a class="top" href="index.html">requiem</a> <small><small><i>free as in freedom from gnu</i></small></small></h1>
+<font size="1"><a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="packages.html">packages</a> | <a href="https://codeberg.org/requiem-linux">code</a> |</font>
+<h1><a href="index.html"><font color="#eef1f6">requiem</font></a> <font size="3" color="#9fb0c8"><i>free as in freedom from gnu</i></font></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
 <td valign="top" width="200">
-<div class="side"><b>pages:</b><span>&rsaquo; <a href="docs.html">docs/</a><br>
+<table border="2" cellpadding="4" cellspacing="0" bgcolor="#36415a" width="100%">
+<tr><td bgcolor="#1d2534"><b>pages:</b></td></tr>
+<tr><td nowrap><font size="2">&rsaquo; <a href="docs.html">docs/</a><br>
 &rsaquo; <a href="faq.html">answers</a><br>
 &rsaquo; <a href="screenshots.html">screenshots</a><br>
 &rsaquo; <a href="goals.html">about/</a><br>
-&rsaquo; <a href="releases.html">releases</a></span></div>
+&rsaquo; <a href="releases.html">releases</a></font></td></tr>
+</table>
 </td>
 <td valign="top">
-<h2>-&gt; stallman</h2>
+<table width="100%" cellpadding="4" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" width="6"></td><td bgcolor="#1d2534"><font size="4"><b>-&gt; stallman</b></font></td></tr></table>
 <p><i>&ldquo;What can my enemies do to me? My paradise is in my heart.&rdquo;</i> &mdash; Ibn Taymiyyah</p>
 
 
 <p>richard stallman started <a href="https://www.gnu.org">gnu</a> in 1983. it gave the world gcc, a libc, coreutils and a license. its own kernel, hurd, has been in development since 1990. linux showed up in 1991 and won.</p>
-<h3>the name</h3>
+<h3><u>THE NAME</u></h3>
 <p>gnu wants you to call it gnu/linux. the kernel was written by someone else and the systems people actually run are put together by distributions, but the toolchain's author still wants top billing. requiem has no gnu in it, so it gets to be requiem/linux instead. see <a href="faq.html">answers</a>.</p>
-<h3>why we hate gnu</h3>
+<h3><u>WHY WE HATE GNU</u></h3>
 <ul>
 <li>glibc fights static linking, and requiem is static.</li>
 <li>the <a href="https://www.gnu.org/licenses/gpl-3.0.html">gpl</a> spreads. link gpl code into your program, ship it, and your program has to be gpl too. requiem uses the cddl, the license sun wrote for solaris. change our file, share our file. your code stays yours. the fsf calls it gpl-incompatible, which is the nicest thing they've ever said about us.</li>
@@ -60,14 +36,14 @@ a.egg, a.egg:visited, a.egg:hover { color: inherit; background: none; text-decor
 <li>gnu tools are big. coreutils is around a hundred separate programs. <a href="https://busybox.net">busybox</a> does that job, plus the shell, in one binary.</li>
 <li>and the name. it has been "gnu/linux" for thirty years and it still hasn't caught on.</li>
 </ul>
-<p>so the compiler is <code>tcc</code>, the shell and userland are busybox, and the libc is <a href="https://musl.libc.org">musl</a>. where something needed a gnu library, we took a bsd one instead.</p>
-<h3>we googled him</h3>
+<p>so the compiler is clang, the userland is busybox, and the libc is <a href="https://musl.libc.org">musl</a>. where something needed a gnu library, we took a bsd one.</p>
+<h3><u>WE GOOGLED HIM</u></h3>
 <p>we typed "stalman" into a search engine to find a photo for this page. it gave us tyler stalman, a photographer with great glasses. richard didn't come up. we're choosing to take that as a sign.</p>
 <p>requiem is free software. free as in free of gnu.</p>
 </td>
 </tr></table>
 <hr noshade size="1">
-<small class="foot">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</small>
+<font size="1" color="#9fb0c8">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font>
 </font>
 </body>
 </html>

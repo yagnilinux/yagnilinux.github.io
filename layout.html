@@ -4,41 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>layout - requiem</title>
-<style>
-body { background: #2b3445; color: #c3ccdb; margin: 8px; font: 16px/1.4 "Times New Roman", Times, serif; }
-a { color: #9fc6ff; }
-a:visited { color: #c7a6ff; }
-a:hover { color: #fff; background: #1d2534; }
-a.top { color: #eef1f6; text-decoration: none; }
-h1 { font: bold 34px Verdana, Geneva, sans-serif; margin: 6px 0 12px; letter-spacing: -1px; }
-h1 small { font-family: "Times New Roman", serif; font-weight: normal; color: #9fb0c8; }
-h2 { font: bold 18px Verdana, Geneva, sans-serif; background: #1d2534; border-left: 8px solid #6e7d95; padding: 4px 8px; margin: 0 0 10px; }
-h3 { font: bold 14px Verdana, Geneva, sans-serif; text-transform: uppercase; text-decoration: underline; margin: 18px 0 6px; }
-.side { border: 2px outset #6e7d95; background: #36415a; padding: 0 0 6px; line-height: 1.6; white-space: nowrap; font: 14px Verdana, Geneva, sans-serif; }
-.side b { display: block; background: #1d2534; padding: 2px 6px; margin-bottom: 4px; }
-.side span { display: block; padding: 0 8px; }
-.side a { color: #eef1f6; text-decoration: none; }
-.bar { font: 12px Verdana, Geneva, sans-serif; }
-pre { background: #1d2534; border: 1px dashed #6e7d95; padding: 6px; margin: 6px 0; font-size: 14px; }
-code { font-size: 14px; }
-table { border-collapse: separate; }
-td, th { border: 1px solid #6e7d95; background: #323d52; }
-th { background: #1d2534; font-family: Verdana, Geneva, sans-serif; font-size: 14px; }
-ul { margin: 4px 0; padding-left: 26px; }
-p { margin: 8px 0; }
-img { border: 2px solid #6e7d95; }
-hr { border: 1px groove #6e7d95; }
-a.egg, a.egg:visited, a.egg:hover { color: inherit; background: none; text-decoration: none; cursor: text; }
-.foot { font: 12px Verdana, Geneva, sans-serif; color: #9fb0c8; }
-</style>
 </head>
-<body bgcolor="#2b3445" text="#c3ccdb" link="#eef1f6" vlink="#eef1f6" alink="#c3ccdb">
+<body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
 <font face="Verdana, Geneva, sans-serif">
-<small class="bar"><a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="packages.html">packages</a> | <a href="https://codeberg.org/requiem-linux">code</a> |</small>
-<h1><a class="top" href="index.html">requiem</a> <small><small><i>nothing to link against</i></small></small></h1>
+<font size="1"><a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="packages.html">packages</a> | <a href="https://codeberg.org/requiem-linux">code</a> |</font>
+<h1><a href="index.html"><font color="#eef1f6">requiem</font></a> <font size="3" color="#9fb0c8"><i>nothing to link against</i></font></h1>
 <table cellpadding="6" cellspacing="0" border="0"><tr>
 <td valign="top" width="200">
-<div class="side"><b>pages:</b><span>&raquo; <i><a href="docs.html">docs/</a></i><br>
+<table border="2" cellpadding="4" cellspacing="0" bgcolor="#36415a" width="100%">
+<tr><td bgcolor="#1d2534"><b>pages:</b></td></tr>
+<tr><td nowrap><font size="2">&raquo; <i><a href="docs.html">docs/</a></i><br>
 &nbsp;&nbsp;&rsaquo; <a href="install.html">install</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="boot.html">boot</a><br>
 &nbsp;&nbsp;&rsaquo; <a href="users.html">users</a><br>
@@ -49,40 +24,40 @@ a.egg, a.egg:visited, a.egg:hover { color: inherit; background: none; text-decor
 &rsaquo; <a href="faq.html">answers</a><br>
 &rsaquo; <a href="screenshots.html">screenshots</a><br>
 &rsaquo; <a href="goals.html">about/</a><br>
-&rsaquo; <a href="releases.html">releases</a></span></div>
+&rsaquo; <a href="releases.html">releases</a></font></td></tr>
+</table>
 </td>
 <td valign="top">
-<h2>-&gt; layout</h2>
+<table width="100%" cellpadding="4" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" width="6"></td><td bgcolor="#1d2534"><font size="4"><b>-&gt; layout</b></font></td></tr></table>
 <p><i>&ldquo;Wealth consists not in having great possessions, but in having few wants.&rdquo;</i> &mdash; Epictetus</p>
 
-<p>everything is static. with no loader, <code>LD_PRELOAD</code> and <code>LD_LIBRARY_PATH</code> do nothing, and glibc binaries do not run. build yours static, or package it.</p>
-<p>there is no <code>/lib</code> because nothing is loaded at runtime, and no <code>/sbin</code> because root and users run the same programs.</p>
-<h3 id="apps">apps</h3>
-<p>an application is one folder in <code>~/apps</code>, the way it is on macos. as your own user, without root:</p>
-<pre>$ introit a netsurf     # ~/apps/netsurf
+<p>everything is static. glibc binaries don't run. build it static or package it.</p>
+<p>no <code>/lib</code>, nothing gets loaded. no <code>/sbin</code>, root runs the same programs you do.</p>
+<h3 id="apps"><u>APPS</u></h3>
+<p>one folder each in <code>~/apps</code>, like macos. no root.</p>
+<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>$ introit a netsurf
 $ ls ~/apps/netsurf
-bin  share  version</pre>
-<p>move the folder out and it is no longer installed: your shell only looks for programs in <code>~/apps/*/bin</code> and <code>/apps/*/bin</code>. delete it and it is gone, with nothing left behind. <code>introit u</code> updates what is in <code>~/apps</code>, and <code>introit r netsurf</code> is the same as <code>rm -r ~/apps/netsurf</code>. a new app shows up in a new shell.</p>
-<p>installed as root, an app goes in <code>/apps</code> and every user gets it. if an app needs something from the base system that is missing, introit tells you what to run as root first.</p>
-<p>command line tools are not apps. they stay in <code>/bin</code>. today the apps are netsurf and havoc.</p>
-<h3>the tree</h3>
+bin  share  version</pre></td></tr></table>
+<p>move the folder out and it's uninstalled. move it back and it's installed. new apps show up in a new shell.</p>
+<p>as root they go in <code>/apps</code>, for everyone.</p>
+<p>apps: netsurf, havoc.</p>
+<h3><u>THE TREE</u></h3>
 <p><code>/bin</code> -&gt; programs</p>
-<p><code>/share</code> -&gt; data, fonts, firmware, kernel modules, python's library</p>
-<p><code>/etc</code> -&gt; configuration</p>
-<p><code>/boot</code> -&gt; the efi partition, holding the kernel</p>
-<p><code>/var</code> -&gt; logs, and the package database in <code>/var/db/introit</code></p>
+<p><code>/share</code> -&gt; everything else</p>
+<p><code>/etc</code> -&gt; config</p>
+<p><code>/boot</code> -&gt; efi partition, the kernel</p>
+<p><code>/var</code> -&gt; logs, <code>/var/db/introit</code></p>
 <p><code>/home</code>, <code>/root</code> -&gt; users</p>
-<p><code>~/apps</code>, <code>/apps</code> -&gt; applications, one folder each. yours, and everyone's</p>
-<p><code>/mnt</code> -&gt; other filesystems</p>
+<p><code>~/apps</code>, <code>/apps</code> -&gt; apps</p>
+<p><code>/mnt</code> -&gt; mounts</p>
 <p><code>/dev</code>, <code>/proc</code>, <code>/sys</code>, <code>/run</code>, <code>/tmp</code> -&gt; made at boot</p>
-<p><code>/usr</code> -&gt; a symlink to <code>/</code>, for <code>#!/usr/bin/env</code></p>
-<p><code>musl-dev</code> puts headers and static libraries in <code>/share/include</code> and <code>/share/lib</code>. tcc links static by default.</p>
-<p><code>mkrepo</code> moves whatever a build puts in <code>usr/bin</code>, <code>usr/sbin</code> or <code>sbin</code> to <code>/bin</code>, and <code>usr/share</code> to <code>/share</code>. anything left in <code>/usr</code> or <code>/lib</code> fails the build.</p>
+<p><code>/usr</code> -&gt; symlink to <code>/</code></p>
+<p>headers and static libs: <code>/share/include</code>, <code>/share/lib</code>.</p>
 
 </td>
 </tr></table>
 <hr noshade size="1">
-<small class="foot">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</small>
+<font size="1" color="#9fb0c8">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font>
 </font>
 </body>
 </html>
