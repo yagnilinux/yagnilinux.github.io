@@ -21,7 +21,6 @@
 <li><a href="screenshots.html">screenshots</a></li>
 <li><a href="packages.html">packages</a></li>
 <li><a href="kyrie/index.html">kyrie</a></li>
-<li><a href="numbers.html">numbers</a></li>
 <li><a href="thanks.html">thanks</a></li>
 <li><a href="https://codeberg.org/requiem-linux/repo">codeberg git repo</a></li>
 <li><a href="https://github.com/yagnilinux/repo">github (mirror)</a></li>
@@ -30,37 +29,24 @@
 </td>
 <td valign="top">
 <table width="100%" cellpadding="4" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" width="6"></td><td bgcolor="#1d2534"><font size="4"><b>-&gt; goals</b></font></td></tr></table>
-<p><i>&ldquo;Man, your head is haunted; you have wheels in your head!&rdquo;</i> &mdash; Max Stirner, The Ego and Its Own</p>
 
 <ul>
-<li>users know what they are doing.</li>
-<li>users take part. package what's missing and send it back.</li>
-<li>the whole system stays small enough for one person to read.</li>
-<li>base is what a machine needs to boot and install packages. nothing else.</li>
-<li>a script you can read beats a daemon you have to trust.</li>
-<li>things get broken when keeping them means keeping complexity.</li>
+<li>The user knows what they are doing.</li>
+<li>Users take part. What is missing gets packaged by whoever needs it, and sent back.</li>
+<li>The whole system stays small enough for one person to read.</li>
+<li>The base system contains what a machine needs to boot and install packages, and nothing more.</li>
+<li>A script that can be read is preferred to a daemon that has to be trusted.</li>
+<li>Compatibility is dropped when keeping it would mean keeping complexity.</li>
 </ul>
-<h3><u>SPOOKS</u></h3>
-<p>you were told a real system needs these.</p>
-<p><b>a bootloader</b><br>uefi starts the kernel itself.</p>
-<p><b>an initramfs</b><br>the kernel mounts root directly.</p>
-<p><b>systemd</b><br>busybox init and one boot script.</p>
-<p><b>udev</b><br>busybox mdev.</p>
-<p><b>shared libraries</b><br>everything is static.</p>
-<p><b>NetworkManager</b><br>one file. it connects at every boot.</p>
-<p><b>snap and flatpak</b><br>a folder in ~/apps. your calculator doesn't need its own copy of gtk.</p>
-<p><b>electron</b><br>programs that aren't a whole chromium wearing a trench coat.</p>
-<p><b>dbus</b><br>programs that can talk without a message bus in the middle.</p>
 <h3 id="expect"><u>EXPECTATIONS</u></h3>
-<p>requiem is small because the people using it help build it. before you install it, you should know this:</p>
+<p>requiem stays small because the people who use it help build it. Before installing it, you should know the following.</p>
 <ul>
-<li>it's installed and set up by hand. you'll partition a disk, edit files in /etc and read shell scripts.</li>
-<li>the documentation is short, and so is the code. most answers are in one of them.</li>
-<li>the repository won't have everything. if something's missing, package it and send it back.</li>
-<li>a bug report needs what you ran, what happened and the full output.</li>
-<li>things change between releases. when something gets dropped, the commit says why.</li>
-<li>nothing here is sacred. not the docs, not the code. if something's wrong, say so.</li>
-<li>if you want hand-holding, linux mint exists and it's lovely. go there.</li>
+<li>It is installed and set up by hand. You will partition a disk, edit files in <code>/etc</code> and read shell scripts.</li>
+<li>The documentation is short, and so is the code. Most answers are in one of them.</li>
+<li>The repository will not have everything. If something is missing, package it and send it back.</li>
+<li>A bug report needs the command that was run, what happened, and the full output.</li>
+<li>Things change between releases. When something is dropped, the commit says why.</li>
+<li>Nothing here is sacred, not the documentation and not the code. If something is wrong, say so.</li>
 </ul>
 
 </td>

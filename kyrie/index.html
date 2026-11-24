@@ -21,7 +21,6 @@
 <li><a href="../screenshots.html">screenshots</a></li>
 <li><a href="../packages.html">packages</a></li>
 <li><a href="../kyrie/index.html"><b>kyrie</b></a></li>
-<li><a href="../numbers.html">numbers</a></li>
 <li><a href="../thanks.html">thanks</a></li>
 <li><a href="https://codeberg.org/requiem-linux/repo">codeberg git repo</a></li>
 <li><a href="https://github.com/yagnilinux/repo">github (mirror)</a></li>
@@ -31,15 +30,14 @@
 <td valign="top">
 <table width="100%" cellpadding="4" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" width="6"></td><td bgcolor="#1d2534"><font size="4"><b>-&gt; kyrie</b></font></td></tr></table>
 
-<p>kyrie is the <a href="https://wayland.freedesktop.org">wayland</a> compositor of requiem. it is one c file on top of <a href="https://github.com/michaelforney/swc">swc</a>, and one static binary.</p>
+<p>kyrie is the <a href="https://wayland.freedesktop.org">Wayland</a> compositor of requiem. It is built on <a href="https://github.com/michaelforney/swc">swc</a>.</p>
 <p><img border="2" alt="" src="screenshots/kyrie.png" width="640"></p>
 <h3><u>FEATURES</u></h3>
 <ul>
-<li>floating windows, moved and resized with the mouse</li>
-<li>4 workspaces</li>
-<li>focus follows the mouse</li>
-<li>fullscreen</li>
-<li>that's it</li>
+<li>Floating windows, moved and resized with the mouse</li>
+<li>Four workspaces</li>
+<li>Focus follows the mouse</li>
+<li>Fullscreen</li>
 </ul>
 <h3><u>KEYS</u></h3>
 <p><code>super + return</code> -&gt; terminal</p>
@@ -56,15 +54,13 @@
 <p><code>super + middle click</code> -&gt; lower the window</p>
 <p><code>super + p</code> -&gt; screenshot</p>
 <h3><u>INSTALL</u></h3>
-<p>on requiem:</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre># introit a kyrie
+<p>On requiem:</p>
+<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre># introit a desktop/kyrie
 $ startw</pre></td></tr></table>
-<p>anywhere else, you need swc with the patches in <code>patches/</code>:</p>
+<p>On other systems, kyrie needs swc with the patches in <code>patches/</code>:</p>
 <table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>$ make SWC=/path/to/swc</pre></td></tr></table>
 <h3><u>CONFIGURATION</u></h3>
-<p>border width, colours and your own keys are set without recompiling, see <a href="../missal.html#desktop">the desktop</a>. the built-in keys live in <code>keys[]</code> at the top of <code>kyrie.c</code>.</p>
-<h3><u>NOTES</u></h3>
-<p>us keyboard layout only.</p>
+<p>Colours, border width and extra keys are set without recompiling, as described in <a href="../missal.html#desktop">the missal</a>. The built-in keys are in <code>keys[]</code> at the top of <code>kyrie.c</code>. Only the US keyboard layout is included.</p>
 
 </td>
 </tr></table>

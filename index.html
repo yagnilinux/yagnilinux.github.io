@@ -21,7 +21,6 @@
 <li><a href="screenshots.html">screenshots</a></li>
 <li><a href="packages.html">packages</a></li>
 <li><a href="kyrie/index.html">kyrie</a></li>
-<li><a href="numbers.html">numbers</a></li>
 <li><a href="thanks.html">thanks</a></li>
 <li><a href="https://codeberg.org/requiem-linux/repo">codeberg git repo</a></li>
 <li><a href="https://github.com/yagnilinux/repo">github (mirror)</a></li>
@@ -31,39 +30,37 @@
 <td valign="top">
 <p><i>&ldquo;The captive is the one whose desires hold him captive.&rdquo;</i> &mdash; Ibn Taymiyyah</p>
 
-<p>this is <i>requiem</i>, an experimental x86-64 <a href="https://en.wikipedia.org/wiki/Linux">linux</a> distribution based on <a href="https://musl.libc.org">musl libc</a> and <a href="https://busybox.net">busybox</a>. it runs great in qemu. on real hardware, you're the beta tester.</p>
-<p>requirements:</p>
+<p>This is <i>requiem</i>, an experimental Linux distribution for x86-64, built on <a href="https://musl.libc.org">musl libc</a> and <a href="https://busybox.net">busybox</a>. It has only been tested in QEMU. On real hardware, expect to find bugs.</p>
+<p>Requirements:</p>
 <ul>
-<li>an x86-64 machine that boots with uefi, secure boot off. or qemu.</li>
-<li>a usb stick.</li>
-<li>a fair bit of linux knowledge.</li>
+<li>An x86-64 machine that boots with UEFI, with secure boot disabled, or QEMU.</li>
+<li>A USB stick.</li>
+<li>Some experience with Linux.</li>
 </ul>
-<p>features:</p>
+<p>Features:</p>
 <ul>
-<li>everything statically linked. no dynamic loader, no <code>/lib</code>.</li>
-<li>built with clang, lld and compiler-rt. <a href="lix.html">100% gnu free</a>, unlike <a href="https://derivelinux.org">a certain os</a>.</li>
-<li>no <code>/usr</code> or <code>/sbin</code>. (<a href="missal.html#differently">the layout</a>)</li>
-<li>apps are folders. drag one out of <code>~/apps</code> and it's uninstalled. (<a href="missal.html#apps">apps</a>)</li>
-<li><a href="missal.html#introit">introit</a> package manager, <a href="packages.html">43 packages</a>.</li>
-<li><a href="kyrie/index.html">kyrie</a>, a wayland compositor on <a href="https://github.com/michaelforney/swc">swc</a>.</li>
-<li>the kernel boots itself. no bootloader, no initramfs. (<a href="https://docs.kernel.org/admin-guide/efi-stub.html">efistub</a>)</li>
-<li>busybox init and a 32 line <a href="missal.html#booting">boot script</a>.</li>
+<li>Every program is statically linked. There is no dynamic loader and no <code>/lib</code>.</li>
+<li>Everything is built with clang, lld and compiler-rt. requiem is <a href="lix.html">100% GNU free</a>, unlike <a href="https://derivelinux.org">a certain os</a>.</li>
+<li><code>/usr</code> is a symlink to <code>/</code>, and there is no <code>/sbin</code>. (<a href="missal.html#differently">the file system</a>)</li>
+<li>Apps are directories in <code>~/apps</code>. Moving one out uninstalls it. (<a href="missal.html#apps">apps</a>)</li>
+<li><a href="kyrie/index.html">kyrie</a>, a Wayland compositor built on <a href="https://github.com/michaelforney/swc">swc</a>.</li>
+<li><a href="missal.html#booting">libera</a>, the boot. The firmware starts the kernel directly, without a bootloader or an initramfs.</li>
 </ul>
-<p>ready-to-boot images:</p>
+<p>Ready-to-boot images:</p>
 <ul>
-<li><a href="https://codeberg.org/requiem-linux/repo/releases/download/0.1/requiem.iso">requiem.iso</a>, 37MB, boots to a root shell with everything the install needs</li>
-<li><a href="https://codeberg.org/requiem-linux/repo/releases/download/0.1/requiem.tar.gz">requiem.tar.gz</a>, 7MB, the base system as a tarball</li>
+<li><a href="https://codeberg.org/requiem-linux/repo/releases/download/0.1/requiem.iso">requiem.iso</a>, 37MB. It boots to a root shell and carries everything needed to install.</li>
+<li><a href="https://codeberg.org/requiem-linux/repo/releases/download/0.1/requiem.tar.gz">requiem.tar.gz</a>, 7MB, the base system.</li>
 </ul>
-<p>build your own from source:</p>
+<p>Build your own from source:</p>
 <ul>
 <li><a href="https://codeberg.org/requiem-linux/repo">https://codeberg.org/requiem-linux/repo</a></li>
 </ul>
-<p>READ <a href="missal.html">THE MISSAL</a> FIRST.</p>
+<p>READ <a href="missal.html">THE MISSAL</a> BEFORE INSTALLING.</p>
 <p>LATEST RELEASE: <a href="releases.html">requiem 0.1 A SMALL SOVEREIGNTY</a></p>
 <h3><u>CONTRIBUTE</u></h3>
-<p>package what's missing and send it back. pull requests on <a href="https://codeberg.org/requiem-linux/repo">codeberg</a>. read the <a href="goals.html#expect">expectations</a> first.</p>
+<p>New packages and fixes are welcome as pull requests on <a href="https://codeberg.org/requiem-linux/repo">codeberg</a>. Read the <a href="goals.html#expect">expectations</a> first.</p>
 <h3><u>TALK</u></h3>
-<p>bugs and questions go to the <a href="https://codeberg.org/requiem-linux/repo/issues">issue tracker</a>. there is no discord. nobody here is running a whole chromium to answer your questions.</p>
+<p>Bugs and questions go to the <a href="https://codeberg.org/requiem-linux/repo/issues">issue tracker</a>. There is no chat.</p>
 
 </td>
 </tr></table>
