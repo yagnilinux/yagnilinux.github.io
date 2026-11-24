@@ -32,47 +32,43 @@
 <table width="100%" cellpadding="4" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" width="6"></td><td bgcolor="#1d2534"><font size="4"><b>-&gt; answers</b></font></td></tr></table>
 <p><i>&ldquo;Whereof one cannot speak, thereof one must be silent.&rdquo;</i> &mdash; Ludwig Wittgenstein</p>
 
-<p>not answered here? read <a href="missal.html">the missal</a>. still not answered? ask.</p>
+<p>not answered here? read <a href="missal.html">the missal</a>. still not answered? ask on the <a href="https://codeberg.org/requiem-linux/repo/issues">issue tracker</a>.</p>
 <h3><u>WHO IS IT FOR?</u></h3>
-<p>people who read the source before the readme. try it in qemu first, that's the only place it has ever booted.</p>
-<h3><u>WHY STATIC?</u></h3>
-<p>so updating one library can't break forty programs. also <code>ldd</code> has nothing to say.</p>
-<h3><u>WILL MY DOWNLOADED BINARY RUN?</u></h3>
-<p>if it's static. if it wants glibc, it can go back where it came from.</p>
+<p>people who want to know how every part of their system works. it has only been tested in qemu.</p>
+<h3><u>WHY IS EVERYTHING STATIC?</u></h3>
+<p>an upgrade of one package can't break another, and programs start faster without a loader.</p>
+<h3><u>WILL A BINARY I DOWNLOADED RUN?</u></h3>
+<p>only if it is statically linked.</p>
 <h3><u>WHY IS /USR A SYMLINK?</u></h3>
-<p>so <code>#!/usr/bin/env</code> keeps working. that's the only job it has.</p>
-<h3><u>WHERE'S THE BOOTLOADER?</u></h3>
-<p>the kernel boots itself. grub was asked to leave.</p>
+<p>for scripts that start with <code>#!/usr/bin/env</code>.</p>
+<h3><u>WHERE IS THE BOOTLOADER?</u></h3>
+<p>there is none. the kernel is an efi program, and the firmware runs it directly.</p>
 <h3><u>WHAT REPLACES WHAT?</u></h3>
-<p>systemd -&gt; busybox init</p>
+<p>systemd -&gt; busybox init and rcS</p>
 <p>udev -&gt; mdev</p>
 <p>sudo -&gt; doas</p>
-<p>NetworkManager -&gt; one file</p>
-<p>dbus, ld.so -&gt; nothing. nobody noticed</p>
-<h3><u>WHY NO GNU?</u></h3>
-<p>read the <a href="lix.html">sign on the door</a>.</p>
+<p>NetworkManager -&gt; wpa_supplicant and udhcpc, started by rcS</p>
+<p>dbus, ld.so -&gt; nothing</p>
+<h3><u>WHY IS THERE NO GNU SOFTWARE?</u></h3>
+<p>see <a href="lix.html">lix</a>.</p>
 <h3><u>WHY NOT DÉRIVE?</u></h3>
-<p>dérive is good, and requiem learned a lot from it. but dérive is almost 100% gnu free. requiem is 100%. it ships built packages, so a base install takes seconds, apps live in ~/apps, the boot is 32 lines, and there is no bootloader.</p>
+<p>dérive is good, and requiem learned a lot from it. but dérive is almost 100% gnu free. requiem is 100%.</p>
 <p>but mostly:</p>
 <p><i>&ldquo;Do you really want to live in a world without Coca-Cola?&rdquo;</i> &mdash; Walter White</p>
-<h3><u>WILL X BE ADDED TO BASE?</u></h3>
-<p>no. base is mine.</p>
-<h3><u>WHY SO FEW PACKAGES?</u></h3>
-<p>you haven't sent yours yet. <a href="missal.html#packaging">here's how</a>.</p>
+<h3><u>WHY IS SO LITTLE PACKAGED?</u></h3>
+<p>packages are added when someone needs them. see <a href="missal.html#packaging">writing packages</a>.</p>
 <h3><u>X11 OR WAYLAND?</u></h3>
-<p>wayland. xorg was the one package that wouldn't link static, so it left.</p>
+<p>wayland. xorg could not be linked statically.</p>
 <h3><u>IS IT SELF-HOSTING?</u></h3>
-<p>not yet. the kernel still wants gnu make, and we're not happy about it either.</p>
+<p>no. the kernel's build system needs gnu make, which requiem does not ship. packages are built on another linux machine.</p>
 <h3><u>ARE PACKAGES SIGNED?</u></h3>
-<p>no. sha256 sums, in an index that isn't signed either. we know.</p>
-<h3><u>FIREFOX?</u></h3>
-<p>firefox is bigger than requiem. netsurf works.</p>
+<p>no. downloads are checked against sha256 sums in the index. the index itself is not signed.</p>
+<h3><u>DOES IT RUN FIREFOX?</u></h3>
+<p>no. firefox needs glibc and gtk. netsurf is packaged.</p>
 <h3><u>WHAT HARDWARE WORKS?</u></h3>
-<p>x86-64 with uefi. tell us how your thinkpad took it.</p>
-<h3><u>WHAT FONT DOES THE WEBSITE USE?</u></h3>
-<p>whatever your browser calls verdana.</p>
-<h3><u>LICENSE?</u></h3>
-<p><a href="https://opensource.org/license/cddl-1-1">cddl 1.1</a>, the license sun wrote for solaris. packages keep theirs. the fsf says it's gpl-incompatible. we consider that a feature.</p>
+<p>x86-64 machines that boot with uefi. it has only been tested in qemu.</p>
+<h3><u>WHAT LICENSE IS IT UNDER?</u></h3>
+<p><a href="https://opensource.org/license/cddl-1-1">cddl 1.1</a>. packages keep their own licenses.</p>
 
 </td>
 </tr></table>
