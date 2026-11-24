@@ -4,34 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>kyrie - requiem</title>
+<style>a:hover{color:#2b3445;background:#9fc6ff}</style>
 </head>
 <body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
 <font face="Verdana, Geneva, sans-serif">
 <font size="1"><a href="../lix.html">lix</a> | <a href="../stalman.html">rms</a> | <a href="../packages.html">packages</a> | <a href="https://codeberg.org/requiem-linux">code</a> |</font>
 <h1><a href="../index.html"><font color="#eef1f6">requiem</font></a> <font size="3" color="#9fb0c8"><i>kde has more settings than this has lines</i></font></h1>
-<table cellpadding="6" cellspacing="0" border="0"><tr>
-<td valign="top" width="200">
-<table border="2" cellpadding="4" cellspacing="0" bgcolor="#36415a" width="100%">
-<tr><td bgcolor="#1d2534"><b>pages:</b></td></tr>
-<tr><td nowrap><font size="2">&raquo; <i><a href="../docs.html">docs/</a></i><br>
-&nbsp;&nbsp;&rsaquo; <a href="../install.html">install</a><br>
-&nbsp;&nbsp;&rsaquo; <a href="../boot.html">boot</a><br>
-&nbsp;&nbsp;&rsaquo; <a href="../users.html">users</a><br>
-&nbsp;&nbsp;&rsaquo; <a href="../wifi.html">wifi</a><br>
-&nbsp;&nbsp;&raquo; <i><a href="../desktop.html">desktop/</a></i><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&raquo; <i><a href="../kyrie/index.html">kyrie</a></i><br>
-&nbsp;&nbsp;&rsaquo; <a href="../layout.html">layout</a><br>
-&nbsp;&nbsp;&rsaquo; <a href="../introit.html">introit/</a><br>
-&rsaquo; <a href="../faq.html">answers</a><br>
-&rsaquo; <a href="../screenshots.html">screenshots</a><br>
-&rsaquo; <a href="../goals.html">about/</a><br>
-&rsaquo; <a href="../releases.html">releases</a></font></td></tr>
-</table>
+<table cellpadding="8" cellspacing="0" border="0"><tr>
+<td valign="top" width="240">
+<a href="../index.html"><img border="2" src="../art/side.png" width="240" height="240" alt=""></a>
+<font size="2"><ul>
+<li><a href="../missal.html">THE MISSAL</a></li>
+<li><a href="../faq.html">answers</a></li>
+<li><a href="../goals.html">goals</a></li>
+<li><a href="../releases.html">releases</a></li>
+<li><a href="../screenshots.html">screenshots</a></li>
+<li><a href="../packages.html">packages</a></li>
+<li><a href="../kyrie/index.html"><b>kyrie</b></a></li>
+<li><a href="../numbers.html">numbers</a></li>
+<li><a href="../thanks.html">thanks</a></li>
+<li><a href="https://codeberg.org/requiem-linux/repo">codeberg git repo</a></li>
+<li><a href="https://github.com/yagnilinux/repo">github (mirror)</a></li>
+<li><a href="https://codeberg.org/requiem-linux/repo/issues">issues</a></li>
+</ul></font>
 </td>
 <td valign="top">
 <table width="100%" cellpadding="4" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" width="6"></td><td bgcolor="#1d2534"><font size="4"><b>-&gt; kyrie</b></font></td></tr></table>
 
-<p>a <a href="https://wayland.freedesktop.org">wayland</a> compositor on <a href="https://github.com/michaelforney/swc">swc</a>.</p>
+<p>kyrie is the <a href="https://wayland.freedesktop.org">wayland</a> compositor of requiem. it is one c file on top of <a href="https://github.com/michaelforney/swc">swc</a>, and one static binary.</p>
 <p><img border="2" alt="" src="screenshots/kyrie.png" width="640"></p>
 <h3><u>FEATURES</u></h3>
 <ul>
@@ -39,6 +39,7 @@
 <li>4 workspaces</li>
 <li>focus follows the mouse</li>
 <li>fullscreen</li>
+<li>that's it</li>
 </ul>
 <h3><u>KEYS</u></h3>
 <p><code>super + return</code> -&gt; terminal</p>
@@ -55,12 +56,15 @@
 <p><code>super + middle click</code> -&gt; lower the window</p>
 <p><code>super + p</code> -&gt; screenshot</p>
 <h3><u>INSTALL</u></h3>
+<p>on requiem:</p>
 <table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre># introit a kyrie
 $ startw</pre></td></tr></table>
-<p>elsewhere, build swc with <code>patches/</code>, then:</p>
+<p>anywhere else, you need swc with the patches in <code>patches/</code>:</p>
 <table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>$ make SWC=/path/to/swc</pre></td></tr></table>
 <h3><u>CONFIGURATION</u></h3>
-<p>colours and keys: <a href="../desktop.html">desktop</a>. built-in keys: <code>keys[]</code> in <code>kyrie.c</code>.</p>
+<p>border width, colours and your own keys are set without recompiling, see <a href="../missal.html#desktop">the desktop</a>. the built-in keys live in <code>keys[]</code> at the top of <code>kyrie.c</code>.</p>
+<h3><u>NOTES</u></h3>
+<p>us keyboard layout only.</p>
 
 </td>
 </tr></table>

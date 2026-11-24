@@ -4,24 +4,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>goals - requiem</title>
+<style>a:hover{color:#2b3445;background:#9fc6ff}</style>
 </head>
 <body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
 <font face="Verdana, Geneva, sans-serif">
 <font size="1"><a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="packages.html">packages</a> | <a href="https://codeberg.org/requiem-linux">code</a> |</font>
 <h1><a href="index.html"><font color="#eef1f6">requiem</font></a> <font size="3" color="#9fb0c8"><i>less is less</i></font></h1>
-<table cellpadding="6" cellspacing="0" border="0"><tr>
-<td valign="top" width="200">
-<table border="2" cellpadding="4" cellspacing="0" bgcolor="#36415a" width="100%">
-<tr><td bgcolor="#1d2534"><b>pages:</b></td></tr>
-<tr><td nowrap><font size="2">&rsaquo; <a href="docs.html">docs/</a><br>
-&rsaquo; <a href="faq.html">answers</a><br>
-&rsaquo; <a href="screenshots.html">screenshots</a><br>
-&raquo; <i><a href="goals.html">about/</a></i><br>
-&nbsp;&nbsp;&raquo; <i><a href="goals.html">goals</a></i><br>
-&nbsp;&nbsp;&rsaquo; <a href="numbers.html">numbers</a><br>
-&nbsp;&nbsp;&rsaquo; <a href="thanks.html">thanks</a><br>
-&rsaquo; <a href="releases.html">releases</a></font></td></tr>
-</table>
+<table cellpadding="8" cellspacing="0" border="0"><tr>
+<td valign="top" width="240">
+<a href="index.html"><img border="2" src="art/side.png" width="240" height="240" alt=""></a>
+<font size="2"><ul>
+<li><a href="missal.html">THE MISSAL</a></li>
+<li><a href="faq.html">answers</a></li>
+<li><a href="goals.html"><b>goals</b></a></li>
+<li><a href="releases.html">releases</a></li>
+<li><a href="screenshots.html">screenshots</a></li>
+<li><a href="packages.html">packages</a></li>
+<li><a href="kyrie/index.html">kyrie</a></li>
+<li><a href="numbers.html">numbers</a></li>
+<li><a href="thanks.html">thanks</a></li>
+<li><a href="https://codeberg.org/requiem-linux/repo">codeberg git repo</a></li>
+<li><a href="https://github.com/yagnilinux/repo">github (mirror)</a></li>
+<li><a href="https://codeberg.org/requiem-linux/repo/issues">issues</a></li>
+</ul></font>
 </td>
 <td valign="top">
 <table width="100%" cellpadding="4" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" width="6"></td><td bgcolor="#1d2534"><font size="4"><b>-&gt; goals</b></font></td></tr></table>
@@ -29,28 +34,33 @@
 
 <ul>
 <li>users know what they are doing.</li>
-<li>users take part. what's missing, they package.</li>
-<li>small enough for one person to read.</li>
-<li>the base boots the machine and installs packages. nothing else.</li>
+<li>users take part. package what's missing and send it back.</li>
+<li>the whole system stays small enough for one person to read.</li>
+<li>base is what a machine needs to boot and install packages. nothing else.</li>
 <li>a script you can read beats a daemon you have to trust.</li>
-<li>compatibility goes when it costs complexity.</li>
+<li>things get broken when keeping them means keeping complexity.</li>
 </ul>
 <h3><u>SPOOKS</u></h3>
-<p><b>a bootloader</b><br>the firmware starts the kernel.</p>
-<p><b>an initramfs</b><br>the kernel mounts root.</p>
-<p><b>systemd</b><br>busybox init.</p>
-<p><b>udev</b><br>mdev.</p>
-<p><b>shared libraries</b><br>no.</p>
-<p><b>NetworkManager</b><br>one file.</p>
-<p><b>flatpak</b><br>a folder in ~/apps.</p>
-<p><b>dbus</b><br>no.</p>
+<p>you were told a real system needs these.</p>
+<p><b>a bootloader</b><br>uefi starts the kernel itself.</p>
+<p><b>an initramfs</b><br>the kernel mounts root directly.</p>
+<p><b>systemd</b><br>busybox init and one boot script.</p>
+<p><b>udev</b><br>busybox mdev.</p>
+<p><b>shared libraries</b><br>everything is static.</p>
+<p><b>NetworkManager</b><br>one file. it connects at every boot.</p>
+<p><b>snap and flatpak</b><br>a folder in ~/apps. your calculator doesn't need its own copy of gtk.</p>
+<p><b>electron</b><br>programs that aren't a whole chromium wearing a trench coat.</p>
+<p><b>dbus</b><br>programs that can talk without a message bus in the middle.</p>
 <h3 id="expect"><u>EXPECTATIONS</u></h3>
+<p>requiem is small because the people using it help build it. before you install it, you should know this:</p>
 <ul>
-<li>read the <a href="docs.html">docs</a> before asking.</li>
-<li>read the script before reporting a bug in it.</li>
-<li>package what's missing and send it back.</li>
-<li>bug reports have the command and what it printed.</li>
-<li>when someone helping you asks for something, give them that.</li>
+<li>it's installed and set up by hand. you'll partition a disk, edit files in /etc and read shell scripts.</li>
+<li>the documentation is short, and so is the code. most answers are in one of them.</li>
+<li>the repository won't have everything. if something's missing, package it and send it back.</li>
+<li>a bug report needs what you ran, what happened and the full output.</li>
+<li>things change between releases. when something gets dropped, the commit says why.</li>
+<li>nothing here is sacred. not the docs, not the code. if something's wrong, say so.</li>
+<li>if you want hand-holding, linux mint exists and it's lovely. go there.</li>
 </ul>
 
 </td>

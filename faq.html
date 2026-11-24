@@ -4,26 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>answers - requiem</title>
+<style>a:hover{color:#2b3445;background:#9fc6ff}</style>
 </head>
 <body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
 <font face="Verdana, Geneva, sans-serif">
 <font size="1"><a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="packages.html">packages</a> | <a href="https://codeberg.org/requiem-linux">code</a> |</font>
 <h1><a href="index.html"><font color="#eef1f6">requiem</font></a> <font size="3" color="#9fb0c8"><i>100% gnu free</i></font></h1>
-<table cellpadding="6" cellspacing="0" border="0"><tr>
-<td valign="top" width="200">
-<table border="2" cellpadding="4" cellspacing="0" bgcolor="#36415a" width="100%">
-<tr><td bgcolor="#1d2534"><b>pages:</b></td></tr>
-<tr><td nowrap><font size="2">&rsaquo; <a href="docs.html">docs/</a><br>
-&raquo; <i><a href="faq.html">answers</a></i><br>
-&rsaquo; <a href="screenshots.html">screenshots</a><br>
-&rsaquo; <a href="goals.html">about/</a><br>
-&rsaquo; <a href="releases.html">releases</a></font></td></tr>
-</table>
+<table cellpadding="8" cellspacing="0" border="0"><tr>
+<td valign="top" width="240">
+<a href="index.html"><img border="2" src="art/side.png" width="240" height="240" alt=""></a>
+<font size="2"><ul>
+<li><a href="missal.html">THE MISSAL</a></li>
+<li><a href="faq.html"><b>answers</b></a></li>
+<li><a href="goals.html">goals</a></li>
+<li><a href="releases.html">releases</a></li>
+<li><a href="screenshots.html">screenshots</a></li>
+<li><a href="packages.html">packages</a></li>
+<li><a href="kyrie/index.html">kyrie</a></li>
+<li><a href="numbers.html">numbers</a></li>
+<li><a href="thanks.html">thanks</a></li>
+<li><a href="https://codeberg.org/requiem-linux/repo">codeberg git repo</a></li>
+<li><a href="https://github.com/yagnilinux/repo">github (mirror)</a></li>
+<li><a href="https://codeberg.org/requiem-linux/repo/issues">issues</a></li>
+</ul></font>
 </td>
 <td valign="top">
 <table width="100%" cellpadding="4" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" width="6"></td><td bgcolor="#1d2534"><font size="4"><b>-&gt; answers</b></font></td></tr></table>
 <p><i>&ldquo;Whereof one cannot speak, thereof one must be silent.&rdquo;</i> &mdash; Ludwig Wittgenstein</p>
 
+<p>not answered here? read <a href="missal.html">the missal</a>. still not answered? ask.</p>
 <h3><u>WHO IS IT FOR?</u></h3>
 <p>people who read the source before the readme. try it in qemu first, that's the only place it has ever booted.</p>
 <h3><u>WHY STATIC?</u></h3>
@@ -46,8 +55,12 @@
 <p>dérive is good, and requiem learned a lot from it. but dérive is almost 100% gnu free. requiem is 100%. it ships built packages, so a base install takes seconds, apps live in ~/apps, the boot is 32 lines, and there is no bootloader.</p>
 <p>but mostly:</p>
 <p><i>&ldquo;Do you really want to live in a world without Coca-Cola?&rdquo;</i> &mdash; Walter White</p>
+<h3><u>WILL X BE ADDED TO BASE?</u></h3>
+<p>no. base is mine.</p>
 <h3><u>WHY SO FEW PACKAGES?</u></h3>
-<p>you haven't sent yours yet. <a href="introit.html#packaging">here's how</a>.</p>
+<p>you haven't sent yours yet. <a href="missal.html#packaging">here's how</a>.</p>
+<h3><u>X11 OR WAYLAND?</u></h3>
+<p>wayland. xorg was the one package that wouldn't link static, so it left.</p>
 <h3><u>IS IT SELF-HOSTING?</u></h3>
 <p>not yet. the kernel still wants gnu make, and we're not happy about it either.</p>
 <h3><u>ARE PACKAGES SIGNED?</u></h3>
@@ -56,8 +69,10 @@
 <p>firefox is bigger than requiem. netsurf works.</p>
 <h3><u>WHAT HARDWARE WORKS?</u></h3>
 <p>x86-64 with uefi. tell us how your thinkpad took it.</p>
+<h3><u>WHAT FONT DOES THE WEBSITE USE?</u></h3>
+<p>whatever your browser calls verdana.</p>
 <h3><u>LICENSE?</u></h3>
-<p><a href="https://opensource.org/license/cddl-1-1">cddl 1.1</a>. packages keep theirs.</p>
+<p><a href="https://opensource.org/license/cddl-1-1">cddl 1.1</a>, the license sun wrote for solaris. packages keep theirs. the fsf says it's gpl-incompatible. we consider that a feature.</p>
 
 </td>
 </tr></table>

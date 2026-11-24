@@ -4,42 +4,69 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>requiem</title>
+<style>a:hover{color:#2b3445;background:#9fc6ff}</style>
 </head>
 <body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
 <font face="Verdana, Geneva, sans-serif">
 <font size="1"><a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="packages.html">packages</a> | <a href="https://codeberg.org/requiem-linux">code</a> |</font>
 <h1><a href="index.html"><font color="#eef1f6">requiem</font></a> <font size="3" color="#9fb0c8"><i>a small sovereignty</i></font></h1>
-<table cellpadding="6" cellspacing="0" border="0"><tr>
-<td valign="top" width="200">
-<table border="2" cellpadding="4" cellspacing="0" bgcolor="#36415a" width="100%">
-<tr><td bgcolor="#1d2534"><b>pages:</b></td></tr>
-<tr><td nowrap><font size="2">&rsaquo; <a href="docs.html">docs/</a><br>
-&rsaquo; <a href="faq.html">answers</a><br>
-&rsaquo; <a href="screenshots.html">screenshots</a><br>
-&rsaquo; <a href="goals.html">about/</a><br>
-&rsaquo; <a href="releases.html">releases</a></font></td></tr>
-</table>
+<table cellpadding="8" cellspacing="0" border="0"><tr>
+<td valign="top" width="240">
+<a href="index.html"><img border="2" src="art/side.png" width="240" height="240" alt=""></a>
+<font size="2"><ul>
+<li><a href="missal.html">THE MISSAL</a></li>
+<li><a href="faq.html">answers</a></li>
+<li><a href="goals.html">goals</a></li>
+<li><a href="releases.html">releases</a></li>
+<li><a href="screenshots.html">screenshots</a></li>
+<li><a href="packages.html">packages</a></li>
+<li><a href="kyrie/index.html">kyrie</a></li>
+<li><a href="numbers.html">numbers</a></li>
+<li><a href="thanks.html">thanks</a></li>
+<li><a href="https://codeberg.org/requiem-linux/repo">codeberg git repo</a></li>
+<li><a href="https://github.com/yagnilinux/repo">github (mirror)</a></li>
+<li><a href="https://codeberg.org/requiem-linux/repo/issues">issues</a></li>
+</ul></font>
 </td>
 <td valign="top">
 <p><i>&ldquo;The captive is the one whose desires hold him captive.&rdquo;</i> &mdash; Ibn Taymiyyah</p>
 
-<p><a href="releases.html"><img border="2" src="art/0.1.png" width="360" alt=""></a></p>
-<p><i>requiem</i> is an opinionated, static x86-64 <a href="https://en.wikipedia.org/wiki/Linux">linux</a> distribution using <a href="https://musl.libc.org">musl libc</a> and <a href="https://busybox.net">busybox</a>.</p>
-<h3><u>FEATURES</u></h3>
+<p>this is <i>requiem</i>, an experimental x86-64 <a href="https://en.wikipedia.org/wiki/Linux">linux</a> distribution based on <a href="https://musl.libc.org">musl libc</a> and <a href="https://busybox.net">busybox</a>. it runs great in qemu. on real hardware, you're the beta tester.</p>
+<p>requirements:</p>
 <ul>
-<li>no <a href="layout.html">dynamic loader</a></li>
-<li>3 second base install</li>
-<li>a unique, opinionated <a href="layout.html">file system</a></li>
-<li>macos-like <a href="layout.html#apps">apps</a></li>
-<li><a href="https://docs.kernel.org/admin-guide/efi-stub.html">efistub</a> boot</li>
-<li><a href="introit.html">introit</a></li>
-<li>100% <a href="lix.html">gnu</a> free</li>
+<li>an x86-64 machine that boots with uefi, secure boot off. or qemu.</li>
+<li>a usb stick.</li>
+<li>a fair bit of linux knowledge.</li>
 </ul>
+<p>features:</p>
+<ul>
+<li>everything statically linked. no dynamic loader, no <code>/lib</code>.</li>
+<li>built with clang, lld and compiler-rt. <a href="lix.html">100% gnu free</a>, not almost.</li>
+<li>no <code>/usr</code> or <code>/sbin</code>. (<a href="missal.html#differently">the layout</a>)</li>
+<li>apps are folders. drag one out of <code>~/apps</code> and it's uninstalled. (<a href="missal.html#apps">apps</a>)</li>
+<li><a href="missal.html#introit">introit</a>, a package manager in one shell script.</li>
+<li><a href="kyrie/index.html">kyrie</a>, a wayland compositor on <a href="https://github.com/michaelforney/swc">swc</a>.</li>
+<li>the kernel boots itself. no bootloader, no initramfs. (<a href="https://docs.kernel.org/admin-guide/efi-stub.html">efistub</a>)</li>
+<li>busybox init and a 32 line <a href="missal.html#booting">boot script</a>.</li>
+<li>an iso that installs with no internet.</li>
+</ul>
+<p>ready-to-boot images:</p>
+<ul>
+<li><a href="https://codeberg.org/requiem-linux/repo/releases/download/0.1/requiem.iso">requiem.iso</a>, 37MB, boots to a root shell with everything the install needs</li>
+<li><a href="https://codeberg.org/requiem-linux/repo/releases/download/0.1/requiem.tar.gz">requiem.tar.gz</a>, 7MB, the base system as a tarball</li>
+</ul>
+<p>build your own from source:</p>
+<ul>
+<li><a href="https://codeberg.org/requiem-linux/repo">https://codeberg.org/requiem-linux/repo</a></li>
+</ul>
+<p>READ <a href="missal.html">THE MISSAL</a> FIRST.</p>
 <p>LATEST RELEASE: <a href="releases.html">requiem 0.1 A SMALL SOVEREIGNTY</a></p>
 <h3><u>CONTRIBUTE</u></h3>
-<p><a href="https://codeberg.org/requiem-linux/repo">codeberg</a>. read the <a href="goals.html#expect">expectations</a> first.</p>
+<p>package what's missing and send it back. pull requests on <a href="https://codeberg.org/requiem-linux/repo">codeberg</a>. read the <a href="goals.html#expect">expectations</a> first.</p>
 <h3><u>TALK</u></h3>
-<p><a href="https://codeberg.org/requiem-linux/repo/issues">issues</a>.</p>
+<p>bugs and questions go to the <a href="https://codeberg.org/requiem-linux/repo/issues">issue tracker</a>. there is no discord. nobody here is running a whole chromium to answer your questions.</p>
+<h3><u>NAME</u></h3>
+<p>a requiem is the mass for the dead. this one is for gnu. its parts are named after the mass too, in the order they're sung: introit, kyrie, tract. the missal is the book the mass is read from.</p>
 
 </td>
 </tr></table>
