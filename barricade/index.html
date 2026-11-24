@@ -3,22 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>kyrie - requiem</title>
+<title>barricade - blackout</title>
 </head>
 <body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
 <font face="Verdana, Geneva, sans-serif">
 <table width="100%" cellpadding="6" cellspacing="0" border="0" bgcolor="#1d2534"><tr>
-<td><font size="6" color="#eef1f6"><b>requiem</b></font> &nbsp;<font size="2" color="#9fb0c8"><i>kde has more settings than this has lines</i></font></td>
-<td align="right" valign="middle"><font size="2"><a href="../missal.html">docs</a> | <a href="../packages.html">packages</a> | <a href="../lix.html">lix</a> | <a href="../stalman.html">rms</a> | <a href="https://codeberg.org/requiem-linux">code</a></font></td>
+<td><font size="6" color="#eef1f6"><b>blackout</b></font> &nbsp;<font size="2" color="#9fb0c8"><i>kde has more settings than this has lines</i></font></td>
+<td align="right" valign="middle"><font size="2"><a href="../manifesto.html">docs</a> | <a href="../packages.html">packages</a> | <a href="../lix.html">lix</a> | <a href="../stalman.html">rms</a> | <a href="https://github.com/yagnilinux">code</a></font></td>
 </tr></table>
 <table cellpadding="0" cellspacing="12" border="0"><tr>
 <td valign="top" width="240">
 <a href="../index.html"><img src="../art/side.png" width="240" height="240" alt=""></a>
 <table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;DOCUMENTATION</b></font></td></tr></table>
 <font size="2"><ul>
-<li><a href="../missal.html">the missal</a></li>
+<li><a href="../manifesto.html">the manifesto</a></li>
+<li><a href="../install.html">install</a></li>
+<li><a href="../rag.html">rag</a></li>
+<li><a href="../system.html">the system</a></li>
+<li><a href="../barricade/index.html"><b>barricade</b></a></li>
+<li><a href="../bottles.html">bottles</a></li>
 <li><a href="../faq.html">answers</a></li>
-<li><a href="../kyrie/index.html"><b>kyrie</b></a></li>
 </ul></font>
 <table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;PROJECT</b></font></td></tr></table>
 <font size="2"><ul>
@@ -30,17 +34,16 @@
 </ul></font>
 <table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;CODE</b></font></td></tr></table>
 <font size="2"><ul>
-<li><a href="https://codeberg.org/requiem-linux/repo">codeberg git repo</a></li>
-<li><a href="https://github.com/yagnilinux/repo">github (mirror)</a></li>
-<li><a href="https://codeberg.org/requiem-linux/repo/issues">issues</a></li>
+<li><a href="https://github.com/yagnilinux/repo">git repo</a></li>
+<li><a href="https://github.com/yagnilinux/repo/issues">issues</a></li>
 </ul></font>
 </td>
 <td valign="top" width="780">
-<font size="1" color="#9fb0c8"><a href="../index.html">requiem</a> &raquo; documentation &raquo; kyrie</font>
-<h1><font color="#eef1f6">kyrie</font></h1>
+<font size="1" color="#9fb0c8"><a href="../index.html">blackout</a> &raquo; documentation &raquo; barricade</font>
+<h1><font color="#eef1f6">barricade</font></h1>
 
-<p>kyrie is the <a href="https://wayland.freedesktop.org">Wayland</a> compositor of requiem. It is built on <a href="https://github.com/michaelforney/swc">swc</a>.</p>
-<p><img alt="" src="screenshots/kyrie.png" width="640"></p>
+<p>barricade is the <a href="https://wayland.freedesktop.org">Wayland</a> compositor of blackout. It is built on <a href="https://github.com/michaelforney/swc">swc</a>.</p>
+<p><img alt="" src="screenshots/barricade.png" width="640"></p>
 <h3><font color="#eef1f6">features</font></h3>
 <ul>
 <li>Floating windows, moved and resized with the mouse</li>
@@ -53,7 +56,7 @@
 <tr><td><code>super + return</code></td><td>terminal</td></tr>
 <tr><td><code>super + d</code></td><td>launcher</td></tr>
 <tr><td><code>super + q</code></td><td>close the window</td></tr>
-<tr><td><code>super + shift + q</code></td><td>quit kyrie</td></tr>
+<tr><td><code>super + shift + q</code></td><td>quit barricade</td></tr>
 <tr><td><code>super + tab</code></td><td>raise the bottom window</td></tr>
 <tr><td><code>super + `</code></td><td>lower the top window</td></tr>
 <tr><td><code>super + f</code></td><td>fullscreen</td></tr>
@@ -65,20 +68,39 @@
 <tr><td><code>super + p</code></td><td>screenshot</td></tr>
 </table>
 <h3><font color="#eef1f6">install</font></h3>
-<p>On requiem:</p>
-<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;introit&nbsp;a&nbsp;desktop/kyrie<br>
+<p>On blackout:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;rag&nbsp;a&nbsp;desktop/barricade<br>
 $&nbsp;startw</code></td></tr></table>
 
-<p>On other systems, kyrie needs swc with the patches in <code>patches/</code>:</p>
+<p>On other systems, barricade needs swc with the patches in <code>patches/</code>:</p>
 <table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;make&nbsp;SWC=/path/to/swc</code></td></tr></table>
 
 <h3><font color="#eef1f6">configuration</font></h3>
-<p>Colours, border width and extra keys are set without recompiling, as described in <a href="../missal.html#desktop">the missal</a>. The built-in keys are in <code>keys[]</code> at the top of <code>kyrie.c</code>. Only the US keyboard layout is included.</p>
+<p><code>~/.config/barricade/env</code>:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>BARRICADE_BORDER=6<br>
+BARRICADE_FOCUS=c9c9c6<br>
+BARRICADE_UNFOCUS=494949<br>
+TERMINAL=havoc<br>
+MENU=dmenu_run<br>
+BROWSER=netsurf</code></td></tr></table>
+
+<p>Your own keys go in <code>~/.config/barricade/keys</code>, starting from <code>/share/barricade/keys</code>:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>case&nbsp;$1&nbsp;in<br>
+w)&nbsp;exec&nbsp;netsurf&nbsp;;;<br>
+S-x)&nbsp;exec&nbsp;havoc&nbsp;scrawl&nbsp;;;<br>
+esac</code></td></tr></table>
+
+<p>Wallpaper and screenshots:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;setwall&nbsp;/share/wallpapers/tower.png<br>
+$&nbsp;setwall&nbsp;'#1a4270'<br>
+$&nbsp;shot&nbsp;file.png</code></td></tr></table>
+
+<p>The built-in keys are in <code>keys[]</code> at the top of <code>barricade.c</code>. US layout only.</p>
 
 </td>
 </tr></table>
 <hr noshade size="1" color="#6e7d95">
-<center><font size="1" color="#9fb0c8">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font></center>
+<center><font size="1" color="#9fb0c8">made by max spuk. blackout is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font></center>
 </font>
 </body>
 </html>

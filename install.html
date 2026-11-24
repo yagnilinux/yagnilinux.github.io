@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installing - blackout</title>
+</head>
+<body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
+<font face="Verdana, Geneva, sans-serif">
+<table width="100%" cellpadding="6" cellspacing="0" border="0" bgcolor="#1d2534"><tr>
+<td><font size="6" color="#eef1f6"><b>blackout</b></font> &nbsp;<font size="2" color="#9fb0c8"><i>there is no installer</i></font></td>
+<td align="right" valign="middle"><font size="2"><a href="manifesto.html">docs</a> | <a href="packages.html">packages</a> | <a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="https://github.com/yagnilinux">code</a></font></td>
+</tr></table>
+<table cellpadding="0" cellspacing="12" border="0"><tr>
+<td valign="top" width="240">
+<a href="index.html"><img src="art/side.png" width="240" height="240" alt=""></a>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;DOCUMENTATION</b></font></td></tr></table>
+<font size="2"><ul>
+<li><a href="manifesto.html">the manifesto</a></li>
+<li><a href="install.html"><b>install</b></a></li>
+<li><a href="rag.html">rag</a></li>
+<li><a href="system.html">the system</a></li>
+<li><a href="barricade/index.html">barricade</a></li>
+<li><a href="bottles.html">bottles</a></li>
+<li><a href="faq.html">answers</a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;PROJECT</b></font></td></tr></table>
+<font size="2"><ul>
+<li><a href="goals.html">goals</a></li>
+<li><a href="releases.html">releases</a></li>
+<li><a href="screenshots.html">screenshots</a></li>
+<li><a href="packages.html">packages</a></li>
+<li><a href="thanks.html">thanks</a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;CODE</b></font></td></tr></table>
+<font size="2"><ul>
+<li><a href="https://github.com/yagnilinux/repo">git repo</a></li>
+<li><a href="https://github.com/yagnilinux/repo/issues">issues</a></li>
+</ul></font>
+</td>
+<td valign="top" width="780">
+<font size="1" color="#9fb0c8"><a href="index.html">blackout</a> &raquo; documentation &raquo; Installing</font>
+<h1><font color="#eef1f6">Installing</font></h1>
+<p>You need an x86-64 machine with UEFI and a USB stick.</p>
+
+<h4 id="stick"><font color="#eef1f6"><u>The stick</u></font></h4>
+<p>To write <a href="releases.html">blackout.iso</a> to it:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;dd&nbsp;if=blackout.iso&nbsp;of=/dev/sdX&nbsp;bs=4M</code></td></tr></table>
+
+<p>Turn secure boot off and boot it.</p>
+
+<h4 id="disk"><font color="#eef1f6"><u>The disk</u></font></h4>
+<p>To make an EFI partition and a root partition. The root partition has to be named <code>blackout</code>:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;sfdisk&nbsp;/dev/sda&nbsp;&lt;&lt;EOF<br>
+label:&nbsp;gpt<br>
+size=256M,&nbsp;type=uefi,&nbsp;name=BOOT<br>
+type=linux,&nbsp;name=blackout<br>
+EOF<br>
+#&nbsp;mkfs.vfat&nbsp;-F&nbsp;32&nbsp;-n&nbsp;BOOT&nbsp;/dev/sda1<br>
+#&nbsp;mkfs.ext4&nbsp;-L&nbsp;blackout&nbsp;/dev/sda2<br>
+#&nbsp;mount&nbsp;/dev/sda2&nbsp;/mnt<br>
+#&nbsp;mkdir&nbsp;/mnt/boot<br>
+#&nbsp;mount&nbsp;/dev/sda1&nbsp;/mnt/boot</code></td></tr></table>
+
+<p>To dual boot, mount your existing EFI partition at <code>/mnt/boot</code> instead.</p>
+
+<h4 id="base"><font color="#eef1f6"><u>The base</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;cd&nbsp;/media/install<br>
+#&nbsp;sha256sum&nbsp;-c&nbsp;blackout.tar.gz.sha256<br>
+#&nbsp;tar&nbsp;xzf&nbsp;blackout.tar.gz&nbsp;-C&nbsp;/mnt<br>
+#&nbsp;chroot&nbsp;/mnt&nbsp;passwd</code></td></tr></table>
+
+
+<h4 id="wifi"><font color="#eef1f6"><u>Wifi, before rebooting</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;RAG_REPO=file:///media/install/repo&nbsp;rag&nbsp;-r&nbsp;/mnt&nbsp;a&nbsp;net/wpa_supplicant&nbsp;firmware/iwlwifi&nbsp;sys/qoltils</code></td></tr></table>
+
+<p><code>firmware/realtek</code> instead of <code>firmware/iwlwifi</code> for Realtek cards.</p>
+
+<h4 id="reboot"><font color="#eef1f6"><u>Reboot</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;umount&nbsp;/mnt/boot&nbsp;/mnt<br>
+#&nbsp;reboot</code></td></tr></table>
+
+<p>Stuck at <code>Waiting for root device PARTLABEL=blackout</code>:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;sfdisk&nbsp;--part-label&nbsp;/dev/sda&nbsp;2&nbsp;blackout</code></td></tr></table>
+
+<p>The firmware skips the disk:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;efibootmgr&nbsp;-c&nbsp;-d&nbsp;/dev/sda&nbsp;-p&nbsp;1&nbsp;-L&nbsp;blackout&nbsp;-l&nbsp;'\\EFI\\BOOT\\BOOTX64.EFI'</code></td></tr></table>
+
+
+</td>
+</tr></table>
+<hr noshade size="1" color="#6e7d95">
+<center><font size="1" color="#9fb0c8">made by max spuk. blackout is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font></center>
+</font>
+</body>
+</html>

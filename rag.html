@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rag - blackout</title>
+</head>
+<body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
+<font face="Verdana, Geneva, sans-serif">
+<table width="100%" cellpadding="6" cellspacing="0" border="0" bgcolor="#1d2534"><tr>
+<td><font size="6" color="#eef1f6"><b>blackout</b></font> &nbsp;<font size="2" color="#9fb0c8"><i>light it</i></font></td>
+<td align="right" valign="middle"><font size="2"><a href="manifesto.html">docs</a> | <a href="packages.html">packages</a> | <a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="https://github.com/yagnilinux">code</a></font></td>
+</tr></table>
+<table cellpadding="0" cellspacing="12" border="0"><tr>
+<td valign="top" width="240">
+<a href="index.html"><img src="art/side.png" width="240" height="240" alt=""></a>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;DOCUMENTATION</b></font></td></tr></table>
+<font size="2"><ul>
+<li><a href="manifesto.html">the manifesto</a></li>
+<li><a href="install.html">install</a></li>
+<li><a href="rag.html"><b>rag</b></a></li>
+<li><a href="system.html">the system</a></li>
+<li><a href="barricade/index.html">barricade</a></li>
+<li><a href="bottles.html">bottles</a></li>
+<li><a href="faq.html">answers</a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;PROJECT</b></font></td></tr></table>
+<font size="2"><ul>
+<li><a href="goals.html">goals</a></li>
+<li><a href="releases.html">releases</a></li>
+<li><a href="screenshots.html">screenshots</a></li>
+<li><a href="packages.html">packages</a></li>
+<li><a href="thanks.html">thanks</a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;CODE</b></font></td></tr></table>
+<font size="2"><ul>
+<li><a href="https://github.com/yagnilinux/repo">git repo</a></li>
+<li><a href="https://github.com/yagnilinux/repo/issues">issues</a></li>
+</ul></font>
+</td>
+<td valign="top" width="780">
+<font size="1" color="#9fb0c8"><a href="index.html">blackout</a> &raquo; documentation &raquo; rag</font>
+<h1><font color="#eef1f6">rag</font></h1>
+<p>rag is blackout's package manager, 251 lines of shell. Packages are bottles, they come in the crate, and your mix decides their fuel. <a href="https://github.com/yagnilinux/jits">yagnilinux/jits</a></p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>rag&nbsp;[-r&nbsp;root]&nbsp;a|b|r|u|s|l|f&nbsp;[bottle]...</code></td></tr></table>
+
+
+<h4 id="add"><font color="#eef1f6"><u>Installing</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;rag&nbsp;a&nbsp;dev/git<br>
+#&nbsp;rag&nbsp;a&nbsp;git<br>
+#&nbsp;rag&nbsp;-r&nbsp;/mnt&nbsp;a&nbsp;dev/git<br>
+#&nbsp;RAG_REPO=file:///media/install/repo&nbsp;rag&nbsp;a&nbsp;dev/git</code></td></tr></table>
+
+
+<h4 id="find"><font color="#eef1f6"><u>Finding</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;rag&nbsp;s<br>
+$&nbsp;rag&nbsp;s&nbsp;fetch<br>
+$&nbsp;rag&nbsp;l<br>
+$&nbsp;grep&nbsp;-lx&nbsp;bin/oksh&nbsp;/var/db/rag/installed/*/*/manifest</code></td></tr></table>
+
+<p>Everything with sizes: <a href="packages.html">packages</a>.</p>
+
+<h4 id="remove"><font color="#eef1f6"><u>Removing</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;rag&nbsp;r&nbsp;utils/pfetch</code></td></tr></table>
+
+
+<h4 id="updating"><font color="#eef1f6"><u>Updating</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;rag&nbsp;u</code></td></tr></table>
+
+
+<h4 id="mix"><font color="#eef1f6"><u>Fuel and the mix</u></font></h4>
+<p>To see what a bottle can be built with:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;rag&nbsp;f&nbsp;qoltils<br>
++wifi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wifi&nbsp;network&nbsp;password,&nbsp;for&nbsp;wpa2<br>
++vol&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vol&nbsp;80,&nbsp;sets&nbsp;and&nbsp;unmutes&nbsp;the&nbsp;sound<br>
++yt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yt&nbsp;url,&nbsp;plays&nbsp;audio&nbsp;or&nbsp;downloads&nbsp;with&nbsp;yt-dlp</code></td></tr></table>
+
+<p>Your mix is <code>/etc/rag/mix</code>:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-doc<br>
+sys/qoltils&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-yt<br>
+media/ffmpeg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=6.1-3<br>
+editors/scrawl&nbsp;&nbsp;&nbsp;&nbsp;sha256:9f2c...<br>
+utils/pfetch&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@latest</code></td></tr></table>
+
+<p><code>-</code> and <code>+</code> take fuel out or put it in, <code>=</code> holds a version, <code>sha256:</code> checks the source, <code>@latest</code> builds from upstream. Then:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;rag&nbsp;u</code></td></tr></table>
+
+<p>To build one from source anyway:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;rag&nbsp;b&nbsp;scrawl</code></td></tr></table>
+
+
+<h4 id="etc"><font color="#eef1f6"><u>Your /etc</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;etcnew<br>
+$&nbsp;etcnew&nbsp;diff&nbsp;/etc/profile<br>
+#&nbsp;etcnew&nbsp;take&nbsp;/etc/profile<br>
+#&nbsp;etcnew&nbsp;keep&nbsp;/etc/profile</code></td></tr></table>
+
+
+<h4 id="db"><font color="#eef1f6"><u>/var/db/rag</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>/var/db/rag/repo/index&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;index<br>
+/var/db/rag/installed/&lt;category&gt;/&lt;name&gt;/&nbsp;&nbsp;&nbsp;version,&nbsp;depends,&nbsp;manifest,&nbsp;etcsums,&nbsp;fuel<br>
+/var/db/rag/crate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;bottles<br>
+/var/db/rag/cache&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;downloads<br>
+/var/db/rag/stage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unpacking</code></td></tr></table>
+
+
+</td>
+</tr></table>
+<hr noshade size="1" color="#6e7d95">
+<center><font size="1" color="#9fb0c8">made by max spuk. blackout is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font></center>
+</font>
+</body>
+</html>

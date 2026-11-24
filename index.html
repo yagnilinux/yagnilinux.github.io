@@ -3,22 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>requiem</title>
+<title>blackout</title>
 </head>
 <body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
 <font face="Verdana, Geneva, sans-serif">
 <table width="100%" cellpadding="6" cellspacing="0" border="0" bgcolor="#1d2534"><tr>
-<td><font size="6" color="#eef1f6"><b>requiem</b></font> &nbsp;<font size="2" color="#9fb0c8"><i>a small sovereignty</i></font></td>
-<td align="right" valign="middle"><font size="2"><a href="missal.html">docs</a> | <a href="packages.html">packages</a> | <a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/requiem-linux">code</a></font></td>
+<td><font size="6" color="#eef1f6"><b>blackout</b></font> &nbsp;<font size="2" color="#9fb0c8"><i>a small sovereignty</i></font></td>
+<td align="right" valign="middle"><font size="2"><a href="manifesto.html">docs</a> | <a href="packages.html">packages</a> | <a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="https://github.com/yagnilinux">code</a></font></td>
 </tr></table>
 <table cellpadding="0" cellspacing="12" border="0"><tr>
 <td valign="top" width="240">
 <a href="index.html"><img src="art/side.png" width="240" height="240" alt=""></a>
 <table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;DOCUMENTATION</b></font></td></tr></table>
 <font size="2"><ul>
-<li><a href="missal.html">the missal</a></li>
+<li><a href="manifesto.html">the manifesto</a></li>
+<li><a href="install.html">install</a></li>
+<li><a href="rag.html">rag</a></li>
+<li><a href="system.html">the system</a></li>
+<li><a href="barricade/index.html">barricade</a></li>
+<li><a href="bottles.html">bottles</a></li>
 <li><a href="faq.html">answers</a></li>
-<li><a href="kyrie/index.html">kyrie</a></li>
 </ul></font>
 <table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;PROJECT</b></font></td></tr></table>
 <font size="2"><ul>
@@ -30,49 +34,46 @@
 </ul></font>
 <table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;CODE</b></font></td></tr></table>
 <font size="2"><ul>
-<li><a href="https://codeberg.org/requiem-linux/repo">codeberg git repo</a></li>
-<li><a href="https://github.com/yagnilinux/repo">github (mirror)</a></li>
-<li><a href="https://codeberg.org/requiem-linux/repo/issues">issues</a></li>
+<li><a href="https://github.com/yagnilinux/repo">git repo</a></li>
+<li><a href="https://github.com/yagnilinux/repo/issues">issues</a></li>
 </ul></font>
 </td>
 <td valign="top" width="780">
 <p><font color="#9fb0c8"><i>&ldquo;The captive is the one whose desires hold him captive.&rdquo; &mdash; Ibn Taymiyyah</i></font></p>
 
-<p>This is <i>requiem</i>, an experimental Linux distribution for x86-64, built on <a href="https://musl.libc.org">musl libc</a> and <a href="https://busybox.net">busybox</a>. It has only been tested in QEMU. On real hardware, expect to find bugs.</p>
+<p>This is <i>blackout</i>, an experimental Linux distribution for x86-64, built on <a href="https://musl.libc.org">musl libc</a> and <a href="https://busybox.net">busybox</a>. It has only been tested in QEMU. On real hardware, expect to find bugs.</p>
+<p><b>rag</b><br>blackout's own package manager. Bottles come prebuilt, or built from source with the fuel your <a href="rag.html#mix">mix</a> asks for.</p>
+<p><b>s6 as init</b><br>The firmware starts the kernel, s6 starts the rest, and <a href="system.html#booting">spark</a> is the 49 lines in between. No bootloader, no initramfs.</p>
+<p><b>Static</b><br>Every program. No dynamic loader, no <code>/lib</code>, no <code>/sbin</code>.</p>
+<p><b>100% GNU free</b><br>Built with clang, lld and compiler-rt. <a href="lix.html">Not almost</a>, unlike <a href="https://derivelinux.org">a certain os</a>.</p>
+<p><b>barricade</b><br>The <a href="barricade/index.html">Wayland compositor</a>, one C file on <a href="https://github.com/michaelforney/swc">swc</a>.</p>
+<p><b>The odd ones</b><br>execline, samurai, muon, pdpmake, mandoc, oksh, doas.</p>
 <p>Requirements:</p>
 <ul>
 <li>An x86-64 machine that boots with UEFI, with secure boot disabled, or QEMU.</li>
 <li>A USB stick.</li>
 <li>Some experience with Linux.</li>
 </ul>
-<p>Features:</p>
-<ul>
-<li>Every program is statically linked. There is no dynamic loader and no <code>/lib</code>.</li>
-<li>Everything is built with clang, lld and compiler-rt. requiem is <a href="lix.html">100% GNU free</a>, unlike <a href="https://derivelinux.org">a certain os</a>.</li>
-<li><code>/usr</code> is a symlink to <code>/</code>, and there is no <code>/sbin</code>. (<a href="missal.html#differently">the file system</a>)</li>
-<li><a href="kyrie/index.html">kyrie</a>, a Wayland compositor built on <a href="https://github.com/michaelforney/swc">swc</a>.</li>
-<li>No bootloader and no initramfs. The firmware starts the kernel, and init runs <a href="missal.html#booting">/etc/libera</a>, a 32 line shell script.</li>
-</ul>
 <p>Ready-to-boot images:</p>
 <ul>
-<li><a href="https://codeberg.org/requiem-linux/repo/releases/download/0.1/requiem.iso">requiem.iso</a>, 37MB. It boots to a root shell and carries everything needed to install.</li>
-<li><a href="https://codeberg.org/requiem-linux/repo/releases/download/0.1/requiem.tar.gz">requiem.tar.gz</a>, 7MB, the base system.</li>
+<li><a href="https://github.com/yagnilinux/repo/releases/download/0.1/blackout.iso">blackout.iso</a>, 47MB. It boots to a root shell and carries everything needed to install.</li>
+<li><a href="https://github.com/yagnilinux/repo/releases/download/0.1/blackout.tar.gz">blackout.tar.gz</a>, 12MB, the base system.</li>
 </ul>
 <p>Build your own from source:</p>
 <ul>
-<li><a href="https://codeberg.org/requiem-linux/repo">https://codeberg.org/requiem-linux/repo</a></li>
+<li><a href="https://github.com/yagnilinux/repo">https://github.com/yagnilinux/repo</a></li>
 </ul>
-<p>READ <a href="missal.html">THE MISSAL</a> BEFORE INSTALLING.</p>
-<p>LATEST RELEASE: <a href="releases.html">requiem 0.1 A SMALL SOVEREIGNTY</a></p>
+<p>READ <a href="manifesto.html">THE MANIFESTO</a> BEFORE INSTALLING.</p>
+<p>LATEST RELEASE: <a href="releases.html">blackout 0.1 A SMALL SOVEREIGNTY</a></p>
 <h3><font color="#eef1f6">contribute</font></h3>
-<p>New packages and fixes are welcome as pull requests on <a href="https://codeberg.org/requiem-linux/repo">codeberg</a>. Read the <a href="goals.html#expect">expectations</a> first.</p>
+<p>New packages and fixes are welcome as pull requests on <a href="https://github.com/yagnilinux/repo">github</a>. Read the <a href="goals.html#expect">expectations</a> first.</p>
 <h3><font color="#eef1f6">talk</font></h3>
-<p>Bugs and questions go to the <a href="https://codeberg.org/requiem-linux/repo/issues">issue tracker</a>. There is no chat.</p>
+<p>Bugs and questions go to the <a href="https://github.com/yagnilinux/repo/issues">issue tracker</a>. There is no chat.</p>
 
 </td>
 </tr></table>
 <hr noshade size="1" color="#6e7d95">
-<center><font size="1" color="#9fb0c8">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font></center>
+<center><font size="1" color="#9fb0c8">made by max spuk. blackout is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font></center>
 </font>
 </body>
 </html>

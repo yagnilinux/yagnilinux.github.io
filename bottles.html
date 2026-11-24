@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bottles - blackout</title>
+</head>
+<body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
+<font face="Verdana, Geneva, sans-serif">
+<table width="100%" cellpadding="6" cellspacing="0" border="0" bgcolor="#1d2534"><tr>
+<td><font size="6" color="#eef1f6"><b>blackout</b></font> &nbsp;<font size="2" color="#9fb0c8"><i>fill your own</i></font></td>
+<td align="right" valign="middle"><font size="2"><a href="manifesto.html">docs</a> | <a href="packages.html">packages</a> | <a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="https://github.com/yagnilinux">code</a></font></td>
+</tr></table>
+<table cellpadding="0" cellspacing="12" border="0"><tr>
+<td valign="top" width="240">
+<a href="index.html"><img src="art/side.png" width="240" height="240" alt=""></a>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;DOCUMENTATION</b></font></td></tr></table>
+<font size="2"><ul>
+<li><a href="manifesto.html">the manifesto</a></li>
+<li><a href="install.html">install</a></li>
+<li><a href="rag.html">rag</a></li>
+<li><a href="system.html">the system</a></li>
+<li><a href="barricade/index.html">barricade</a></li>
+<li><a href="bottles.html"><b>bottles</b></a></li>
+<li><a href="faq.html">answers</a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;PROJECT</b></font></td></tr></table>
+<font size="2"><ul>
+<li><a href="goals.html">goals</a></li>
+<li><a href="releases.html">releases</a></li>
+<li><a href="screenshots.html">screenshots</a></li>
+<li><a href="packages.html">packages</a></li>
+<li><a href="thanks.html">thanks</a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;CODE</b></font></td></tr></table>
+<font size="2"><ul>
+<li><a href="https://github.com/yagnilinux/repo">git repo</a></li>
+<li><a href="https://github.com/yagnilinux/repo/issues">issues</a></li>
+</ul></font>
+</td>
+<td valign="top" width="780">
+<font size="1" color="#9fb0c8"><a href="index.html">blackout</a> &raquo; documentation &raquo; Bottles</font>
+<h1><font color="#eef1f6">Bottles</font></h1>
+<p>Missing something? Make a bottle and send it to <a href="https://github.com/yagnilinux/repo">the repo</a>.</p>
+
+<h4 id="pkgfiles"><font color="#eef1f6"><u>A bottle</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;ls&nbsp;crate/sys/qoltils<br>
+build&nbsp;&nbsp;files&nbsp;&nbsp;fuel&nbsp;&nbsp;version<br>
+$&nbsp;cat&nbsp;crate/sys/qoltils/fuel<br>
++wifi&nbsp;&nbsp;&nbsp;&nbsp;wifi&nbsp;network&nbsp;password,&nbsp;for&nbsp;wpa2<br>
++vol&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vol&nbsp;80,&nbsp;sets&nbsp;and&nbsp;unmutes&nbsp;the&nbsp;sound<br>
++yt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yt&nbsp;url,&nbsp;plays&nbsp;audio&nbsp;or&nbsp;downloads&nbsp;with&nbsp;yt-dlp<br>
+$&nbsp;cat&nbsp;crate/sys/qoltils/build<br>
+#!/bin/sh&nbsp;-e<br>
+for&nbsp;f&nbsp;in&nbsp;mkuser&nbsp;etcnew;&nbsp;do&nbsp;install&nbsp;-Dm755&nbsp;"$PKG/files/$f"&nbsp;"$1/usr/bin/$f";&nbsp;done<br>
+[&nbsp;-z&nbsp;"$F_wifi"&nbsp;]&nbsp;||&nbsp;install&nbsp;-Dm755&nbsp;"$PKG/files/wifi"&nbsp;"$1/usr/bin/wifi"<br>
+[&nbsp;-z&nbsp;"$F_vol"&nbsp;]&nbsp;||&nbsp;install&nbsp;-Dm755&nbsp;"$PKG/files/vol"&nbsp;"$1/usr/bin/vol"<br>
+[&nbsp;-z&nbsp;"$F_yt"&nbsp;]&nbsp;||&nbsp;install&nbsp;-Dm755&nbsp;"$PKG/files/yt"&nbsp;"$1/usr/bin/yt"</code></td></tr></table>
+
+<table border="1" cellpadding="4" cellspacing="0" bordercolor="#6e7d95">
+<tr><td><code>version</code></td><td>upstream version, then <code>-1</code>, <code>-2</code>. bump it on every change</td></tr>
+<tr><td><code>build</code></td><td>installs into <code>$1</code></td></tr>
+<tr><td><code>source</code></td><td><code>git url tag</code>, <code>apt-src pkg</code> or <code>apt-deb pkg...</code></td></tr>
+<tr><td><code>depends</code></td><td>one bottle per line</td></tr>
+<tr><td><code>fuel</code></td><td><code>+name</code> on, <code>-name</code> off. <code>$F_name</code> in the build</td></tr>
+<tr><td><code>app</code></td><td>makes it an app</td></tr>
+<tr><td><code>binonly</code></td><td>can't be built on blackout</td></tr>
+</table>
+
+<h4 id="building"><font color="#eef1f6"><u>Building blackout</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;git&nbsp;clone&nbsp;https://github.com/yagnilinux/repo<br>
+$&nbsp;cd&nbsp;repo<br>
+$&nbsp;./mkrepo<br>
+$&nbsp;./mkpkg&nbsp;scrawl<br>
+$&nbsp;./mkrootfs<br>
+#&nbsp;./mkiso</code></td></tr></table>
+
+<p>The build machine needs clang, lld, compiler-rt, lzfse and GNU make, plus xorriso and mtools for the iso.</p>
+
+</td>
+</tr></table>
+<hr noshade size="1" color="#6e7d95">
+<center><font size="1" color="#9fb0c8">made by max spuk. blackout is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font></center>
+</font>
+</body>
+</html>

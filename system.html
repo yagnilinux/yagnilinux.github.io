@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The system - blackout</title>
+</head>
+<body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
+<font face="Verdana, Geneva, sans-serif">
+<table width="100%" cellpadding="6" cellspacing="0" border="0" bgcolor="#1d2534"><tr>
+<td><font size="6" color="#eef1f6"><b>blackout</b></font> &nbsp;<font size="2" color="#9fb0c8"><i>nothing up the sleeve</i></font></td>
+<td align="right" valign="middle"><font size="2"><a href="manifesto.html">docs</a> | <a href="packages.html">packages</a> | <a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="https://github.com/yagnilinux">code</a></font></td>
+</tr></table>
+<table cellpadding="0" cellspacing="12" border="0"><tr>
+<td valign="top" width="240">
+<a href="index.html"><img src="art/side.png" width="240" height="240" alt=""></a>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;DOCUMENTATION</b></font></td></tr></table>
+<font size="2"><ul>
+<li><a href="manifesto.html">the manifesto</a></li>
+<li><a href="install.html">install</a></li>
+<li><a href="rag.html">rag</a></li>
+<li><a href="system.html"><b>the system</b></a></li>
+<li><a href="barricade/index.html">barricade</a></li>
+<li><a href="bottles.html">bottles</a></li>
+<li><a href="faq.html">answers</a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;PROJECT</b></font></td></tr></table>
+<font size="2"><ul>
+<li><a href="goals.html">goals</a></li>
+<li><a href="releases.html">releases</a></li>
+<li><a href="screenshots.html">screenshots</a></li>
+<li><a href="packages.html">packages</a></li>
+<li><a href="thanks.html">thanks</a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;CODE</b></font></td></tr></table>
+<font size="2"><ul>
+<li><a href="https://github.com/yagnilinux/repo">git repo</a></li>
+<li><a href="https://github.com/yagnilinux/repo/issues">issues</a></li>
+</ul></font>
+</td>
+<td valign="top" width="780">
+<font size="1" color="#9fb0c8"><a href="index.html">blackout</a> &raquo; documentation &raquo; The system</font>
+<h1><font color="#eef1f6">The system</font></h1>
+<h4 id="differently"><font color="#eef1f6"><u>The file system</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>/bin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;programs<br>
+/share&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data,&nbsp;fonts,&nbsp;firmware,&nbsp;modules,&nbsp;headers,&nbsp;static&nbsp;libraries<br>
+/etc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;configuration<br>
+/boot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;EFI&nbsp;partition&nbsp;and&nbsp;the&nbsp;kernel<br>
+/var&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logs&nbsp;and&nbsp;/var/db/rag<br>
+/apps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apps&nbsp;for&nbsp;every&nbsp;user<br>
+/home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;users&nbsp;and&nbsp;their&nbsp;~/apps<br>
+/usr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;symlink&nbsp;to&nbsp;/</code></td></tr></table>
+
+<p>Everything is static. No <code>/lib</code>, no <code>/sbin</code>, nothing built for glibc.</p>
+
+<h4 id="apps"><font color="#eef1f6"><u>Apps</u></font></h4>
+<p>Apps are folders in <code>~/apps</code>, or <code>/apps</code> for everyone.</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;rag&nbsp;a&nbsp;browsers/netsurf<br>
+#&nbsp;rag&nbsp;a&nbsp;browsers/netsurf<br>
+$&nbsp;mv&nbsp;~/apps/netsurf&nbsp;~/old/</code></td></tr></table>
+
+
+<h4 id="booting"><font color="#eef1f6"><u>spark and s6</u></font></h4>
+<p>The firmware runs the kernel, the kernel runs s6-linux-init, and s6 runs <code>/etc/spark</code>, 49 lines of shell. No bootloader, no initramfs.</p>
+<p>To add a service:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;mkdir&nbsp;/etc/sv/foo<br>
+#&nbsp;printf&nbsp;'#!/bin/sh\nexec&nbsp;foo&nbsp;-f\n'&nbsp;&gt;&nbsp;/etc/sv/foo/run<br>
+#&nbsp;chmod&nbsp;+x&nbsp;/etc/sv/foo/run<br>
+#&nbsp;ln&nbsp;-s&nbsp;/etc/sv/foo&nbsp;/run/service/<br>
+#&nbsp;s6-svc&nbsp;-r&nbsp;/run/service/foo<br>
+$&nbsp;s6-svstat&nbsp;/run/service/foo</code></td></tr></table>
+
+<table border="1" cellpadding="4" cellspacing="0" bordercolor="#6e7d95">
+<tr><td><code>/etc/spark</code></td><td>the boot</td></tr>
+<tr><td><code>/etc/spark.d</code></td><td>run once at boot</td></tr>
+<tr><td><code>/etc/sv</code></td><td>services</td></tr>
+<tr><td><code>/etc/fstab</code></td><td>mounts</td></tr>
+<tr><td><code>/etc/hostname</code></td><td>hostname</td></tr>
+<tr><td><code>/etc/doas.conf</code></td><td>doas</td></tr>
+<tr><td><code>/etc/rag/repo</code></td><td>the repository</td></tr>
+<tr><td><code>/etc/rag/mix</code></td><td>your mix</td></tr>
+<tr><td><code>/etc/profile</code></td><td>PATH and the prompt</td></tr>
+</table>
+
+<h4 id="users"><font color="#eef1f6"><u>Users</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;mkuser&nbsp;foo</code></td></tr></table>
+
+
+<h4 id="wlan"><font color="#eef1f6"><u>Wifi</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;cat&nbsp;/sys/bus/pci/devices/*/vendor<br>
+#&nbsp;wifi&nbsp;network&nbsp;password</code></td></tr></table>
+
+<p><code>0x8086</code> needs <code>firmware/iwlwifi</code>, <code>0x10ec</code> needs <code>firmware/realtek</code>. WPA2 only.</p>
+
+<h4 id="sound"><font color="#eef1f6"><u>Sound</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;vol&nbsp;80</code></td></tr></table>
+
+
+<h4 id="tools"><font color="#eef1f6"><u>Your own code</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;rag&nbsp;a&nbsp;dev/tcc&nbsp;sys/musl-dev&nbsp;dev/pdpmake&nbsp;dev/samurai&nbsp;dev/muon&nbsp;doc/mandoc<br>
+$&nbsp;cc&nbsp;-o&nbsp;hello&nbsp;hello.c<br>
+$&nbsp;make<br>
+$&nbsp;samu<br>
+$&nbsp;muon&nbsp;setup&nbsp;build<br>
+$&nbsp;man&nbsp;mandoc</code></td></tr></table>
+
+
+</td>
+</tr></table>
+<hr noshade size="1" color="#6e7d95">
+<center><font size="1" color="#9fb0c8">made by max spuk. blackout is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font></center>
+</font>
+</body>
+</html>

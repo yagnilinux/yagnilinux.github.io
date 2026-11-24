@@ -3,22 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>answers - requiem</title>
+<title>answers - blackout</title>
 </head>
 <body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
 <font face="Verdana, Geneva, sans-serif">
 <table width="100%" cellpadding="6" cellspacing="0" border="0" bgcolor="#1d2534"><tr>
-<td><font size="6" color="#eef1f6"><b>requiem</b></font> &nbsp;<font size="2" color="#9fb0c8"><i>100% gnu free</i></font></td>
-<td align="right" valign="middle"><font size="2"><a href="missal.html">docs</a> | <a href="packages.html">packages</a> | <a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/requiem-linux">code</a></font></td>
+<td><font size="6" color="#eef1f6"><b>blackout</b></font> &nbsp;<font size="2" color="#9fb0c8"><i>100% gnu free</i></font></td>
+<td align="right" valign="middle"><font size="2"><a href="manifesto.html">docs</a> | <a href="packages.html">packages</a> | <a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="https://github.com/yagnilinux">code</a></font></td>
 </tr></table>
 <table cellpadding="0" cellspacing="12" border="0"><tr>
 <td valign="top" width="240">
 <a href="index.html"><img src="art/side.png" width="240" height="240" alt=""></a>
 <table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;DOCUMENTATION</b></font></td></tr></table>
 <font size="2"><ul>
-<li><a href="missal.html">the missal</a></li>
+<li><a href="manifesto.html">the manifesto</a></li>
+<li><a href="install.html">install</a></li>
+<li><a href="rag.html">rag</a></li>
+<li><a href="system.html">the system</a></li>
+<li><a href="barricade/index.html">barricade</a></li>
+<li><a href="bottles.html">bottles</a></li>
 <li><a href="faq.html"><b>answers</b></a></li>
-<li><a href="kyrie/index.html">kyrie</a></li>
 </ul></font>
 <table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;PROJECT</b></font></td></tr></table>
 <font size="2"><ul>
@@ -30,19 +34,18 @@
 </ul></font>
 <table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;CODE</b></font></td></tr></table>
 <font size="2"><ul>
-<li><a href="https://codeberg.org/requiem-linux/repo">codeberg git repo</a></li>
-<li><a href="https://github.com/yagnilinux/repo">github (mirror)</a></li>
-<li><a href="https://codeberg.org/requiem-linux/repo/issues">issues</a></li>
+<li><a href="https://github.com/yagnilinux/repo">git repo</a></li>
+<li><a href="https://github.com/yagnilinux/repo/issues">issues</a></li>
 </ul></font>
 </td>
 <td valign="top" width="780">
-<font size="1" color="#9fb0c8"><a href="index.html">requiem</a> &raquo; documentation &raquo; answers</font>
+<font size="1" color="#9fb0c8"><a href="index.html">blackout</a> &raquo; documentation &raquo; answers</font>
 <h1><font color="#eef1f6">answers</font></h1>
 <p><font color="#9fb0c8"><i>&ldquo;Whereof one cannot speak, thereof one must be silent.&rdquo; &mdash; Ludwig Wittgenstein</i></font></p>
 
-<p>If your question is not answered here, it may be answered in <a href="missal.html">the missal</a>. If not, ask on the <a href="https://codeberg.org/requiem-linux/repo/issues">issue tracker</a>.</p>
-<h3><font color="#eef1f6">Who is requiem for?</font></h3>
-<p>For people who want to understand every part of the system they run. It has only been tested in QEMU, so that is the place to try it first.</p>
+<p>If your question is not answered here, it may be answered in <a href="manifesto.html">the manifesto</a>. If not, ask on the <a href="https://github.com/yagnilinux/repo/issues">issue tracker</a>.</p>
+<h3><font color="#eef1f6">Who is blackout for?</font></h3>
+<p>Anyone who wants to own their system instead of renting it. Every program is static and built without GNU. s6 keeps the services alive. rag builds your bottles from source with the fuel you pick, or hands you prebuilt ones. Apps are folders. The boot is one shell script, the package manager is another, and the compositor is one C file. You can read all of it, and you are expected to.</p>
 <h3><font color="#eef1f6">Why is everything static?</font></h3>
 <p>A statically linked program does not depend on other files at runtime, so upgrading one package cannot break another.</p>
 <h3><font color="#eef1f6">Will a binary I downloaded run?</font></h3>
@@ -50,40 +53,42 @@
 <h3><font color="#eef1f6">Why is /usr a symlink?</font></h3>
 <p>For scripts that start with <code>#!/usr/bin/env</code>.</p>
 <h3><font color="#eef1f6">Where is the bootloader?</font></h3>
-<p>There is none. The kernel is an EFI program, and the firmware runs it directly. See <a href="missal.html#booting">libera</a>.</p>
-<h3><font color="#eef1f6">What does requiem use instead of the usual parts?</font></h3>
+<p>There is none. The kernel is an EFI program, and the firmware runs it directly. See <a href="system.html#booting">spark</a>.</p>
+<h3><font color="#eef1f6">What does blackout use instead of the usual parts?</font></h3>
 <table border="1" cellpadding="4" cellspacing="0" bordercolor="#6e7d95">
-<tr><td>systemd</td><td>busybox init and libera</td></tr>
+<tr><td>systemd</td><td>s6, s6-linux-init and spark</td></tr>
 <tr><td>udev</td><td>mdev</td></tr>
 <tr><td>sudo</td><td>doas</td></tr>
-<tr><td>NetworkManager</td><td>wpa_supplicant and udhcpc, started by libera</td></tr>
+<tr><td>NetworkManager</td><td>wpa_supplicant and udhcpc, supervised by s6</td></tr>
+<tr><td>make, ninja, meson</td><td>pdpmake, samurai, muon</td></tr>
+<tr><td>man-db</td><td>mandoc</td></tr>
 <tr><td>dbus, ld.so</td><td>nothing</td></tr>
 </table>
 <h3><font color="#eef1f6">Why is there no GNU software?</font></h3>
 <p>See <a href="lix.html">lix</a>.</p>
 <h3><font color="#eef1f6">Why not dérive?</font></h3>
-<p>dérive is good, and requiem learned a lot from it. But dérive is almost 100% GNU free, and requiem is 100%.</p>
+<p>dérive is good, and blackout learned a lot from it. But dérive is almost 100% GNU free, and blackout is 100%.</p>
 <p>But mostly:</p>
 <p><i>&ldquo;Do you really want to live in a world without Coca-Cola?&rdquo;</i> &mdash; <a href="white.html">Walter White</a></p>
 <h3><font color="#eef1f6">Why is so little packaged?</font></h3>
-<p>Because you haven't <a href="missal.html#packaging">packaged it</a> yet.</p>
+<p>Because you haven't <a href="bottles.html">packaged it</a> yet.</p>
 <h3><font color="#eef1f6">X11 or Wayland?</font></h3>
 <p>Wayland. Xorg could not be linked statically.</p>
-<h3><font color="#eef1f6">Is requiem self-hosting?</font></h3>
-<p>No. The kernel's build system needs GNU make, which requiem does not ship, so packages are built on another Linux machine.</p>
+<h3><font color="#eef1f6">Is blackout self-hosting?</font></h3>
+<p>No. The kernel and a few bottles need GNU make, which blackout does not ship, and there is no compiler package yet. Packages are built on another Linux machine.</p>
 <h3><font color="#eef1f6">Are packages signed?</font></h3>
 <p>No. Downloads are checked against the sha256 sums in the index, but the index itself is not signed.</p>
 <h3><font color="#eef1f6">Does Firefox run?</font></h3>
 <p>No. Firefox needs glibc and GTK. netsurf is packaged.</p>
 <h3><font color="#eef1f6">What hardware works?</font></h3>
 <p>x86-64 machines that boot with UEFI. It has only been tested in QEMU.</p>
-<h3><font color="#eef1f6">What license is requiem under?</font></h3>
+<h3><font color="#eef1f6">What license is blackout under?</font></h3>
 <p>The <a href="https://opensource.org/license/cddl-1-1">CDDL 1.1</a>. The software it packages keeps its own license.</p>
 
 </td>
 </tr></table>
 <hr noshade size="1" color="#6e7d95">
-<center><font size="1" color="#9fb0c8">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font></center>
+<center><font size="1" color="#9fb0c8">made by max spuk. blackout is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font></center>
 </font>
 </body>
 </html>
