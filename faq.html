@@ -4,75 +4,86 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>answers - requiem</title>
-<style>a:hover{color:#2b3445;background:#9fc6ff}</style>
 </head>
 <body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
 <font face="Verdana, Geneva, sans-serif">
-<font size="1"><a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="packages.html">packages</a> | <a href="https://codeberg.org/requiem-linux">code</a> |</font>
-<h1><a href="index.html"><font color="#eef1f6">requiem</font></a> <font size="3" color="#9fb0c8"><i>100% gnu free</i></font></h1>
-<table cellpadding="8" cellspacing="0" border="0"><tr>
+<table width="100%" cellpadding="6" cellspacing="0" border="0" bgcolor="#1d2534"><tr>
+<td><font size="6" color="#eef1f6"><b>requiem</b></font> &nbsp;<font size="2" color="#9fb0c8"><i>100% gnu free</i></font></td>
+<td align="right" valign="middle"><font size="2"><a href="missal.html">docs</a> | <a href="packages.html">packages</a> | <a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/requiem-linux">code</a></font></td>
+</tr></table>
+<table cellpadding="0" cellspacing="12" border="0"><tr>
 <td valign="top" width="240">
-<a href="index.html"><img border="2" src="art/side.png" width="240" height="240" alt=""></a>
+<a href="index.html"><img src="art/side.png" width="240" height="240" alt=""></a>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;DOCUMENTATION</b></font></td></tr></table>
 <font size="2"><ul>
-<li><a href="missal.html">THE MISSAL</a></li>
+<li><a href="missal.html">the missal</a></li>
 <li><a href="faq.html"><b>answers</b></a></li>
+<li><a href="kyrie/index.html">kyrie</a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;PROJECT</b></font></td></tr></table>
+<font size="2"><ul>
 <li><a href="goals.html">goals</a></li>
 <li><a href="releases.html">releases</a></li>
 <li><a href="screenshots.html">screenshots</a></li>
 <li><a href="packages.html">packages</a></li>
-<li><a href="kyrie/index.html">kyrie</a></li>
 <li><a href="thanks.html">thanks</a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;CODE</b></font></td></tr></table>
+<font size="2"><ul>
 <li><a href="https://codeberg.org/requiem-linux/repo">codeberg git repo</a></li>
 <li><a href="https://github.com/yagnilinux/repo">github (mirror)</a></li>
 <li><a href="https://codeberg.org/requiem-linux/repo/issues">issues</a></li>
 </ul></font>
 </td>
-<td valign="top">
-<table width="100%" cellpadding="4" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" width="6"></td><td bgcolor="#1d2534"><font size="4"><b>-&gt; answers</b></font></td></tr></table>
-<p><i>&ldquo;Whereof one cannot speak, thereof one must be silent.&rdquo;</i> &mdash; Ludwig Wittgenstein</p>
+<td valign="top" width="780">
+<font size="1" color="#9fb0c8"><a href="index.html">requiem</a> &raquo; documentation &raquo; answers</font>
+<h1><font color="#eef1f6">answers</font></h1>
+<p><font color="#9fb0c8"><i>&ldquo;Whereof one cannot speak, thereof one must be silent.&rdquo; &mdash; Ludwig Wittgenstein</i></font></p>
 
 <p>If your question is not answered here, it may be answered in <a href="missal.html">the missal</a>. If not, ask on the <a href="https://codeberg.org/requiem-linux/repo/issues">issue tracker</a>.</p>
-<h3><u>WHO IS REQUIEM FOR?</u></h3>
+<h3><font color="#eef1f6">Who is requiem for?</font></h3>
 <p>For people who want to understand every part of the system they run. It has only been tested in QEMU, so that is the place to try it first.</p>
-<h3><u>WHY IS EVERYTHING STATIC?</u></h3>
+<h3><font color="#eef1f6">Why is everything static?</font></h3>
 <p>A statically linked program does not depend on other files at runtime, so upgrading one package cannot break another.</p>
-<h3><u>WILL A BINARY I DOWNLOADED RUN?</u></h3>
+<h3><font color="#eef1f6">Will a binary I downloaded run?</font></h3>
 <p>Only if it is statically linked.</p>
-<h3><u>WHY IS /USR A SYMLINK?</u></h3>
+<h3><font color="#eef1f6">Why is /usr a symlink?</font></h3>
 <p>For scripts that start with <code>#!/usr/bin/env</code>.</p>
-<h3><u>WHERE IS THE BOOTLOADER?</u></h3>
+<h3><font color="#eef1f6">Where is the bootloader?</font></h3>
 <p>There is none. The kernel is an EFI program, and the firmware runs it directly. See <a href="missal.html#booting">libera</a>.</p>
-<h3><u>WHAT DOES REQUIEM USE INSTEAD OF THE USUAL PARTS?</u></h3>
-<p>systemd -&gt; busybox init and libera</p>
-<p>udev -&gt; mdev</p>
-<p>sudo -&gt; doas</p>
-<p>NetworkManager -&gt; wpa_supplicant and udhcpc, started by libera</p>
-<p>dbus, ld.so -&gt; nothing</p>
-<h3><u>WHY IS THERE NO GNU SOFTWARE?</u></h3>
+<h3><font color="#eef1f6">What does requiem use instead of the usual parts?</font></h3>
+<table border="1" cellpadding="4" cellspacing="0" bordercolor="#6e7d95">
+<tr><td>systemd</td><td>busybox init and libera</td></tr>
+<tr><td>udev</td><td>mdev</td></tr>
+<tr><td>sudo</td><td>doas</td></tr>
+<tr><td>NetworkManager</td><td>wpa_supplicant and udhcpc, started by libera</td></tr>
+<tr><td>dbus, ld.so</td><td>nothing</td></tr>
+</table>
+<h3><font color="#eef1f6">Why is there no GNU software?</font></h3>
 <p>See <a href="lix.html">lix</a>.</p>
-<h3><u>WHY NOT DÉRIVE?</u></h3>
+<h3><font color="#eef1f6">Why not dérive?</font></h3>
 <p>dérive is good, and requiem learned a lot from it. But dérive is almost 100% GNU free, and requiem is 100%.</p>
 <p>But mostly:</p>
 <p><i>&ldquo;Do you really want to live in a world without Coca-Cola?&rdquo;</i> &mdash; <a href="white.html">Walter White</a></p>
-<h3><u>WHY IS SO LITTLE PACKAGED?</u></h3>
-<p>Packages are added when someone needs them. See <a href="missal.html#packaging">Writing packages</a>.</p>
-<h3><u>X11 OR WAYLAND?</u></h3>
+<h3><font color="#eef1f6">Why is so little packaged?</font></h3>
+<p>Because you haven't <a href="missal.html#packaging">packaged it</a> yet.</p>
+<h3><font color="#eef1f6">X11 or Wayland?</font></h3>
 <p>Wayland. Xorg could not be linked statically.</p>
-<h3><u>IS REQUIEM SELF-HOSTING?</u></h3>
+<h3><font color="#eef1f6">Is requiem self-hosting?</font></h3>
 <p>No. The kernel's build system needs GNU make, which requiem does not ship, so packages are built on another Linux machine.</p>
-<h3><u>ARE PACKAGES SIGNED?</u></h3>
+<h3><font color="#eef1f6">Are packages signed?</font></h3>
 <p>No. Downloads are checked against the sha256 sums in the index, but the index itself is not signed.</p>
-<h3><u>DOES FIREFOX RUN?</u></h3>
+<h3><font color="#eef1f6">Does Firefox run?</font></h3>
 <p>No. Firefox needs glibc and GTK. netsurf is packaged.</p>
-<h3><u>WHAT HARDWARE WORKS?</u></h3>
+<h3><font color="#eef1f6">What hardware works?</font></h3>
 <p>x86-64 machines that boot with UEFI. It has only been tested in QEMU.</p>
-<h3><u>WHAT LICENSE IS REQUIEM UNDER?</u></h3>
+<h3><font color="#eef1f6">What license is requiem under?</font></h3>
 <p>The <a href="https://opensource.org/license/cddl-1-1">CDDL 1.1</a>. The software it packages keeps its own license.</p>
 
 </td>
 </tr></table>
-<hr noshade size="1">
-<font size="1" color="#9fb0c8">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font>
+<hr noshade size="1" color="#6e7d95">
+<center><font size="1" color="#9fb0c8">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font></center>
 </font>
 </body>
 </html>

@@ -4,68 +4,81 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>kyrie - requiem</title>
-<style>a:hover{color:#2b3445;background:#9fc6ff}</style>
 </head>
 <body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
 <font face="Verdana, Geneva, sans-serif">
-<font size="1"><a href="../lix.html">lix</a> | <a href="../stalman.html">rms</a> | <a href="../packages.html">packages</a> | <a href="https://codeberg.org/requiem-linux">code</a> |</font>
-<h1><a href="../index.html"><font color="#eef1f6">requiem</font></a> <font size="3" color="#9fb0c8"><i>kde has more settings than this has lines</i></font></h1>
-<table cellpadding="8" cellspacing="0" border="0"><tr>
+<table width="100%" cellpadding="6" cellspacing="0" border="0" bgcolor="#1d2534"><tr>
+<td><font size="6" color="#eef1f6"><b>requiem</b></font> &nbsp;<font size="2" color="#9fb0c8"><i>kde has more settings than this has lines</i></font></td>
+<td align="right" valign="middle"><font size="2"><a href="../missal.html">docs</a> | <a href="../packages.html">packages</a> | <a href="../lix.html">lix</a> | <a href="../stalman.html">rms</a> | <a href="https://codeberg.org/requiem-linux">code</a></font></td>
+</tr></table>
+<table cellpadding="0" cellspacing="12" border="0"><tr>
 <td valign="top" width="240">
-<a href="../index.html"><img border="2" src="../art/side.png" width="240" height="240" alt=""></a>
+<a href="../index.html"><img src="../art/side.png" width="240" height="240" alt=""></a>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;DOCUMENTATION</b></font></td></tr></table>
 <font size="2"><ul>
-<li><a href="../missal.html">THE MISSAL</a></li>
+<li><a href="../missal.html">the missal</a></li>
 <li><a href="../faq.html">answers</a></li>
+<li><a href="../kyrie/index.html"><b>kyrie</b></a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;PROJECT</b></font></td></tr></table>
+<font size="2"><ul>
 <li><a href="../goals.html">goals</a></li>
 <li><a href="../releases.html">releases</a></li>
 <li><a href="../screenshots.html">screenshots</a></li>
 <li><a href="../packages.html">packages</a></li>
-<li><a href="../kyrie/index.html"><b>kyrie</b></a></li>
 <li><a href="../thanks.html">thanks</a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;CODE</b></font></td></tr></table>
+<font size="2"><ul>
 <li><a href="https://codeberg.org/requiem-linux/repo">codeberg git repo</a></li>
 <li><a href="https://github.com/yagnilinux/repo">github (mirror)</a></li>
 <li><a href="https://codeberg.org/requiem-linux/repo/issues">issues</a></li>
 </ul></font>
 </td>
-<td valign="top">
-<table width="100%" cellpadding="4" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" width="6"></td><td bgcolor="#1d2534"><font size="4"><b>-&gt; kyrie</b></font></td></tr></table>
+<td valign="top" width="780">
+<font size="1" color="#9fb0c8"><a href="../index.html">requiem</a> &raquo; documentation &raquo; kyrie</font>
+<h1><font color="#eef1f6">kyrie</font></h1>
 
 <p>kyrie is the <a href="https://wayland.freedesktop.org">Wayland</a> compositor of requiem. It is built on <a href="https://github.com/michaelforney/swc">swc</a>.</p>
-<p><img border="2" alt="" src="screenshots/kyrie.png" width="640"></p>
-<h3><u>FEATURES</u></h3>
+<p><img alt="" src="screenshots/kyrie.png" width="640"></p>
+<h3><font color="#eef1f6">features</font></h3>
 <ul>
 <li>Floating windows, moved and resized with the mouse</li>
 <li>Four workspaces</li>
 <li>Focus follows the mouse</li>
 <li>Fullscreen</li>
 </ul>
-<h3><u>KEYS</u></h3>
-<p><code>super + return</code> -&gt; terminal</p>
-<p><code>super + d</code> -&gt; launcher</p>
-<p><code>super + q</code> -&gt; close the window</p>
-<p><code>super + shift + q</code> -&gt; quit kyrie</p>
-<p><code>super + tab</code> -&gt; raise the bottom window</p>
-<p><code>super + `</code> -&gt; lower the top window</p>
-<p><code>super + f</code> -&gt; fullscreen</p>
-<p><code>super + 1-4</code> -&gt; switch workspace</p>
-<p><code>super + shift + 1-4</code> -&gt; send the window to a workspace</p>
-<p><code>super + left drag</code> -&gt; move</p>
-<p><code>super + right drag</code> -&gt; resize</p>
-<p><code>super + middle click</code> -&gt; lower the window</p>
-<p><code>super + p</code> -&gt; screenshot</p>
-<h3><u>INSTALL</u></h3>
+<h3><font color="#eef1f6">keys</font></h3>
+<table border="1" cellpadding="4" cellspacing="0" bordercolor="#6e7d95">
+<tr><td><code>super + return</code></td><td>terminal</td></tr>
+<tr><td><code>super + d</code></td><td>launcher</td></tr>
+<tr><td><code>super + q</code></td><td>close the window</td></tr>
+<tr><td><code>super + shift + q</code></td><td>quit kyrie</td></tr>
+<tr><td><code>super + tab</code></td><td>raise the bottom window</td></tr>
+<tr><td><code>super + `</code></td><td>lower the top window</td></tr>
+<tr><td><code>super + f</code></td><td>fullscreen</td></tr>
+<tr><td><code>super + 1-4</code></td><td>switch workspace</td></tr>
+<tr><td><code>super + shift + 1-4</code></td><td>send the window to a workspace</td></tr>
+<tr><td><code>super + left drag</code></td><td>move</td></tr>
+<tr><td><code>super + right drag</code></td><td>resize</td></tr>
+<tr><td><code>super + middle click</code></td><td>lower the window</td></tr>
+<tr><td><code>super + p</code></td><td>screenshot</td></tr>
+</table>
+<h3><font color="#eef1f6">install</font></h3>
 <p>On requiem:</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre># introit a desktop/kyrie
-$ startw</pre></td></tr></table>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;introit&nbsp;a&nbsp;desktop/kyrie<br>
+$&nbsp;startw</code></td></tr></table>
+
 <p>On other systems, kyrie needs swc with the patches in <code>patches/</code>:</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>$ make SWC=/path/to/swc</pre></td></tr></table>
-<h3><u>CONFIGURATION</u></h3>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;make&nbsp;SWC=/path/to/swc</code></td></tr></table>
+
+<h3><font color="#eef1f6">configuration</font></h3>
 <p>Colours, border width and extra keys are set without recompiling, as described in <a href="../missal.html#desktop">the missal</a>. The built-in keys are in <code>keys[]</code> at the top of <code>kyrie.c</code>. Only the US keyboard layout is included.</p>
 
 </td>
 </tr></table>
-<hr noshade size="1">
-<font size="1" color="#9fb0c8">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font>
+<hr noshade size="1" color="#6e7d95">
+<center><font size="1" color="#9fb0c8">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font></center>
 </font>
 </body>
 </html>

@@ -3,254 +3,331 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>the missal - requiem</title>
-<style>a:hover{color:#2b3445;background:#9fc6ff}</style>
+<title>The Missal - requiem</title>
 </head>
 <body bgcolor="#2b3445" text="#c3ccdb" link="#9fc6ff" vlink="#c7a6ff" alink="#ffffff">
 <font face="Verdana, Geneva, sans-serif">
-<font size="1"><a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="packages.html">packages</a> | <a href="https://codeberg.org/requiem-linux">code</a> |</font>
-<h1><a href="index.html"><font color="#eef1f6">requiem</font></a> <font size="3" color="#9fb0c8"><i>shorter than the gentoo handbook</i></font></h1>
-<table cellpadding="8" cellspacing="0" border="0"><tr>
+<table width="100%" cellpadding="6" cellspacing="0" border="0" bgcolor="#1d2534"><tr>
+<td><font size="6" color="#eef1f6"><b>requiem</b></font> &nbsp;<font size="2" color="#9fb0c8"><i>shorter than the gentoo handbook</i></font></td>
+<td align="right" valign="middle"><font size="2"><a href="missal.html">docs</a> | <a href="packages.html">packages</a> | <a href="lix.html">lix</a> | <a href="stalman.html">rms</a> | <a href="https://codeberg.org/requiem-linux">code</a></font></td>
+</tr></table>
+<table cellpadding="0" cellspacing="12" border="0"><tr>
 <td valign="top" width="240">
-<a href="index.html"><img border="2" src="art/side.png" width="240" height="240" alt=""></a>
+<a href="index.html"><img src="art/side.png" width="240" height="240" alt=""></a>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;DOCUMENTATION</b></font></td></tr></table>
 <font size="2"><ul>
-<li><a href="missal.html"><b>THE MISSAL</b></a></li>
+<li><a href="missal.html"><b>the missal</b></a></li>
 <li><a href="faq.html">answers</a></li>
+<li><a href="kyrie/index.html">kyrie</a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;PROJECT</b></font></td></tr></table>
+<font size="2"><ul>
 <li><a href="goals.html">goals</a></li>
 <li><a href="releases.html">releases</a></li>
 <li><a href="screenshots.html">screenshots</a></li>
 <li><a href="packages.html">packages</a></li>
-<li><a href="kyrie/index.html">kyrie</a></li>
 <li><a href="thanks.html">thanks</a></li>
+</ul></font>
+<table width="100%" cellpadding="2" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95"><font size="1" color="#1d2534"><b>&nbsp;CODE</b></font></td></tr></table>
+<font size="2"><ul>
 <li><a href="https://codeberg.org/requiem-linux/repo">codeberg git repo</a></li>
 <li><a href="https://github.com/yagnilinux/repo">github (mirror)</a></li>
 <li><a href="https://codeberg.org/requiem-linux/repo/issues">issues</a></li>
 </ul></font>
 </td>
-<td valign="top">
-<table width="100%" cellpadding="4" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" width="6"></td><td bgcolor="#1d2534"><font size="4"><b>-&gt; the missal</b></font></td></tr></table>
+<td valign="top" width="780">
+<font size="1" color="#9fb0c8"><a href="index.html">requiem</a> &raquo; documentation &raquo; The Missal</font>
+<h1><font color="#eef1f6">The Missal</font></h1>
+<table border="1" cellpadding="8" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><b>Contents</b><font size="2"><br>
+1 <a href="#installing">Installing</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1 <a href="#stick">Writing the stick</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2 <a href="#disk">Partitioning the disk</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3 <a href="#base">Unpacking the base system</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.4 <a href="#first">Before rebooting</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.5 <a href="#noboot">If it does not boot</a><br>
+2 <a href="#introit">introit</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 <a href="#add">Installing packages</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 <a href="#find">Finding packages</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 <a href="#remove">Removing packages</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.4 <a href="#updating">Updating</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.5 <a href="#etc">Edited files in /etc</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.6 <a href="#db">/var/db/introit</a><br>
+3 <a href="#admin">The system</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1 <a href="#differently">The file system</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2 <a href="#booting">libera</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3 <a href="#users">Users</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4 <a href="#wlan">Wifi</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.5 <a href="#sound">Sound</a><br>
+4 <a href="#desktop">The desktop</a><br>
+5 <a href="#packaging">Writing packages</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.1 <a href="#pkgfiles">A package</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.2 <a href="#building">Building</a>
+</font></td></tr></table>
 
-<p>[1] <a href="#introit">introit, the package manager</a><br>
-[2] <a href="#db">/var/db/introit</a><br>
-[3] <a href="#packaging">Writing packages</a><br>
-[4] <a href="#building">Building the system</a><br>
-[5] <a href="#installing">Installing the system</a><br>
-[6] <a href="#updating">Updating the system</a><br>
-[7] <a href="#admin">System administration</a><br>
-[7.1] <a href="#differently">The file system</a><br>
-[7.2] <a href="#apps">Apps</a><br>
-[7.3] <a href="#booting">libera, the boot</a><br>
-[7.4] <a href="#logging">Logging</a><br>
-[8] <a href="#desktop">The desktop</a><br>
-[9] <a href="#advice">Other advice</a></p>
+<br><table width="100%" cellpadding="3" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" id="installing"><font size="3" color="#eef1f6"><b>1 Installing</b></font></td></tr></table>
+<p>You need an x86-64 machine with UEFI, a USB stick, and <a href="releases.html">requiem.iso</a>.</p>
 
-<h3 id="introit"><u>[1] INTROIT, THE PACKAGE MANAGER</u></h3>
-<p>introit is a POSIX shell script of 177 lines, installed into <code>/bin</code> as part of <code>sys/base</code>. Its source is <a href="https://codeberg.org/requiem-linux/introit">requiem-linux/introit</a>.</p>
-<p>introit installs, upgrades and removes binary packages. It does not build them; that is done by <code>mkrepo</code>, described in <a href="#building">Building the system</a>.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>introit [-r root] a|r|u|s|l [pkg]...
-  a  add a package and what it depends on
-  r  remove a package
-  u  sync the index, upgrade everything that changed
-  s  search the index
-  l  list installed packages and apps</pre></td></tr></table>
-<p>Packages are named by category and name, for example <code>browsers/netsurf</code>. The name alone is enough as long as no other category has a package of that name.</p>
-<p>With <code>-r /mnt</code>, introit works on the system mounted at <code>/mnt</code> instead of the running one. <code>mkrootfs</code> and <code>mkiso</code> use it this way.</p>
-<p>The downloads of one command run in parallel, using <code>curl</code>, or <code>wget</code> if curl is not installed. A <code>file://</code> repository is read with <code>cp</code>. Each download is checked against the sha256 in the index before it is unpacked. Packages are not signed, so whoever controls the repository controls what gets installed.</p>
-<p>A package is unpacked into <code>/var/db/introit/stage</code> and its files are then moved into place. Files that the new version no longer contains are removed. A file in <code>/etc</code> that has been edited is left alone, and the new version is written next to it as <code>file.new</code>.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>$ doas introit r utils/pfetch</pre></td></tr></table>
-<p>This removes every file in the package's manifest, along with any directories left empty. introit does not check whether another package depends on the one being removed.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>INTROIT_REPO=file:///media/install/repo</pre></td></tr></table>
-<p>Overrides <code>/etc/introit/repo</code> for one command.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>INTROIT_APPS=$HOME/apps</pre></td></tr></table>
-<p>Sets where apps are installed. The default is <code>~/apps</code>, or <code>/apps</code> for root.</p>
+<h4 id="stick"><font color="#eef1f6"><u>1.1 Writing the stick</u></font></h4>
+<p>To write the iso to a stick:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;dd&nbsp;if=requiem.iso&nbsp;of=/dev/sdX&nbsp;bs=4M</code></td></tr></table>
 
-<h3 id="db"><u>[2] /VAR/DB/INTROIT</u></h3>
-<p>introit keeps its state in <code>/var/db/introit</code>.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>/var/db/introit/repo/index                    # the index, fetched by introit u
-/var/db/introit/installed/&lt;category&gt;/&lt;name&gt;/  # one directory per installed package
-    version                                   # the installed version
-    depends                                   # its dependencies, one per line
-    manifest                                  # every file it installed
-    etcsums                                   # sha256 of its files in /etc, as shipped
-/var/db/introit/cache                         # downloads. Safe to empty
-/var/db/introit/stage                         # unpacking. Safe to empty</pre></td></tr></table>
-<p>Without a package's <code>manifest</code>, introit cannot remove the package, and an upgrade will leave its old files behind. Without its <code>etcsums</code>, every file of the package in <code>/etc</code> counts as edited.</p>
-<p>Apps are not recorded here. The directory of an app is its only record.</p>
-<p>A user who cannot write to <code>/var/db/introit</code> has the index and the download cache in <code>~/.cache/introit</code> instead.</p>
-<p>To find the package that owns a file:</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>$ grep -lx bin/oksh /var/db/introit/installed/*/*/manifest</pre></td></tr></table>
+<br><table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#8a845a" bgcolor="#3a3a2a"><tr><td><font color="#e6e0b0"><b>NOTE:</b> Check the device name with <code>lsblk</code> first. Everything on it is overwritten.</font></td></tr></table>
 
-<h3 id="packaging"><u>[3] WRITING PACKAGES</u></h3>
-<p>A package is a directory in <code>pkgs/&lt;category&gt;/</code> of the <a href="https://codeberg.org/requiem-linux/repo">repo</a>, containing up to five files.</p>
-<p><code>version</code> -&gt; Required. Copied into the index as it is. By convention, the upstream version followed by <code>-1</code>, <code>-2</code> and so on for rebuilds.</p>
-<p><code>build</code> -&gt; Required. A shell script that installs the program into <code>$1</code>.</p>
-<p><code>source</code> -&gt; Where the code comes from. Without it, the package's own directory is the source.</p>
-<p><code>depends</code> -&gt; The packages it needs at runtime, one per line, with their category.</p>
-<p><code>app</code> -&gt; An empty file that makes the package an app.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>git &lt;url&gt; &lt;tag&gt;
-apt-src &lt;package&gt;
-apt-deb &lt;package&gt;...</pre></td></tr></table>
-<p>A <code>source</code> is a shallow clone of a git tag or branch, an Ubuntu source package, or Ubuntu binary packages. Binary packages are only used for firmware, fonts and certificates. The source is fetched once into <code>src/&lt;name&gt;</code>.</p>
-<p><code>build</code> runs inside the source directory and installs into <code>$1</code> as if <code>$1</code> were <code>/</code>. <code>$PKG</code> is the package's directory, for patches and configuration files, and <code>$ROOT</code> is the top of the repo. Programs are compiled with <code>musl-cc</code>, which always links statically.</p>
-<p>After <code>build</code>, mkrepo moves <code>usr/bin</code>, <code>usr/sbin</code> and <code>sbin</code> to <code>bin</code>, and <code>usr/share</code> to <code>share</code>. A package that still has files in <code>usr</code>, <code>lib</code>, <code>lib64</code> or <code>libexec</code> fails to build.</p>
-<p>An app is packed as a single directory with a <code>version</code> file inside, and is marked as an app in the index.</p>
-<p>The version has to change whenever anything in the package's directory changes. Otherwise nobody who has the package installed would receive the change, and mkrepo refuses to build it.</p>
+<p>Turn secure boot off and boot from the stick. It starts a root shell.</p>
 
-<h3 id="building"><u>[4] BUILDING THE SYSTEM</u></h3>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>$ git clone https://codeberg.org/requiem-linux/repo
-$ cd repo
-$ ./mkrepo        # every package that is not built yet, into repo/
-$ ./mkpkg tract   # only tract
-$ ./mkrootfs      # requiem.tar.gz, the base system
-# ./mkiso         # requiem.iso</pre></td></tr></table>
-<p>The build machine needs clang, lld, compiler-rt, lzfse and GNU make. Make is needed only because the kernel's build system depends on it; nothing from GNU ends up in a package.</p>
-<p><code>cc/musl-cc</code> runs clang against a musl that <code>cc/mksysroot</code> builds with clang into <code>cc/sysroot</code> on the first run. mkrepo puts <code>cc/</code> first in <code>PATH</code>. <code>cc/gcc</code> is a stub that fails the build, so a package that tries to call gcc is caught.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>SUMS=1 ./mkrepo</pre></td></tr></table>
-<p>Writes sha256 sums into the index. Without it, the index has <code>-</code> in their place and introit skips the check.</p>
-<p>Packages are written to <code>repo/</code> as <code>&lt;category&gt;.&lt;name&gt;@&lt;version&gt;.tar.lzfse</code>. Any web server that serves <code>repo/</code> is a mirror. <code>mkiso</code> needs root, xorriso and mtools.</p>
+<h4 id="disk"><font color="#eef1f6"><u>1.2 Partitioning the disk</u></font></h4>
+<p>To make an EFI partition and a root partition named <code>requiem</code>:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;sfdisk&nbsp;/dev/sda&nbsp;&lt;&lt;EOF<br>
+label:&nbsp;gpt<br>
+size=256M,&nbsp;type=uefi,&nbsp;name=BOOT<br>
+type=linux,&nbsp;name=requiem<br>
+EOF</code></td></tr></table>
 
-<h3 id="installing"><u>[5] INSTALLING THE SYSTEM</u></h3>
-<p>Write <a href="releases.html">requiem.iso</a> to a USB stick and boot from it with secure boot disabled. It starts a root shell. <code>/media/install</code> holds the base tarball and a small repository with what is needed for wifi.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre># dd if=requiem.iso of=/dev/sdX bs=4M</pre></td></tr></table>
-<p>The kernel mounts the partition with the GPT name <code>requiem</code> as root, so the root partition has to be given that name. The kernel itself goes on the EFI partition.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre># sfdisk /dev/sda &lt;&lt;EOF
-label: gpt
-size=256M, type=uefi, name=BOOT
-type=linux, name=requiem
-EOF
-# mkfs.vfat -F 32 -n BOOT /dev/sda1
-# mkfs.ext4 -L requiem /dev/sda2
-# mount /dev/sda2 /mnt
-# mkdir /mnt/boot
-# mount /dev/sda1 /mnt/boot
-# cd /media/install
-# sha256sum -c requiem.tar.gz.sha256
-# tar xzf requiem.tar.gz -C /mnt
-# chroot /mnt passwd</pre></td></tr></table>
-<p>tar prints warnings about permissions on <code>/boot</code>. FAT has no permissions, and the warnings can be ignored.</p>
-<p>For wifi, install the packages from the stick before rebooting (see <a href="#wlan">Using a WLAN</a>):</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre># INTROIT_REPO=file:///media/install/repo introit -r /mnt a net/wpa_supplicant firmware/iwlwifi sys/qoltils
-# umount /mnt/boot /mnt
-# reboot</pre></td></tr></table>
-<p>If the boot stops at <code>Waiting for root device PARTLABEL=requiem</code>, the root partition has the wrong name. Rename it with <code>sfdisk --part-label /dev/sda 2 requiem</code>.</p>
-<p>Some firmware will not boot <code>EFI/BOOT/BOOTX64.EFI</code> from an internal disk. In that case, add a boot entry from another live system:</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre># efibootmgr -c -d /dev/sda -p 1 -L requiem -l '\EFI\BOOT\BOOTX64.EFI'</pre></td></tr></table>
-<p>To dual boot, mount the existing EFI partition at <code>/mnt/boot</code> instead of creating a new one. If it already contains <code>EFI/BOOT/BOOTX64.EFI</code>, move that file elsewhere first.</p>
+<br><table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#8a845a" bgcolor="#3a3a2a"><tr><td><font color="#e6e0b0"><b>NOTE:</b> The root partition must be named <code>requiem</code>. That name is how the kernel finds it.</font></td></tr></table>
 
-<h3 id="updating"><u>[6] UPDATING THE SYSTEM</u></h3>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>$ doas introit u</pre></td></tr></table>
-<p>This fetches the index and upgrades every installed package and app whose version in the index differs from the installed one. A lower version is installed as well.</p>
-<p>Edited files in <code>/etc</code> are kept, and the new versions are written as <code>file.new</code>. <code>etcnew</code>, from <code>sys/qoltils</code>, lists and merges them:</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>$ etcnew
-$ etcnew diff /etc/profile
-$ etcnew take /etc/profile
-$ etcnew keep /etc/profile</pre></td></tr></table>
+<p>To format and mount them:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;mkfs.vfat&nbsp;-F&nbsp;32&nbsp;-n&nbsp;BOOT&nbsp;/dev/sda1<br>
+#&nbsp;mkfs.ext4&nbsp;-L&nbsp;requiem&nbsp;/dev/sda2<br>
+#&nbsp;mount&nbsp;/dev/sda2&nbsp;/mnt<br>
+#&nbsp;mkdir&nbsp;/mnt/boot<br>
+#&nbsp;mount&nbsp;/dev/sda1&nbsp;/mnt/boot</code></td></tr></table>
 
-<h3 id="admin"><u>[7] SYSTEM ADMINISTRATION</u></h3>
-<p>requiem is put together differently from most distributions, and some habits from them do not apply here.</p>
+<p>To dual boot, mount the EFI partition you already have at <code>/mnt/boot</code> instead, and move its <code>EFI/BOOT/BOOTX64.EFI</code> somewhere else.</p>
 
-<h3 id="differently"><u>[7.1] THE FILE SYSTEM</u></h3>
-<p>Every program is statically linked against musl. There is no dynamic loader and no <code>/lib</code>, and a program linked against glibc will not run.</p>
-<p><code>/usr</code> is a symlink to <code>/</code>, kept so that <code>#!/usr/bin/env</code> works. There is no <code>/sbin</code>; root and users run the same programs from <code>/bin</code>.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>/bin        # programs
-/share      # data, fonts, firmware, kernel modules, headers and static libraries
-/etc        # configuration
-/boot       # the EFI partition, with the kernel
-/var        # logs and /var/db/introit
-/apps       # apps installed by root
-/home       # users, and their ~/apps
-/root
-/mnt
-/dev /proc /sys /run /tmp   # created at boot
-/usr        # symlink to /</pre></td></tr></table>
-<p><code>sys/musl-dev</code> installs the headers into <code>/share/include</code> and the static libraries into <code>/share/lib</code>.</p>
+<h4 id="base"><font color="#eef1f6"><u>1.3 Unpacking the base system</u></font></h4>
+<p>To check and unpack the base system:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;cd&nbsp;/media/install<br>
+#&nbsp;sha256sum&nbsp;-c&nbsp;requiem.tar.gz.sha256<br>
+#&nbsp;tar&nbsp;xzf&nbsp;requiem.tar.gz&nbsp;-C&nbsp;/mnt</code></td></tr></table>
 
-<h3 id="apps"><u>[7.2] APPS</u></h3>
-<p>An app is a package that is installed as one directory. A user who installs an app with <a href="#introit">introit</a> gets it in <code>~/apps</code>, without needing root. When root installs it, it goes in <code>/apps</code> and every user has it.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>$ introit a browsers/netsurf
-$ ls ~/apps/netsurf
-bin  share  version</pre></td></tr></table>
-<p><code>/etc/profile</code> adds every <code>~/apps/*/bin</code> and <code>/apps/*/bin</code> to <code>PATH</code> at login. An app that is moved out of <code>~/apps</code> is no longer installed, and one that is moved back is installed again, from the next login on.</p>
-<p>An app finds its own files relative to its directory, so the directory can be moved between <code>~/apps</code> and <code>/apps</code>.</p>
-<p>If an app needs packages from the base system that are not installed, the install fails and prints the command to install them as root.</p>
-<p>The apps in the repository are <code>browsers/netsurf</code> and <code>terminals/havoc</code>. Command line programs are ordinary packages in <code>/bin</code>.</p>
+<br><table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#8a845a" bgcolor="#3a3a2a"><tr><td><font color="#e6e0b0"><b>NOTE:</b> tar warns about permissions on <code>/boot</code>. FAT has none. Ignore it.</font></td></tr></table>
 
-<h3 id="booting"><u>[7.3] LIBERA, THE BOOT</u></h3>
-<p>libera is the name for how requiem boots. There is no bootloader and no initramfs. The firmware runs <code>/boot/EFI/BOOT/BOOTX64.EFI</code>, which is the kernel, with its command line built in:</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>root=PARTLABEL=requiem rootwait rw init=/bin/init firmware_class.path=/share/firmware</pre></td></tr></table>
-<p>busybox init runs <code>/etc/libera</code>, then starts a getty on tty1 and on the serial port, as listed in <code>/etc/inittab</code>. There are no runlevels and no services.</p>
-<p><code>/etc/libera</code> is the whole boot. It mounts the virtual filesystems and <code>/etc/fstab</code>, sets the hostname, loads a module for every device the kernel reports, starts <code>mdev</code>, starts <code>wpa_supplicant</code> if <code>/etc/wpa_supplicant.conf</code> exists, and runs <code>udhcpc</code> on every network interface. Anything else that should start at boot can be added to it.</p>
-<p><code>/etc/libera</code> -&gt; the boot</p>
-<p><code>/etc/inittab</code> -&gt; consoles</p>
-<p><code>/etc/fstab</code> -&gt; mounts</p>
-<p><code>/etc/hostname</code> -&gt; hostname</p>
-<p><code>/etc/doas.conf</code> -&gt; root access, for the wheel group</p>
-<p><code>/etc/introit/repo</code> -&gt; the repository</p>
-<p><code>/etc/profile</code> -&gt; PATH and the prompt</p>
+<p>To set the root password:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;chroot&nbsp;/mnt&nbsp;passwd</code></td></tr></table>
 
-<h3 id="logging"><u>[7.4] LOGGING</u></h3>
-<p>There is no syslog. libera runs <code>dmesg -n 1</code> to keep kernel messages off the console; they can be read with <code>dmesg</code>.</p>
 
-<h3 id="desktop"><u>[8] THE DESKTOP</u></h3>
-<p><a href="kyrie/index.html">kyrie</a> is the Wayland compositor of requiem. It is built on <a href="https://github.com/michaelforney/swc">swc</a>. The terminal is havoc, the launcher is dmenu and the browser is netsurf.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre># introit a desktop/kyrie browsers/netsurf desktop/wallpaper
-$ startw</pre></td></tr></table>
-<p><code>startw</code> starts kyrie on the current virtual terminal. It reads <code>~/.config/kyrie/env</code> first, so variables set there apply to kyrie and to every program started from it.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>KYRIE_BORDER=6         # border width in pixels
-KYRIE_FOCUS=c9c9c6     # border colour of the focused window
-KYRIE_UNFOCUS=494949   # border colour of the other windows
-TERMINAL=havoc         # super + return
-MENU=dmenu_run         # super + d
-BROWSER=netsurf        # super + w</pre></td></tr></table>
-<p>Super and any letter kyrie does not use itself runs <code>~/.config/kyrie/keys</code> with that letter, or with <code>S-</code> and the letter when shift is held. If that file does not exist, <code>/share/kyrie/keys</code> is used, which is also a good starting point. <code>KYRIE_KEYS</code> points to another file.</p>
-<table border="1" cellpadding="6" cellspacing="0" bgcolor="#1d2534"><tr><td><pre>case $1 in
-w) exec netsurf ;;
-S-x) exec havoc tract ;;
-esac</pre></td></tr></table>
-<p>The built-in keys are listed on the <a href="kyrie/index.html">kyrie</a> page.</p>
+<h4 id="first"><font color="#eef1f6"><u>1.4 Before rebooting</u></font></h4>
+<p>To get wifi on the new system, install it from the stick. Use <code>firmware/realtek</code> instead of <code>firmware/iwlwifi</code> for a Realtek card:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;INTROIT_REPO=file:///media/install/repo&nbsp;introit&nbsp;-r&nbsp;/mnt&nbsp;a&nbsp;net/wpa_supplicant&nbsp;firmware/iwlwifi&nbsp;sys/qoltils</code></td></tr></table>
 
-<h3 id="advice"><u>[9] OTHER ADVICE</u></h3>
-<p><b>Adding a user</b></p>
-<ul>
-<li>Install <code>sys/qoltils</code>.</li>
-<li>Run <code>mkuser foo</code>. The user gets <code>oksh</code> as shell and the groups wheel, video, input and audio. Members of wheel can use <code>doas</code>.</li>
-</ul>
-<p id="wlan"><b>Using a WLAN</b></p>
-<ul>
-<li>Install <code>net/wpa_supplicant</code>, <code>sys/qoltils</code>, and <code>firmware/iwlwifi</code> for Intel or <code>firmware/realtek</code> for Realtek cards. <code>cat /sys/bus/pci/devices/*/vendor</code> prints <code>0x8086</code> for Intel and <code>0x10ec</code> for Realtek.</li>
-<li>Run <code>wifi network password</code>. This writes <code>/etc/wpa_supplicant.conf</code> and connects. libera connects again at every boot.</li>
-<li>Only WPA2 is supported. WPA3 and enterprise networks do not work.</li>
-</ul>
-<p><b>Getting a DHCP address</b></p>
-<ul>
-<li>libera runs <code>udhcpc</code> on every network interface at boot. USB tethering and USB Ethernet work if they are plugged in before booting.</li>
-</ul>
-<p><b>Sound</b></p>
-<ul>
-<li>Install <code>sound/alsa-utils</code>. Sound is muted at first.</li>
-<li>Run <code>vol 80</code>.</li>
-</ul>
-<p><b>Wallpaper</b></p>
-<ul>
-<li>Run <code>setwall /share/wallpapers/tower.png</code>, or <code>setwall '#1a4270'</code> for a plain colour.</li>
-</ul>
-<p><b>Screenshots</b></p>
-<ul>
-<li>Press super + p, or run <code>shot file.png</code>.</li>
-</ul>
-<p><b>Writing scripts</b></p>
-<ul>
-<li>libera and the system scripts run on busybox ash. Scripts should be POSIX sh.</li>
-</ul>
-<p><b>Keyboard layouts</b></p>
-<ul>
-<li>Only the US layout is included.</li>
-</ul>
+<p>To reboot:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;umount&nbsp;/mnt/boot&nbsp;/mnt<br>
+#&nbsp;reboot</code></td></tr></table>
+
+
+<h4 id="noboot"><font color="#eef1f6"><u>1.5 If it does not boot</u></font></h4>
+<p>If it stops at <code>Waiting for root device PARTLABEL=requiem</code>, rename the root partition:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;sfdisk&nbsp;--part-label&nbsp;/dev/sda&nbsp;2&nbsp;requiem</code></td></tr></table>
+
+<p>If the firmware skips the disk, add a boot entry from another live system:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;efibootmgr&nbsp;-c&nbsp;-d&nbsp;/dev/sda&nbsp;-p&nbsp;1&nbsp;-L&nbsp;requiem&nbsp;-l&nbsp;'\\EFI\\BOOT\\BOOTX64.EFI'</code></td></tr></table>
+
+
+<br><table width="100%" cellpadding="3" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" id="introit"><font size="3" color="#eef1f6"><b>2 introit</b></font></td></tr></table>
+<p>introit is the package manager. It is a shell script of 177 lines. Source: <a href="https://codeberg.org/requiem-linux/introit">requiem-linux/introit</a>.</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>introit&nbsp;[-r&nbsp;root]&nbsp;a|r|u|s|l&nbsp;[pkg]...</code></td></tr></table>
+
+
+<h4 id="add"><font color="#eef1f6"><u>2.1 Installing packages</u></font></h4>
+<p>To install git:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;introit&nbsp;a&nbsp;dev/git</code></td></tr></table>
+
+<p>To install it without typing the category:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;introit&nbsp;a&nbsp;git</code></td></tr></table>
+
+<br><table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#8a845a" bgcolor="#3a3a2a"><tr><td><font color="#e6e0b0"><b>NOTE:</b> If two categories have a package with that name, introit asks which one you mean.</font></td></tr></table>
+
+<p>To install into a system mounted at <code>/mnt</code>:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;introit&nbsp;-r&nbsp;/mnt&nbsp;a&nbsp;dev/git</code></td></tr></table>
+
+<p>To install from another repository for one command:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;INTROIT_REPO=file:///media/install/repo&nbsp;introit&nbsp;a&nbsp;dev/git</code></td></tr></table>
+
+
+<h4 id="find"><font color="#eef1f6"><u>2.2 Finding packages</u></font></h4>
+<p>To see every package in the repository:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;introit&nbsp;s</code></td></tr></table>
+
+<p>To search for one:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;introit&nbsp;s&nbsp;fetch</code></td></tr></table>
+
+<p>To see what is installed:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;introit&nbsp;l</code></td></tr></table>
+
+<p>To find which package a file came from:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;grep&nbsp;-lx&nbsp;bin/oksh&nbsp;/var/db/introit/installed/*/*/manifest</code></td></tr></table>
+
+<p>The full list with sizes is on the <a href="packages.html">packages</a> page.</p>
+
+<h4 id="remove"><font color="#eef1f6"><u>2.3 Removing packages</u></font></h4>
+<p>To remove pfetch:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;introit&nbsp;r&nbsp;utils/pfetch</code></td></tr></table>
+
+<br><table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#8a845a" bgcolor="#3a3a2a"><tr><td><font color="#e6e0b0"><b>NOTE:</b> introit does not check whether something else needs the package.</font></td></tr></table>
+
+
+<h4 id="updating"><font color="#eef1f6"><u>2.4 Updating</u></font></h4>
+<p>To update everything:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;introit&nbsp;u</code></td></tr></table>
+
+<br><table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#8a845a" bgcolor="#3a3a2a"><tr><td><font color="#e6e0b0"><b>NOTE:</b> Packages are checked against the sha256 in the index, but nothing is signed. Use a repository you trust.</font></td></tr></table>
+
+
+<h4 id="etc"><font color="#eef1f6"><u>2.5 Edited files in /etc</u></font></h4>
+<p>Files you edited in <code>/etc</code> are kept on update, and the new version is saved as <code>file.new</code>. To list them:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;etcnew</code></td></tr></table>
+
+<p>To compare, take or drop the new <code>/etc/profile</code>:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;etcnew&nbsp;diff&nbsp;/etc/profile<br>
+#&nbsp;etcnew&nbsp;take&nbsp;/etc/profile<br>
+#&nbsp;etcnew&nbsp;keep&nbsp;/etc/profile</code></td></tr></table>
+
+
+<h4 id="db"><font color="#eef1f6"><u>2.6 /var/db/introit</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>/var/db/introit/repo/index&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;index<br>
+/var/db/introit/installed/&lt;category&gt;/&lt;name&gt;/&nbsp;&nbsp;version,&nbsp;depends,&nbsp;manifest,&nbsp;etcsums<br>
+/var/db/introit/cache&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;downloads,&nbsp;safe&nbsp;to&nbsp;empty<br>
+/var/db/introit/stage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unpacking,&nbsp;safe&nbsp;to&nbsp;empty</code></td></tr></table>
+
+<p>Users without root get the index and cache in <code>~/.cache/introit</code>. Apps are not recorded here.</p>
+
+<br><table width="100%" cellpadding="3" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" id="admin"><font size="3" color="#eef1f6"><b>3 The system</b></font></td></tr></table>
+
+<h4 id="differently"><font color="#eef1f6"><u>3.1 The file system</u></font></h4>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>/bin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;programs<br>
+/share&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data,&nbsp;fonts,&nbsp;firmware,&nbsp;modules,&nbsp;headers,&nbsp;static&nbsp;libraries<br>
+/etc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;configuration<br>
+/boot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;EFI&nbsp;partition&nbsp;and&nbsp;the&nbsp;kernel<br>
+/var&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logs&nbsp;and&nbsp;/var/db/introit<br>
+/apps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apps&nbsp;for&nbsp;every&nbsp;user<br>
+/home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;users&nbsp;and&nbsp;their&nbsp;~/apps<br>
+/usr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;symlink&nbsp;to&nbsp;/</code></td></tr></table>
+
+<p>Everything is static. There is no <code>/lib</code> and no <code>/sbin</code>, and programs built for glibc do not run.</p>
+<p id="apps">Apps are folders in <code>~/apps</code>. They install into your home, so no root is needed. To install netsurf:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;introit&nbsp;a&nbsp;browsers/netsurf</code></td></tr></table>
+
+<p>To install it for every user, in <code>/apps</code>:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;introit&nbsp;a&nbsp;browsers/netsurf</code></td></tr></table>
+
+<p>To uninstall an app, move its folder out of <code>~/apps</code>. To get it back, move it back. Log in again after either.</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;mv&nbsp;~/apps/netsurf&nbsp;~/old/</code></td></tr></table>
+
+<br><table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#8a845a" bgcolor="#3a3a2a"><tr><td><font color="#e6e0b0"><b>NOTE:</b> If an app needs something from the base system, introit prints the <code>doas introit a ...</code> line to run first.</font></td></tr></table>
+
+<p>The apps in the repository are <code>browsers/netsurf</code> and <code>terminals/havoc</code>.</p>
+<p>To build your own code, install <code>dev/tcc</code> and <code>sys/musl-dev</code>:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;tcc&nbsp;-static&nbsp;-o&nbsp;hello&nbsp;hello.c</code></td></tr></table>
+
+
+<h4 id="booting"><font color="#eef1f6"><u>3.2 libera</u></font></h4>
+<p>libera is the boot. The firmware runs the kernel from <code>/boot/EFI/BOOT/BOOTX64.EFI</code>, and busybox init runs <code>/etc/libera</code>, which is 32 lines. There is no bootloader, no initramfs and no services.</p>
+<p>To start something at every boot, add it to the end of <code>/etc/libera</code>.</p>
+<table border="1" cellpadding="4" cellspacing="0" bordercolor="#6e7d95">
+<tr><td><code>/etc/libera</code></td><td>the boot</td></tr>
+<tr><td><code>/etc/inittab</code></td><td>consoles</td></tr>
+<tr><td><code>/etc/fstab</code></td><td>mounts</td></tr>
+<tr><td><code>/etc/hostname</code></td><td>hostname</td></tr>
+<tr><td><code>/etc/doas.conf</code></td><td>who can use doas</td></tr>
+<tr><td><code>/etc/introit/repo</code></td><td>the repository</td></tr>
+<tr><td><code>/etc/profile</code></td><td>PATH and the prompt</td></tr>
+</table>
+<p>To read kernel messages:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;dmesg</code></td></tr></table>
+
+
+<h4 id="users"><font color="#eef1f6"><u>3.3 Users</u></font></h4>
+<p>To add a user that can use doas (needs <code>sys/qoltils</code>):</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;mkuser&nbsp;foo</code></td></tr></table>
+
+
+<h4 id="wlan"><font color="#eef1f6"><u>3.4 Wifi</u></font></h4>
+<p>To find out which firmware you need:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;cat&nbsp;/sys/bus/pci/devices/*/vendor</code></td></tr></table>
+
+<p><code>0x8086</code> is Intel, use <code>firmware/iwlwifi</code>. <code>0x10ec</code> is Realtek, use <code>firmware/realtek</code>.</p>
+<p>To connect:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;wifi&nbsp;network&nbsp;password</code></td></tr></table>
+
+<br><table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#8a845a" bgcolor="#3a3a2a"><tr><td><font color="#e6e0b0"><b>NOTE:</b> Only WPA2. WPA3 and enterprise networks do not work. Wired and USB tethering get an address at boot if plugged in.</font></td></tr></table>
+
+
+<h4 id="sound"><font color="#eef1f6"><u>3.5 Sound</u></font></h4>
+<p>To turn sound on (needs <code>sound/alsa-utils</code>):</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;vol&nbsp;80</code></td></tr></table>
+
+
+<br><table width="100%" cellpadding="3" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" id="desktop"><font size="3" color="#eef1f6"><b>4 The desktop</b></font></td></tr></table>
+<p><a href="kyrie/index.html">kyrie</a> is the Wayland compositor of requiem. To install it and start it:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>#&nbsp;introit&nbsp;a&nbsp;desktop/kyrie&nbsp;desktop/wallpaper<br>
+$&nbsp;startw</code></td></tr></table>
+
+<p>To change the colours, the border and the programs on super + return, d and w, edit <code>~/.config/kyrie/env</code>:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>KYRIE_BORDER=6<br>
+KYRIE_FOCUS=c9c9c6<br>
+KYRIE_UNFOCUS=494949<br>
+TERMINAL=havoc<br>
+MENU=dmenu_run<br>
+BROWSER=netsurf</code></td></tr></table>
+
+<p>To add your own keys, copy <code>/share/kyrie/keys</code> to <code>~/.config/kyrie/keys</code> and add a line:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>case&nbsp;$1&nbsp;in<br>
+w)&nbsp;exec&nbsp;netsurf&nbsp;;;<br>
+S-x)&nbsp;exec&nbsp;havoc&nbsp;tract&nbsp;;;<br>
+esac</code></td></tr></table>
+
+<p>To set a wallpaper:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;setwall&nbsp;/share/wallpapers/tower.png<br>
+$&nbsp;setwall&nbsp;'#1a4270'</code></td></tr></table>
+
+<p>To take a screenshot, press super + p, or:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;shot&nbsp;file.png</code></td></tr></table>
+
+<br><table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#8a845a" bgcolor="#3a3a2a"><tr><td><font color="#e6e0b0"><b>NOTE:</b> Only the US keyboard layout is included.</font></td></tr></table>
+
+
+<br><table width="100%" cellpadding="3" cellspacing="0" border="0"><tr><td bgcolor="#6e7d95" id="packaging"><font size="3" color="#eef1f6"><b>5 Writing packages</b></font></td></tr></table>
+<p>If something is missing, package it and send a pull request to <a href="https://codeberg.org/requiem-linux/repo">the repo</a>.</p>
+
+<h4 id="pkgfiles"><font color="#eef1f6"><u>5.1 A package</u></font></h4>
+<p>A package is a folder in <code>pkgs/&lt;category&gt;/</code>. This is <code>pkgs/utils/pfetch</code>:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;cat&nbsp;pkgs/utils/pfetch/version<br>
+0.6.1-2<br>
+$&nbsp;cat&nbsp;pkgs/utils/pfetch/source<br>
+git&nbsp;https://github.com/dylanaraps/pfetch&nbsp;master<br>
+$&nbsp;cat&nbsp;pkgs/utils/pfetch/build<br>
+#!/bin/sh&nbsp;-e<br>
+install&nbsp;-Dm755&nbsp;pfetch&nbsp;"$1/usr/bin/pfetch"</code></td></tr></table>
+
+<table border="1" cellpadding="4" cellspacing="0" bordercolor="#6e7d95">
+<tr><td><code>version</code></td><td>required. upstream version, then <code>-1</code>, <code>-2</code> for rebuilds</td></tr>
+<tr><td><code>build</code></td><td>required. installs into <code>$1</code></td></tr>
+<tr><td><code>source</code></td><td><code>git url tag</code>, <code>apt-src pkg</code> or <code>apt-deb pkg...</code></td></tr>
+<tr><td><code>depends</code></td><td>one package per line, with its category</td></tr>
+<tr><td><code>app</code></td><td>empty file. makes it an app</td></tr>
+</table>
+<br><table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#8a845a" bgcolor="#3a3a2a"><tr><td><font color="#e6e0b0"><b>NOTE:</b> Change <code>version</code> every time you change the package, or nobody gets the change. mkrepo refuses to build it otherwise.</font></td></tr></table>
+
+
+<h4 id="building"><font color="#eef1f6"><u>5.2 Building</u></font></h4>
+<p>To build every package, the base system and the iso:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;git&nbsp;clone&nbsp;https://codeberg.org/requiem-linux/repo<br>
+$&nbsp;cd&nbsp;repo<br>
+$&nbsp;./mkrepo<br>
+$&nbsp;./mkrootfs<br>
+#&nbsp;./mkiso</code></td></tr></table>
+
+<p>To build only one package:</p>
+<table width="100%" border="1" cellpadding="6" cellspacing="0" bordercolor="#6e7d95" bgcolor="#1d2534"><tr><td><code>$&nbsp;./mkpkg&nbsp;tract</code></td></tr></table>
+
+<p>The build machine needs clang, lld, compiler-rt, lzfse and GNU make. <code>mkiso</code> also needs xorriso and mtools.</p>
+<br><table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#8a845a" bgcolor="#3a3a2a"><tr><td><font color="#e6e0b0"><b>NOTE:</b> GNU make is only used to build the kernel. <code>cc/gcc</code> is a stub that fails, so nothing from gcc ends up in a package.</font></td></tr></table>
+
 
 </td>
 </tr></table>
-<hr noshade size="1">
-<font size="1" color="#9fb0c8">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font>
+<hr noshade size="1" color="#6e7d95">
+<center><font size="1" color="#9fb0c8">made by max spuk. requiem is under the cddl 1.1; the software it packages keeps its own license. linux is a registered trademark of linus torvalds.</font></center>
 </font>
 </body>
 </html>
